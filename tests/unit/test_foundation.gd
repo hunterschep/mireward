@@ -60,6 +60,9 @@ func check_invalid_definitions(t: SceneTree, db: Node) -> void:
 	map = db.map.duplicate(true)
 	map.scenes.exterior.entrances = {"entry": [0, "floor", 1]}
 	t.check(not ContentValidation.world(map).is_empty(), "R04 rejects malformed entrance transforms")
+	map = db.map.duplicate(true)
+	map.spawns[0].yaw = "north"
+	t.check(not ContentValidation.world(map).is_empty(), "R04 rejects nonnumeric spawn facing before actor construction")
 	var fixture_path: String = t.test_save_directory.path_join("bad_items.json")
 	var file := FileAccess.open(fixture_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify([{"id": "broken"}]))

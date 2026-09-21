@@ -196,6 +196,8 @@ static func world(map: Dictionary) -> PackedStringArray:
 					errors.append("Broken spawn reference: " + record.id)
 				else:
 					counts[record.archetype] += 1
+				if not SessionValidation.number(record.get("yaw", 0.0)):
+					errors.append("Invalid spawn facing direction: " + record.id)
 	if counts != {"cutpurse": 7, "levy_spearman": 7, "deserter_raider": 5, "hollow_keeper": 6, "captain_rusk": 1}:
 		errors.append("Hostile composition differs from D10.")
 	for scene_id: String in ["exterior", "interior_inn", "interior_crypt", "interior_undercroft"]:

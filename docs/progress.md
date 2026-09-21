@@ -10,10 +10,10 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T04 | IMPLEMENTED | Integration lead | 12 movement assertions pass and real W movement inspected; finishing camera/gear check |
 | T05 | IMPLEMENTED | Integration lead | 33 interaction/mode assertions pass; production graph/native checks at T11/T15 |
 | T06 | IMPLEMENTED | Integration lead | 79 unit +26 spatial assertions; full suite958 pass; final combat feel/audio later |
-| T07 | IN_PROGRESS | foundation_audit | Import and63 enemy assertions pass; RETURN/unchanged-refresh regressions being added |
+| T07 | IMPLEMENTED | Integration lead | Root67 enemy assertions pass; native world/loot integration later |
 | T08 | VERIFIED | Integration lead | 130 inventory/equipment/loot assertions; physical UI/world wiring later |
-| T09 | NOT_STARTED | Unassigned | T07/T08 integrated |
-| T10 | NOT_STARTED | Unassigned | T03/T05/T07 integrated; parallel with T09 |
+| T09 | IN_PROGRESS | environment | Shop/recovery105 assertions pass; healing integration under test |
+| T10 | IN_PROGRESS | visual_toolkit + landmark helper | Authored valley, routes and baked navigation; parallel with T09 |
 | T11 | NOT_STARTED | Unassigned | T09/T10 integrated |
 | T12 | NOT_STARTED | Unassigned | T02/T08/T09 integrated; parallel with T11 |
 | T13 | NOT_STARTED | Unassigned | T05/T12 integrated |
@@ -24,10 +24,10 @@ Complete specification scope is authorized. The user objective overrides sequent
 
 ## Exclusive ownership
 
-- visual_toolkit: T08 finished; inventory/world-state files returned to integration lead.
-- foundation_audit: T07 AI, enemy scene/navigation arena, enemy tests, T07 handoff.
+- visual_toolkit: T10 exterior geometry, map manifest, navigation bake and tests.
+- foundation_audit: T10 landmark-placement helper, scripts/world/exterior_landmarks.gd only.
 - Integration lead: T04 player code/scene/movement tests, root configuration, autoloads/core, shared records, integration and checkpoints.
-- environment: T06 finished; combat files returned to integration lead.
+- environment: T09 economy/recovery services and related tests.
 
 ## Resume
 

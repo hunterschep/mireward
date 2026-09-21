@@ -167,6 +167,10 @@ func check_crowd_and_guard(t: SceneTree, arena: Node3D, player: MirePlayer, coor
 			break
 	if reserved != null:
 		var count: int = coordinator.reservation_count
+		var prior_phase: StringName = reserved.combat.phase
+		var prior_elapsed: float = reserved.combat.phase_elapsed
+		var refreshed: MireTypes.ActionResult = reserved.apply_persistent_state({"defeated": false, "disabled": false, "faction": "hostile"})
+		t.check(refreshed.ok and reserved.combat.phase == prior_phase and reserved.combat.phase_elapsed == prior_elapsed and coordinator.reservation_count == count, "R18 unchanged live world-state refresh preserves a committed attack and its reservation")
 		reserved.combat.apply_stagger(0.65)
 		t.check(reserved.state == &"STAGGER" and coordinator.reservation_count < count, "R20 staggering an attacker releases its reservation immediately")
 	else:
@@ -212,6 +216,8 @@ func check_return_and_stuck(t: SceneTree, arena: Node3D, player: MirePlayer, coo
 	t.check(actor.is_engaged(), "R19 losing sight does not disengage before the four-second interval")
 	await frames(t, 60)
 	t.check(actor.state == &"RETURN" and actor.combat.health == damaged, "R19 four seconds without sight enters return without immediately restoring health")
+	var repeated := MireTypes.DamageRequest.new(&"player", _sequence, actor.entity_id, 15, &"light", player.global_position, &"player")
+	t.check(actor.combat.receive_hit(repeated).outcome == &"ignored" and actor.combat.health == damaged and actor.state == &"RETURN", "R13 automatic RETURN preserves hit history and rejects a repeated damage callback")
 	await frames(t, 260)
 	t.check(actor.combat.health == damaged, "R19 an enemy at spawn remains damaged until five safe seconds pass")
 	await frames(t, 35)
@@ -291,6 +297,17 @@ func check_budget_and_lifecycle(t: SceneTree, arena: Node3D, player: MirePlayer,
 		if actor.thinking:
 			thinking += 1
 	t.check(thinking == 12 and coordinator.active_count == 12 and not actors.back().thinking and not actors.back().combat.is_physics_processing(), "R19 AI budget caps thinking at twelve and sleeps hostiles beyond seventy meters")
+	var lease_actor: EnemyActor = actors[0]
+	for candidate: EnemyActor in actors:
+		if candidate.thinking:
+			lease_actor = candidate
+			break
+	lease_actor.set_physics_process(false)
+	lease_actor.combat.set_physics_process(false)
+	t.check(coordinator.reserve_attack(lease_actor), "R20 a lone eligible actor can reserve an attack slot")
+	await frames(t, 180)
+	t.check(coordinator.reservation_count == 0 and coordinator.reserve_attack(lease_actor), "R20 an abandoned reservation expires and cannot permanently block a lone attacker")
+	coordinator.release_attack(lease_actor.entity_id)
 	player.global_position = actors[0].global_position + Vector3(0, 0, 10)
 	t.check(coordinator.is_dangerous(), "R19 a hostile within fifteen meters and line of sight prevents safe rest")
 	player.queue_free()

@@ -93,6 +93,8 @@ func _ready() -> void:
 func configure(spawn: Dictionary, controlled_player: MirePlayer, encounter: EncounterCoordinator) -> MireTypes.ActionResult:
 	if not is_node_ready() or _configured or not SessionValidation.identifier(spawn.get("id")) or not SessionValidation.identifier(spawn.get("archetype")) or not SessionValidation.vector(spawn.get("position")) or controlled_player == null or encounter == null:
 		return MireTypes.failure(&"invalid_spawn", &"The enemy spawn is incomplete or already configured.")
+	if spawn.has("yaw") and (not SessionValidation.number(spawn.yaw) or not is_finite(float(spawn.yaw))):
+		return MireTypes.failure(&"invalid_spawn", &"The enemy facing direction is invalid.")
 	var archetype := StringName(spawn.archetype)
 	if archetype not in ARCHETYPES:
 		return MireTypes.failure(&"unsupported", &"This actor supports ordinary hostile archetypes only.")
@@ -134,17 +136,21 @@ func configure(spawn: Dictionary, controlled_player: MirePlayer, encounter: Enco
 	return MireTypes.success()
 
 func apply_persistent_state(record: Dictionary) -> MireTypes.ActionResult:
-	if not _configured or not record.get("defeated", false) is bool or not record.get("disabled", false) is bool or record.get("faction", "hostile") not in ["hostile", "neutral"]:
+	if not _configured or not record.get("defeated", false) is bool or not record.get("disabled", _disabled) is bool or record.get("faction", String(combat.faction)) not in ["hostile", "neutral"]:
 		return MireTypes.failure(&"invalid_state", &"The enemy world record is invalid.")
-	_disabled = record.get("disabled", false)
-	combat.faction = StringName(record.get("faction", "hostile"))
-	if record.get("defeated", false) or combat.dead:
+	var next_disabled: bool = record.get("disabled", _disabled)
+	var next_faction: StringName = StringName(record.get("faction", String(combat.faction)))
+	var changed: bool = next_disabled != _disabled or next_faction != combat.faction
+	_disabled = next_disabled
+	combat.faction = next_faction
+	if record.get("defeated", false) and not combat.dead:
 		combat.health = 0
 		combat.reset_combat()
 		_mark_dead(false)
-	else:
-		combat.reset_combat()
+	elif not combat.dead and changed:
+		combat.reset_combat(false)
 		_set_state(&"IDLE")
+		VisualFactory.pose(model, &"idle", _clock)
 	collision_layer = 0 if combat.dead or _disabled else (MireTypes.NEUTRAL if combat.faction == &"neutral" else MireTypes.HOSTILE)
 	hurtbox.collision_layer = MireTypes.HURTBOX if is_alive_hostile() else 0
 	visible = not _disabled
@@ -341,7 +347,7 @@ func _return_to_spawn(delta: float, sees: bool) -> void:
 		_safe_at_spawn += delta
 		if _safe_at_spawn >= 5.0:
 			combat.health = combat.max_health
-			combat.reset_combat()
+			combat.reset_combat(false)
 			rotation.y = spawn_yaw
 			_set_state(&"PATROL" if not _patrol.is_empty() else &"IDLE")
 	else:
@@ -353,7 +359,7 @@ func _begin_return() -> void:
 		return
 	if is_instance_valid(coordinator):
 		coordinator.release_attack(entity_id)
-	combat.reset_combat()
+	combat.reset_combat(false)
 	_guard_left = 0.0
 	_guard_due = false
 	_combat_time = 0.0
