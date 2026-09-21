@@ -1,0 +1,106 @@
+[
+  {
+    "id": "cart_coffer",
+    "label": "Cart medicine coffer",
+    "items": {
+      "cart_medicine": 1
+    },
+    "crowns": 0
+  },
+  {
+    "id": "checkpoint_receipt_box",
+    "label": "Checkpoint receipt box",
+    "items": {
+      "toll_receipt": 1
+    },
+    "crowns": 0
+  },
+  {
+    "id": "charter_vault_coffer",
+    "label": "Charter vault coffer",
+    "items": {
+      "orra_charter": 1
+    },
+    "crowns": 0
+  },
+  {
+    "id": "watchtower_ledger_chest",
+    "label": "Watchtower ledger chest",
+    "items": {
+      "grain_ledger": 1
+    },
+    "crowns": 0
+  },
+  {
+    "id": "captain_seal_chest",
+    "label": "Captain seal chest",
+    "items": {
+      "rookwatch_seal": 1
+    },
+    "crowns": 0
+  },
+  {
+    "id": "kiln_hammer_crate",
+    "label": "Kiln tool crate",
+    "items": {
+      "smith_hammer": 1
+    },
+    "crowns": 0
+  },
+  {
+    "id": "ferry_blanket_barrel",
+    "label": "Ferry blanket barrel",
+    "items": {
+      "ferry_blankets": 1
+    },
+    "crowns": 0
+  },
+  {
+    "id": "shrine_ring_bowl",
+    "label": "Shrine offering bowl",
+    "items": {
+      "hobb_ring": 1
+    },
+    "crowns": 0
+  },
+  {
+    "id": "monastery_candle_01",
+    "label": "Monastery candle",
+    "items": {
+      "votive_candle": 1
+    },
+    "crowns": 0
+  },
+  {
+    "id": "monastery_candle_02",
+    "label": "Monastery candle",
+    "items": {
+      "votive_candle": 1
+    },
+    "crowns": 0
+  },
+  {
+    "id": "monastery_candle_03",
+    "label": "Monastery candle",
+    "items": {
+      "votive_candle": 1
+    },
+    "crowns": 0
+  },
+  {
+    "id": "watchtower_badge_locker",
+    "label": "Watchtower badge locker",
+    "items": {
+      "ada_badge": 1
+    },
+    "crowns": 0
+  },
+  {
+    "id": "raider_medicine_cache",
+    "label": "Camp medicine cache",
+    "items": {
+      "camp_medicine": 1
+    },
+    "crowns": 0
+  }
+]

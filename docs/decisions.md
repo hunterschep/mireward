@@ -10,3 +10,4 @@
 - Engine/environment verified at Godot 4.5.2.stable. Enable ETC2/ASTC imports for universal/arm64 macOS export as required by the pinned exporter.
 - T03 exposes `VisualFactory.pose(actor, state, phase=0, intensity=1)` and `pose_gear(root, state, phase)`. Combat phases normalize phase to 0..1; idle/walk use radians. Gear origin is grip, blade +Y, forward -Z. Gameplay owns timing.
 - Foundation quest/dialogue registries reserve canonical IDs with `foundation_only=true`; release validation refuses them. T12/T13 replace them with complete data rather than inventing new IDs.
+- User explicitly requests ongoing commits and pushes. Review each staged integration diff, commit a coherent batch, and push fix/mireward-game after the relevant checks. Keep unfinished task state visible; do not wait for the whole game before pushing.

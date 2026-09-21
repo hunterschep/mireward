@@ -2,6 +2,8 @@ extends Node
 
 var state: Dictionary = {}
 var transactions: Transactions
+var inventory: InventoryService
+var world_state: WorldStateService
 var danger: bool = false
 var action_locked: bool = false
 var travelling: bool = false
@@ -11,6 +13,8 @@ func _ready() -> void:
 	InputBindings.install_defaults()
 	transactions = Transactions.new(self)
 	new_game()
+	inventory = InventoryService.new(self)
+	world_state = WorldStateService.new(self)
 	active = false
 
 func new_game() -> void:

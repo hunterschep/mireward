@@ -21,16 +21,16 @@ PASS requires linked execution evidence for every applicable verification method
 | R15 Parry and guard break | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R16 Damage, armor, and death signals | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R17 Healing and resource recovery | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R18 Four ordinary enemy archetypes | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R19 Perception and navigation | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R18 Four ordinary enemy archetypes | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R19 Perception and navigation | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R20 Encounter fairness and combat feedback | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R21 Captain Rusk encounter | NOT STARTED | See tasks.md coverage map; final gate T28 |
 | R22 Player death and rest | NOT STARTED | See tasks.md coverage map; final gate T28 |
 | R23 Item registry and starting loadout | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R24 Capacity, equipment, and key items | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R25 Persistent loot and pending rewards | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R24 Capacity, equipment, and key items | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R25 Persistent loot and pending rewards | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R26 Shop transactions | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R27 Viable equipment progression | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R27 Viable equipment progression | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R28 Data-driven quest state | NOT STARTED | See tasks.md coverage map; final gate T28 |
 | R29 Six-main-quest sequence | NOT STARTED | See tasks.md coverage map; final gate T28 |
 | R30 Six side quests | NOT STARTED | See tasks.md coverage map; final gate T28 |

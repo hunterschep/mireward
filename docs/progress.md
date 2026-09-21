@@ -11,7 +11,7 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T05 | IMPLEMENTED | Integration lead | 33 interaction/mode assertions pass; production graph/native checks at T11/T15 |
 | T06 | IMPLEMENTED | Integration lead | 79 unit +26 spatial assertions; full suite958 pass; final combat feel/audio later |
 | T07 | IN_PROGRESS | foundation_audit | Enemy/navigation fixtures using shared combat |
-| T08 | IN_PROGRESS | visual_toolkit | Inventory/loot/reward transactions; parallel with T07 |
+| T08 | VERIFIED | Integration lead | 130 inventory/equipment/loot assertions; physical UI/world wiring later |
 | T09 | NOT_STARTED | Unassigned | T07/T08 integrated |
 | T10 | NOT_STARTED | Unassigned | T03/T05/T07 integrated; parallel with T09 |
 | T11 | NOT_STARTED | Unassigned | T09/T10 integrated |
@@ -24,7 +24,7 @@ Complete specification scope is authorized. The user objective overrides sequent
 
 ## Exclusive ownership
 
-- visual_toolkit: T08 inventory and world-state services, container registry, inventory tests, T08 handoff.
+- visual_toolkit: T08 finished; inventory/world-state files returned to integration lead.
 - foundation_audit: T07 AI, enemy scene/navigation arena, enemy tests, T07 handoff.
 - Integration lead: T04 player code/scene/movement tests, root configuration, autoloads/core, shared records, integration and checkpoints.
 - environment: T06 finished; combat files returned to integration lead.

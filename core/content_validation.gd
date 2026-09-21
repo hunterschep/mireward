@@ -116,6 +116,11 @@ static func validate(db: Node, release: bool = false) -> PackedStringArray:
 				if row is Dictionary and row.get("foundation_only", false):
 					errors.append("Unimplemented content: " + str(row.get("id", "unknown")))
 	errors.append_array(world(db.map))
+	var containers: Variant = db.read_json("res://data/loot/containers.json")
+	if containers is Array:
+		errors.append_array(container_registry(containers, db.items, db.map.get("spawns", [])))
+	else:
+		errors.append("Container registry must be an array.")
 	for shop_id: Variant in db.shops:
 		if not SessionValidation.identifier(shop_id) or not db.shops[shop_id] is Dictionary:
 			errors.append("Invalid shop: " + str(shop_id))
@@ -134,6 +139,38 @@ static func validate(db: Node, release: bool = false) -> PackedStringArray:
 		for item_id: StringName in db.items:
 			if not ResourceLoader.exists(db.items[item_id].icon_path):
 				errors.append("Missing item icon: " + str(item_id))
+	return errors
+
+static func container_registry(rows: Array, items: Dictionary, spawns: Array) -> PackedStringArray:
+	var errors := PackedStringArray()
+	var occupied: Dictionary = {}
+	for spawn: Dictionary in spawns:
+		occupied[String(spawn.id)] = true
+	var key_counts: Dictionary = {}
+	for row: Variant in rows:
+		if not row is Dictionary or not SessionValidation.json_safe(row) or not SessionValidation.identifier(row.get("id")) or not SessionValidation.identifier(row.get("label")) or not row.get("items") is Dictionary or not nonnegative_integer(row.get("crowns")):
+			errors.append("Malformed container definition.")
+			continue
+		if occupied.has(row.id):
+			errors.append("Duplicate persistent loot identity: " + str(row.id))
+		occupied[row.id] = true
+		var key_types: int = 0
+		for item_id: String in row.items:
+			if not items.has(StringName(item_id)) or not positive_integer(row.items[item_id]):
+				errors.append("Unknown item or invalid loot count in " + str(row.id))
+				continue
+			var item: MireTypes.ItemDef = items[StringName(item_id)]
+			if item.category in [&"quest", &"evidence"]:
+				key_types += 1
+				if int(row.items[item_id]) != 1:
+					errors.append("Each quest pickup needs its own persistent source: " + str(row.id))
+				key_counts[item_id] = int(key_counts.get(item_id, 0)) + int(row.items[item_id])
+		if key_types > 1:
+			errors.append("Distinct quest items cannot share a pickup identity: " + str(row.id))
+	for item_id: StringName in items:
+		var item: MireTypes.ItemDef = items[item_id]
+		if item.category in [&"quest", &"evidence"] and int(key_counts.get(String(item_id), 0)) != item.max_stack:
+			errors.append("Missing or duplicated authored key-item source: " + String(item_id))
 	return errors
 
 static func world(map: Dictionary) -> PackedStringArray:

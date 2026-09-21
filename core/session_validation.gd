@@ -80,6 +80,11 @@ static func validate(state: Dictionary, db: Node) -> MireTypes.ActionResult:
 	for id: String in state.world:
 		if id.is_empty() or not state.world[id] is Dictionary:
 			return invalid("Invalid persistent world record.")
+		var record: Dictionary = state.world[id]
+		if record.has("kind"):
+			var loot_check := validate_loot_record(id, record, db)
+			if not loot_check.ok:
+				return loot_check
 	var landmarks: Dictionary = {}
 	for landmark: Dictionary in db.map.get("landmarks", []):
 		landmarks[landmark.id] = true
@@ -95,6 +100,8 @@ static func validate(state: Dictionary, db: Node) -> MireTypes.ActionResult:
 		var delivery: Variant = state.pending_delivery[id]
 		if id.is_empty() or not delivery is Dictionary or not identifier(delivery.get("item_id")) or not db.items.has(StringName(delivery.item_id)) or not whole(delivery.get("quantity")) or delivery.quantity < 1:
 			return invalid("Invalid pending delivery: " + id)
+		if db.items[StringName(delivery.item_id)].category in [&"quest", &"evidence"] or state.transactions.has("inventory/claim/" + id):
+			return invalid("A key item or claimed reward cannot remain pending: " + id)
 	for shop_id: String in state.shop_stock:
 		if not db.shops.has(shop_id) or not state.shop_stock[shop_id] is Dictionary:
 			return invalid("Unknown or invalid shop: " + shop_id)
@@ -102,6 +109,33 @@ static func validate(state: Dictionary, db: Node) -> MireTypes.ActionResult:
 			var quantity: Variant = state.shop_stock[shop_id][item_id]
 			if not db.shops[shop_id].has(item_id) or not whole(quantity) or (db.shops[shop_id][item_id] == -1 and quantity != -1) or (db.shops[shop_id][item_id] >= 0 and (quantity < 0 or quantity > db.shops[shop_id][item_id])):
 				return invalid("Invalid shop stock: " + item_id)
+	return MireTypes.success()
+
+static func validate_loot_record(id: String, record: Dictionary, db: Node) -> MireTypes.ActionResult:
+	if record.get("kind") not in ["container", "corpse"] or not record.get("opened") is bool or not record.get("remaining") is Dictionary or not whole(record.get("crowns_remaining")) or record.crowns_remaining < 0:
+		return invalid("Invalid saved loot record: " + id)
+	var original_items: Dictionary = {}
+	var original_crowns: int = 0
+	if record.kind == "container":
+		if not db.containers.has(id):
+			return invalid("Unknown saved container: " + id)
+		original_items = db.containers[id].items
+		original_crowns = int(db.containers[id].crowns)
+	else:
+		var spawn: Dictionary = {}
+		for authored: Dictionary in db.map.spawns:
+			if authored.id == id:
+				spawn = authored
+				break
+		if spawn.is_empty() or record.get("archetype") != spawn.archetype or not record.get("defeated") is bool or not record.get("disabled") is bool:
+			return invalid("Invalid saved hostile identity or state: " + id)
+		original_crowns = int(db.enemies[StringName(spawn.archetype)].data.loot_crowns)
+	if record.crowns_remaining > original_crowns:
+		return invalid("Saved loot exceeds its authored crowns: " + id)
+	for item_id: String in record.remaining:
+		var quantity: Variant = record.remaining[item_id]
+		if not original_items.has(item_id) or not whole(quantity) or quantity <= 0 or quantity > original_items[item_id]:
+			return invalid("Saved loot exceeds its authored items: " + id)
 	return MireTypes.success()
 
 static func receipt(value: Variant) -> bool:

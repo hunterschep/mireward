@@ -6,6 +6,7 @@ var quests: Dictionary = {}
 var dialogues: Dictionary = {}
 var map: Dictionary = {}
 var shops: Dictionary = {}
+var containers: Dictionary = {}
 var errors: PackedStringArray = []
 
 func _ready() -> void:
@@ -19,6 +20,7 @@ func reload_content() -> void:
 	dialogues.clear()
 	map.clear()
 	shops.clear()
+	containers.clear()
 	_load_registry("res://data/items/items.json", items, &"item")
 	_load_registry("res://data/enemies/enemies.json", enemies, &"enemy")
 	_load_registry("res://data/quests/quests.json", quests, &"quest")
@@ -37,6 +39,16 @@ func reload_content() -> void:
 		shops = shop_value
 	else:
 		errors.append("Shop registry must be a dictionary.")
+	var container_rows: Variant = read_json("res://data/loot/containers.json")
+	if container_rows is Array:
+		var container_errors := ContentValidation.container_registry(container_rows, items, map.get("spawns", []))
+		if container_errors.is_empty():
+			for row: Dictionary in container_rows:
+				containers[String(row.id)] = row.duplicate(true)
+		else:
+			errors.append_array(container_errors)
+	else:
+		errors.append("Container registry must be an array.")
 
 func read_json(path: String) -> Variant:
 	if not FileAccess.file_exists(path):
