@@ -8,7 +8,7 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T02 | VERIFIED | Integration lead + foundation_audit | 48 foundation and 11 math assertions; handoffs/T02-audit.md |
 | T03 | VERIFIED | visual_toolkit + integration lead | 748 art assertions, byte-identical regeneration and three inspected 540p views |
 | T04 | IMPLEMENTED | Integration lead | 12 movement assertions pass and real W movement inspected; finishing camera/gear check |
-| T05 | IN_PROGRESS | foundation_audit | Interaction occlusion, modal pause/cursor and input-release tests |
+| T05 | IMPLEMENTED | Integration lead | 33 interaction/mode assertions pass; production graph/native checks at T11/T15 |
 | T06 | IN_PROGRESS | environment | Consumes verified player and import-tested T05 APIs; combat fixtures pending |
 | T07 | NOT_STARTED | Unassigned | T03/T06 integrated |
 | T08 | NOT_STARTED | Unassigned | T02/T05/T06 integrated; parallel with T07 |
@@ -25,7 +25,7 @@ Complete specification scope is authorized. The user objective overrides sequent
 ## Exclusive ownership
 
 - visual_toolkit: T03 finished; art files returned to integration lead.
-- foundation_audit: T05 interaction component/ray, mode controller, modal host, related integration tests and T05 handoff. T02 files returned to lead.
+- foundation_audit: T05 finished; interaction/mode files returned to integration lead.
 - Integration lead: T04 player code/scene/movement tests, root configuration, autoloads/core, shared records, integration and checkpoints.
 - environment: T06 scripts/combat, combat fixtures/arena, T06 handoff.
 
