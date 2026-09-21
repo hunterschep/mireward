@@ -248,7 +248,7 @@ func clear_input_edges() -> void:
 	_buffered = false
 	set_guard(false)
 
-func reset_combat() -> void:
+func reset_combat(clear_hit_history: bool = true) -> void:
 	clear_input_edges()
 	dead = get_health() <= 0
 	stagger_remaining = 0.0
@@ -256,7 +256,8 @@ func reset_combat() -> void:
 	phase_elapsed = 0.0
 	_clock = 0.0
 	_last_parry_start = -INF
-	_received_sequences.clear()
+	if clear_hit_history:
+		_received_sequences.clear()
 	_hit_used = false
 	guard_stamina = 40.0
 	_lock_action(false)
