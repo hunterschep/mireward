@@ -1,6 +1,6 @@
 # Original visual assets
 
-All visual artwork below was authored locally for MIREWARD. No asset packs, photographs, downloaded models, or external textures are used. Author: MIREWARD project contributors. License: CC0-1.0, recorded in `assets/LICENSE.txt`. No attribution is required. The generation source is the editable original; modifications are the meter-scale assemblies, palette, icons, textures, and rigid poses described here.
+The models, materials, textures and icons below were authored locally for MIREWARD. No asset packs, photographs, downloaded models, or external textures are used. Author: MIREWARD project contributors. License: CC0-1.0, recorded in `assets/LICENSE.txt`. No attribution is required for that original artwork. The generation source is the editable original; modifications are the meter-scale assemblies, palette, icons, textures, and rigid poses described here. The embedded engine font has its own third-party notice below.
 
 | Output family | Stable paths | Original source | Contents |
 |---|---|---|---|
@@ -15,6 +15,14 @@ All visual artwork below was authored locally for MIREWARD. No asset packs, phot
 | Review scene | `scenes/art/showcase.tscn` | `scripts/art/showcase.gd` | Late-afternoon exterior and separate furnished crypt review stage |
 
 Audio is tracked separately by its owning task. No audio provenance or completion is implied by this visual manifest.
+
+## Embedded runtime font
+
+The pinned Godot 4.5.2 runtime embeds Open Sans SemiBold 1.10 under Apache-2.0. Its [pinned font manifest](https://github.com/godotengine/godot/blob/4.5.2-stable/thirdparty/README.md#fonts) identifies the February 2021 Google Fonts source and TTF-to-WOFF2 conversion. The font's own name records say: `Digitized data copyright © 2011, Google Corporation.` Manufacturer: Ascender Corporation. No project modification or extra font binary is involved.
+
+On 21 September 2026 UTC, the active fallback font reported `Open Sans SemiBold / SemiBold`; its 46,392 bytes exactly matched the [pinned source WOFF2](https://github.com/godotengine/godot/blob/4.5.2-stable/thirdparty/fonts/OpenSans_SemiBold.woff2), SHA-256 `661e2d9975d3029aeb32bf37b1b963c31c7c3ce08ac1bab2c8ebe27e135c4ec2`. The metadata also explicitly names Apache License 2.0. This evidence concerns the game runtime font, not the editor's Noto fonts or newer Open Sans versions.
+
+Retain `assets/fonts/NOTICE-OpenSans.txt` and `assets/fonts/LICENSE-OpenSans-Apache-2.0.txt` in release artifacts. The notice contains exact name records and source links; the license is an unchanged copy from the Apache Software Foundation. Export inclusion filter: `assets/fonts/*.txt`. Release packaging must make both files available with the existing third-party notices.
 
 ## Scale and art contract
 

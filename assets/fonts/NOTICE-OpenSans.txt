@@ -1,0 +1,55 @@
+Open Sans SemiBold, Version 1.10
+SPDX-License-Identifier: Apache-2.0
+
+Digitized data copyright © 2011, Google Corporation.
+Manufacturer recorded in the font: Ascender Corporation.
+Open Sans is a trademark of Google and may be registered in certain jurisdictions.
+
+Licensed under the Apache License, Version 2.0.
+The full license accompanies this notice in LICENSE-OpenSans-Apache-2.0.txt.
+
+MIREWARD uses this font through the unmodified Godot 4.5.2 runtime fallback
+font. No separate font binary is added to the project or modified here.
+Godot's pinned thirdparty README records conversion from an unhinted TTF
+source into WOFF2 using google/woff2 and a Google Fonts download in
+February 2021. Its Open Sans entry specifies version 1.10 and Apache 2.0.
+
+Pinned Godot revision: 6ce3de25aa58466e14ef354703ba8d9791a417da
+
+Pinned source font:
+https://github.com/godotengine/godot/blob/4.5.2-stable/thirdparty/fonts/OpenSans_SemiBold.woff2
+
+Pinned provenance:
+https://github.com/godotengine/godot/blob/4.5.2-stable/thirdparty/README.md#fonts
+
+Runtime inclusion:
+https://github.com/godotengine/godot/blob/4.5.2-stable/scene/theme/SCsub
+https://github.com/godotengine/godot/blob/4.5.2-stable/scene/theme/default_theme.cpp
+
+Font file size: 46392 bytes
+Font SHA-256: 661e2d9975d3029aeb32bf37b1b963c31c7c3ce08ac1bab2c8ebe27e135c4ec2
+
+Verified on 21 September 2026 UTC: ThemeDB.fallback_font returned
+"Open Sans SemiBold / SemiBold". Its FontFile.data byte count and SHA-256
+exactly matched the pinned upstream WOFF2 above.
+
+Name records extracted from that exact WOFF2:
+  0: Digitized data copyright © 2011, Google Corporation.
+  1: Open Sans SemiBold
+  2: Regular
+  3: 1.10;1ASC;OpenSans-SemiBold
+  4: Open Sans SemiBold
+  5: Version 1.10
+  6: OpenSans-SemiBold
+  7: Open Sans is a trademark of Google and may be registered in certain jurisdictions.
+  8: Ascender Corporation
+ 13: Licensed under the Apache License, Version 2.0
+ 14: http://www.apache.org/licenses/LICENSE-2.0
+
+The license copy is unmodified text from:
+https://www.apache.org/licenses/LICENSE-2.0.txt
+License SHA-256: cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+
+This notice records the embedded runtime font. It does not claim that the
+editor's Noto Sans font is used by the game, and it does not apply the
+different license of a newer Open Sans release to these pinned bytes.
