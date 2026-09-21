@@ -4,20 +4,33 @@ var state: Dictionary = {}
 var transactions: Transactions
 var inventory: InventoryService
 var world_state: WorldStateService
+var economy: EconomyService
+var recovery: RecoveryService
 var danger: bool = false
 var action_locked: bool = false
 var travelling: bool = false
 var active: bool = false
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	process_physics_priority = 20
 	InputBindings.install_defaults()
 	transactions = Transactions.new(self)
 	new_game()
 	inventory = InventoryService.new(self)
 	world_state = WorldStateService.new(self)
+	economy = EconomyService.new(self)
+	recovery = RecoveryService.new(self)
+	inventory.consume_handler = recovery.start_consume
 	active = false
 
+func _physics_process(delta: float) -> void:
+	if recovery != null:
+		recovery.advance(delta)
+
 func new_game() -> void:
+	if recovery != null:
+		recovery.reset_runtime()
 	state = {
 		"player": {"health": 100.0, "stamina": 100.0, "crowns": 12, "scene_id": "exterior", "position": [32.0, 0.0, 252.0], "yaw": 0.0, "rest_anchor": "village_shrine"},
 		"inventory": [{"stack_id": "stack_1", "item_id": "rusted_sword", "quantity": 1}, {"stack_id": "stack_2", "item_id": "wooden_buckler", "quantity": 1}, {"stack_id": "stack_3", "item_id": "patched_coat", "quantity": 1}, {"stack_id": "stack_4", "item_id": "bandage", "quantity": 2}, {"stack_id": "stack_5", "item_id": "bread", "quantity": 1}],
@@ -43,6 +56,8 @@ func restore(candidate: Dictionary) -> MireTypes.ActionResult:
 	var valid := validate_snapshot(candidate)
 	if not valid.ok:
 		return valid
+	if recovery != null:
+		recovery.reset_runtime()
 	state = candidate.duplicate(true)
 	danger = false
 	action_locked = false
