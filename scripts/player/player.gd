@@ -22,6 +22,9 @@ var combat: Node
 
 func _ready() -> void:
 	add_to_group("player")
+	combat = $Combat
+	combat.configure_player(self)
+	$Hurtbox.configure(combat)
 	apply_settings()
 
 func apply_settings() -> void:
@@ -48,6 +51,8 @@ func spawn_at(at: Vector3, yaw: float = 0.0) -> void:
 	guarding = false
 	sprinting = false
 	vitals.reset()
+	if is_instance_valid(combat):
+		combat.reset_combat()
 	clear_input_edges()
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -9,9 +9,9 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T03 | VERIFIED | visual_toolkit + integration lead | 748 art assertions, byte-identical regeneration and three inspected 540p views |
 | T04 | IMPLEMENTED | Integration lead | 12 movement assertions pass and real W movement inspected; finishing camera/gear check |
 | T05 | IMPLEMENTED | Integration lead | 33 interaction/mode assertions pass; production graph/native checks at T11/T15 |
-| T06 | IN_PROGRESS | environment | Consumes verified player and import-tested T05 APIs; combat fixtures pending |
-| T07 | NOT_STARTED | Unassigned | T03/T06 integrated |
-| T08 | NOT_STARTED | Unassigned | T02/T05/T06 integrated; parallel with T07 |
+| T06 | IMPLEMENTED | Integration lead | 79 unit +26 spatial assertions; full suite958 pass; final combat feel/audio later |
+| T07 | IN_PROGRESS | foundation_audit | Enemy/navigation fixtures using shared combat |
+| T08 | IN_PROGRESS | visual_toolkit | Inventory/loot/reward transactions; parallel with T07 |
 | T09 | NOT_STARTED | Unassigned | T07/T08 integrated |
 | T10 | NOT_STARTED | Unassigned | T03/T05/T07 integrated; parallel with T09 |
 | T11 | NOT_STARTED | Unassigned | T09/T10 integrated |
@@ -24,10 +24,10 @@ Complete specification scope is authorized. The user objective overrides sequent
 
 ## Exclusive ownership
 
-- visual_toolkit: T03 finished; art files returned to integration lead.
-- foundation_audit: T05 finished; interaction/mode files returned to integration lead.
+- visual_toolkit: T08 inventory and world-state services, container registry, inventory tests, T08 handoff.
+- foundation_audit: T07 AI, enemy scene/navigation arena, enemy tests, T07 handoff.
 - Integration lead: T04 player code/scene/movement tests, root configuration, autoloads/core, shared records, integration and checkpoints.
-- environment: T06 scripts/combat, combat fixtures/arena, T06 handoff.
+- environment: T06 finished; combat files returned to integration lead.
 
 ## Resume
 
