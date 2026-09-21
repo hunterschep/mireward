@@ -1,0 +1,513 @@
+{
+  "seed": 42817,
+  "bounds": 320,
+  "start": [
+    32,
+    0,
+    252
+  ],
+  "landmarks": [
+    {
+      "id": "lm_brackenford",
+      "name": "Brackenford",
+      "position": [
+        -110,
+        0,
+        140
+      ]
+    },
+    {
+      "id": "lm_kings_trace",
+      "name": "King\u2019s Trace",
+      "position": [
+        -30,
+        0,
+        30
+      ]
+    },
+    {
+      "id": "lm_briar_camp",
+      "name": "Briar Camp",
+      "position": [
+        -230,
+        0,
+        -70
+      ]
+    },
+    {
+      "id": "lm_orra",
+      "name": "Saint Orra\u2019s Monastery",
+      "position": [
+        180,
+        0,
+        -95
+      ]
+    },
+    {
+      "id": "lm_rookwatch",
+      "name": "Rookwatch",
+      "position": [
+        40,
+        0,
+        -240
+      ]
+    },
+    {
+      "id": "lm_reed_shrine",
+      "name": "Reed Shrine",
+      "position": [
+        190,
+        0,
+        140
+      ]
+    },
+    {
+      "id": "lm_charcoal",
+      "name": "Charcoal Kiln",
+      "position": [
+        -180,
+        0,
+        25
+      ]
+    },
+    {
+      "id": "lm_watchtower",
+      "name": "Old Watchtower",
+      "position": [
+        170,
+        0,
+        -220
+      ]
+    },
+    {
+      "id": "lm_ferry",
+      "name": "Millpond Ferry",
+      "position": [
+        -190,
+        0,
+        230
+      ]
+    }
+  ],
+  "spawns": [
+    {
+      "id": "south_cart_cutpurse_01",
+      "group": "south_cart",
+      "scene_id": "exterior",
+      "archetype": "cutpurse",
+      "position": [
+        -2,
+        0,
+        100
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "south_cart_cutpurse_02",
+      "group": "south_cart",
+      "scene_id": "exterior",
+      "archetype": "cutpurse",
+      "position": [
+        3,
+        0,
+        100
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "road_checkpoint_levy_spearman_01",
+      "group": "road_checkpoint",
+      "scene_id": "exterior",
+      "archetype": "levy_spearman",
+      "position": [
+        -32,
+        0,
+        30
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "road_checkpoint_levy_spearman_02",
+      "group": "road_checkpoint",
+      "scene_id": "exterior",
+      "archetype": "levy_spearman",
+      "position": [
+        -27,
+        0,
+        30
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "road_checkpoint_levy_spearman_03",
+      "group": "road_checkpoint",
+      "scene_id": "exterior",
+      "archetype": "levy_spearman",
+      "position": [
+        -32,
+        0,
+        21
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "kiln_path_cutpurse_01",
+      "group": "kiln_path",
+      "scene_id": "exterior",
+      "archetype": "cutpurse",
+      "position": [
+        -172,
+        0,
+        45
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "kiln_path_cutpurse_02",
+      "group": "kiln_path",
+      "scene_id": "exterior",
+      "archetype": "cutpurse",
+      "position": [
+        -167,
+        0,
+        45
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "medicine_cache_deserter_raider_01",
+      "group": "medicine_cache",
+      "scene_id": "exterior",
+      "archetype": "deserter_raider",
+      "position": [
+        -202,
+        0,
+        3
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "medicine_cache_deserter_raider_02",
+      "group": "medicine_cache",
+      "scene_id": "exterior",
+      "archetype": "deserter_raider",
+      "position": [
+        -197,
+        0,
+        3
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "east_path_cutpurse_01",
+      "group": "east_path",
+      "scene_id": "exterior",
+      "archetype": "cutpurse",
+      "position": [
+        126,
+        0,
+        52
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "east_path_cutpurse_02",
+      "group": "east_path",
+      "scene_id": "exterior",
+      "archetype": "cutpurse",
+      "position": [
+        131,
+        0,
+        52
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "monastery_yard_hollow_keeper_01",
+      "group": "monastery_yard",
+      "scene_id": "exterior",
+      "archetype": "hollow_keeper",
+      "position": [
+        163,
+        0,
+        -76
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "monastery_yard_hollow_keeper_02",
+      "group": "monastery_yard",
+      "scene_id": "exterior",
+      "archetype": "hollow_keeper",
+      "position": [
+        168,
+        0,
+        -76
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "crypt_hollow_keeper_01",
+      "group": "crypt",
+      "scene_id": "interior_crypt",
+      "archetype": "hollow_keeper",
+      "position": [
+        -2,
+        0,
+        -19
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "crypt_hollow_keeper_02",
+      "group": "crypt",
+      "scene_id": "interior_crypt",
+      "archetype": "hollow_keeper",
+      "position": [
+        3,
+        0,
+        -19
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "crypt_hollow_keeper_03",
+      "group": "crypt",
+      "scene_id": "interior_crypt",
+      "archetype": "hollow_keeper",
+      "position": [
+        -2,
+        0,
+        -28
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "crypt_hollow_keeper_04",
+      "group": "crypt",
+      "scene_id": "interior_crypt",
+      "archetype": "hollow_keeper",
+      "position": [
+        3,
+        0,
+        -28
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "watchtower_deserter_raider_01",
+      "group": "watchtower",
+      "scene_id": "exterior",
+      "archetype": "deserter_raider",
+      "position": [
+        168,
+        0,
+        -211
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "watchtower_deserter_raider_02",
+      "group": "watchtower",
+      "scene_id": "exterior",
+      "archetype": "deserter_raider",
+      "position": [
+        173,
+        0,
+        -211
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "watchtower_cutpurse_03",
+      "group": "watchtower",
+      "scene_id": "exterior",
+      "archetype": "cutpurse",
+      "position": [
+        168,
+        0,
+        -220
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "castle_approach_levy_spearman_01",
+      "group": "castle_approach",
+      "scene_id": "exterior",
+      "archetype": "levy_spearman",
+      "position": [
+        36,
+        0,
+        -194
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "castle_approach_levy_spearman_02",
+      "group": "castle_approach",
+      "scene_id": "exterior",
+      "archetype": "levy_spearman",
+      "position": [
+        41,
+        0,
+        -194
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "undercroft_levy_spearman_01",
+      "group": "undercroft",
+      "scene_id": "interior_undercroft",
+      "archetype": "levy_spearman",
+      "position": [
+        -2,
+        0,
+        -14
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "undercroft_levy_spearman_02",
+      "group": "undercroft",
+      "scene_id": "interior_undercroft",
+      "archetype": "levy_spearman",
+      "position": [
+        3,
+        0,
+        -14
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "undercroft_deserter_raider_03",
+      "group": "undercroft",
+      "scene_id": "interior_undercroft",
+      "archetype": "deserter_raider",
+      "position": [
+        -2,
+        0,
+        -23
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "captain_hall_captain_rusk_01",
+      "group": "captain_hall",
+      "scene_id": "interior_undercroft",
+      "archetype": "captain_rusk",
+      "position": [
+        -2,
+        0,
+        -48
+      ],
+      "yaw": 0
+    }
+  ],
+  "scenes": {
+    "exterior": {
+      "entrances": {
+        "start": [
+          32,
+          0,
+          252
+        ],
+        "from_inn": [
+          -119,
+          0,
+          136
+        ],
+        "from_crypt": [
+          180,
+          0,
+          -83
+        ],
+        "from_undercroft": [
+          40,
+          0,
+          -226
+        ]
+      },
+      "safe_anchor": [
+        -110,
+        0,
+        149
+      ]
+    },
+    "interior_inn": {
+      "entrances": {
+        "entry": [
+          0,
+          0,
+          3
+        ]
+      },
+      "safe_anchor": [
+        0,
+        0,
+        3
+      ]
+    },
+    "interior_crypt": {
+      "entrances": {
+        "entry": [
+          0,
+          0,
+          3
+        ]
+      },
+      "safe_anchor": [
+        0,
+        0,
+        3
+      ]
+    },
+    "interior_undercroft": {
+      "entrances": {
+        "entry": [
+          0,
+          0,
+          3
+        ]
+      },
+      "safe_anchor": [
+        0,
+        0,
+        3
+      ]
+    }
+  },
+  "rest_points": {
+    "village_shrine": {
+      "scene_id": "exterior",
+      "position": [
+        -110,
+        0,
+        149
+      ]
+    },
+    "reed_shrine": {
+      "scene_id": "exterior",
+      "position": [
+        185,
+        0,
+        142
+      ]
+    },
+    "monastery_shelter": {
+      "scene_id": "exterior",
+      "position": [
+        195,
+        0,
+        -82
+      ]
+    },
+    "inn_bed": {
+      "scene_id": "interior_inn",
+      "position": [
+        -4,
+        0,
+        -2
+      ]
+    }
+  }
+}

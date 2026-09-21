@@ -1,0 +1,255 @@
+[
+  {
+    "id": "rusted_sword",
+    "name_key": "Borrowed Sword",
+    "description_key": "18 damage \u00b7 16 stamina \u00b7 2 m reach",
+    "category": "weapon",
+    "base_price": 8,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/rusted_sword.svg",
+    "damage": 18,
+    "stamina": 16,
+    "phases": [
+      0.25,
+      0.12,
+      0.43
+    ],
+    "reach": 2
+  },
+  {
+    "id": "arming_sword",
+    "name_key": "Riveted Arming Sword",
+    "description_key": "24 damage \u00b7 18 stamina \u00b7 2 m reach",
+    "category": "weapon",
+    "base_price": 32,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/arming_sword.svg",
+    "damage": 24,
+    "stamina": 18,
+    "phases": [
+      0.22,
+      0.12,
+      0.38
+    ],
+    "reach": 2
+  },
+  {
+    "id": "falchion",
+    "name_key": "Forester\u2019s Falchion",
+    "description_key": "29 damage \u00b7 22 stamina \u00b7 1.9 m reach",
+    "category": "weapon",
+    "base_price": 58,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/falchion.svg",
+    "damage": 29,
+    "stamina": 22,
+    "phases": [
+      0.3,
+      0.14,
+      0.46
+    ],
+    "reach": 1.9
+  },
+  {
+    "id": "watchblade",
+    "name_key": "Rookwatch Blade",
+    "description_key": "26 damage \u00b7 17 stamina \u00b7 2.1 m reach",
+    "category": "weapon",
+    "base_price": 80,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/watchblade.svg",
+    "damage": 26,
+    "stamina": 17,
+    "phases": [
+      0.21,
+      0.12,
+      0.32
+    ],
+    "reach": 2.1
+  },
+  {
+    "id": "wooden_buckler",
+    "name_key": "Wooden Buckler",
+    "description_key": "Repaired oak and a faithful iron boss.",
+    "category": "shield",
+    "base_price": 12,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/wooden_buckler.svg",
+    "shield_cost_multiplier": 1.0
+  },
+  {
+    "id": "kite_shield",
+    "name_key": "Kite Shield",
+    "description_key": "A longer shield with a reinforced rim.",
+    "category": "shield",
+    "base_price": 42,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/kite_shield.svg",
+    "shield_cost_multiplier": 0.7
+  },
+  {
+    "id": "patched_coat",
+    "name_key": "Patched Coat",
+    "description_key": "Reduces health damage by 0%.",
+    "category": "armor",
+    "base_price": 6,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/patched_coat.svg",
+    "armor_reduction": 0
+  },
+  {
+    "id": "leather_jack",
+    "name_key": "Leather Jack",
+    "description_key": "Reduces health damage by 12%.",
+    "category": "armor",
+    "base_price": 40,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/leather_jack.svg",
+    "armor_reduction": 0.12
+  },
+  {
+    "id": "mail_coat",
+    "name_key": "Mail Coat",
+    "description_key": "Reduces health damage by 25%.",
+    "category": "armor",
+    "base_price": 85,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/mail_coat.svg",
+    "armor_reduction": 0.25
+  },
+  {
+    "id": "bandage",
+    "name_key": "Bandage",
+    "description_key": "Restores 35 health after 0.8 s uninterrupted use.",
+    "category": "consumable",
+    "base_price": 8,
+    "max_stack": 10,
+    "icon_path": "res://assets/icons/bandage.svg",
+    "restore_amount": 35,
+    "use_seconds": 0.8,
+    "resource": "health"
+  },
+  {
+    "id": "bread",
+    "name_key": "Bread",
+    "description_key": "Restores 15 health after 0.3 s uninterrupted use.",
+    "category": "consumable",
+    "base_price": 5,
+    "max_stack": 10,
+    "icon_path": "res://assets/icons/bread.svg",
+    "restore_amount": 15,
+    "use_seconds": 0.3,
+    "resource": "health"
+  },
+  {
+    "id": "tonic",
+    "name_key": "Tonic",
+    "description_key": "Restores 50 stamina after 0.5 s uninterrupted use.",
+    "category": "consumable",
+    "base_price": 14,
+    "max_stack": 10,
+    "icon_path": "res://assets/icons/tonic.svg",
+    "restore_amount": 50,
+    "use_seconds": 0.5,
+    "resource": "stamina"
+  },
+  {
+    "id": "cart_medicine",
+    "name_key": "Cart Medicine",
+    "description_key": "A promise carried through Greyfen. Kept separately from ordinary equipment.",
+    "category": "quest",
+    "base_price": 0,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/cart_medicine.svg"
+  },
+  {
+    "id": "toll_receipt",
+    "name_key": "Toll Receipt",
+    "description_key": "A promise carried through Greyfen. Kept separately from ordinary equipment.",
+    "category": "evidence",
+    "base_price": 0,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/toll_receipt.svg"
+  },
+  {
+    "id": "orra_charter",
+    "name_key": "Orra Charter",
+    "description_key": "A promise carried through Greyfen. Kept separately from ordinary equipment.",
+    "category": "evidence",
+    "base_price": 0,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/orra_charter.svg"
+  },
+  {
+    "id": "grain_ledger",
+    "name_key": "Grain Ledger",
+    "description_key": "A promise carried through Greyfen. Kept separately from ordinary equipment.",
+    "category": "evidence",
+    "base_price": 0,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/grain_ledger.svg"
+  },
+  {
+    "id": "rookwatch_seal",
+    "name_key": "Rookwatch Seal",
+    "description_key": "A promise carried through Greyfen. Kept separately from ordinary equipment.",
+    "category": "evidence",
+    "base_price": 0,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/rookwatch_seal.svg"
+  },
+  {
+    "id": "smith_hammer",
+    "name_key": "Oswin\u2019s Hammer",
+    "description_key": "A promise carried through Greyfen. Kept separately from ordinary equipment.",
+    "category": "quest",
+    "base_price": 0,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/smith_hammer.svg"
+  },
+  {
+    "id": "ferry_blankets",
+    "name_key": "Ferry Blankets",
+    "description_key": "A promise carried through Greyfen. Kept separately from ordinary equipment.",
+    "category": "quest",
+    "base_price": 0,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/ferry_blankets.svg"
+  },
+  {
+    "id": "hobb_ring",
+    "name_key": "Hobb\u2019s Ring",
+    "description_key": "A promise carried through Greyfen. Kept separately from ordinary equipment.",
+    "category": "quest",
+    "base_price": 0,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/hobb_ring.svg"
+  },
+  {
+    "id": "votive_candle",
+    "name_key": "Votive Candle",
+    "description_key": "A promise carried through Greyfen. Kept separately from ordinary equipment.",
+    "category": "quest",
+    "base_price": 0,
+    "max_stack": 3,
+    "icon_path": "res://assets/icons/votive_candle.svg"
+  },
+  {
+    "id": "ada_badge",
+    "name_key": "Ada\u2019s Badge",
+    "description_key": "A promise carried through Greyfen. Kept separately from ordinary equipment.",
+    "category": "quest",
+    "base_price": 0,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/ada_badge.svg"
+  },
+  {
+    "id": "camp_medicine",
+    "name_key": "Camp Medicine",
+    "description_key": "A promise carried through Greyfen. Kept separately from ordinary equipment.",
+    "category": "quest",
+    "base_price": 0,
+    "max_stack": 1,
+    "icon_path": "res://assets/icons/camp_medicine.svg"
+  }
+]

@@ -1,0 +1,20 @@
+extends RefCounted
+
+func run(t: SceneTree) -> void:
+	var block := CombatMath.resolve(20.0, 0.0, 100.0, true)
+	t.check(block.outcome == &"blocked" and block.stamina_damage == 16 and block.health_damage == 2, "R14 ordinary wooden-shield block")
+	var kite := CombatMath.resolve(20.0, 0.25, 100.0, true, 0.7)
+	t.check(kite.stamina_damage == 12 and kite.health_damage == 2, "R14 shield and armor apply before final rounding")
+	var parry := CombatMath.resolve(20.0, 0.25, 5.0, true, 1.0, true)
+	t.check(parry.outcome == &"parried" and parry.health_damage == 0 and parry.stamina_damage == 5 and is_equal_approx(parry.stagger_seconds, 0.65), "R15 perfect parry costs exactly five")
+	var broken := CombatMath.resolve(20.0, 0.25, 4.0, true, 1.0, true)
+	t.check(broken.outcome == &"guard_broken" and broken.health_damage == 8 and broken.stamina_damage == 4 and is_equal_approx(broken.stagger_seconds, 0.9), "R15 insufficient parry stamina breaks guard")
+	var rear := CombatMath.resolve(20.0, 0.12, 100.0, false, 1.0, true)
+	t.check(rear.outcome == &"hit" and rear.health_damage == 18 and rear.stamina_damage == 0, "R14 rear attack ignores parry and block")
+	var heavy := CombatMath.resolve(18.0 * 1.6, 0.2, 100.0, true, 1.0, false, true)
+	t.check(heavy.stamina_damage == 35 and heavy.health_damage == 2, "R16 heavy multiplier is consumed once; enemy guard cost multiplied before rounding")
+	t.check(CombatMath.resolve(0.1, 0.25, 100.0, false).health_damage == 1, "R16 non-parry minimum damage")
+	t.check(CombatMath.in_guard_cone(Vector3.FORWARD, Vector3(0, 30, -1)), "R14 frontal cone ignores pitch")
+	t.check(CombatMath.in_guard_cone(Vector3.FORWARD, Vector3(sin(PI / 3), 0, -cos(PI / 3))), "R14 inclusive sixty-degree boundary")
+	t.check(not CombatMath.in_guard_cone(Vector3.FORWARD, Vector3(0, 0, 1)), "R14 rear outside cone")
+	t.check(not CombatMath.in_guard_cone(Vector3.FORWARD, Vector3(sin(deg_to_rad(61)), 0, -cos(deg_to_rad(61)))), "R14 outside boundary")

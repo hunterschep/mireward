@@ -1,0 +1,50 @@
+[
+  {
+    "id": "mara_venn",
+    "npc_id": "mara_venn",
+    "nodes": [],
+    "foundation_only": true
+  },
+  {
+    "id": "oswin_pike",
+    "npc_id": "oswin_pike",
+    "nodes": [],
+    "foundation_only": true
+  },
+  {
+    "id": "tamsin_reed",
+    "npc_id": "tamsin_reed",
+    "nodes": [],
+    "foundation_only": true
+  },
+  {
+    "id": "sister_elian",
+    "npc_id": "sister_elian",
+    "nodes": [],
+    "foundation_only": true
+  },
+  {
+    "id": "hobb_fenwick",
+    "npc_id": "hobb_fenwick",
+    "nodes": [],
+    "foundation_only": true
+  },
+  {
+    "id": "ada_vey",
+    "npc_id": "ada_vey",
+    "nodes": [],
+    "foundation_only": true
+  },
+  {
+    "id": "wren_kest",
+    "npc_id": "wren_kest",
+    "nodes": [],
+    "foundation_only": true
+  },
+  {
+    "id": "captain_rusk",
+    "npc_id": "captain_rusk",
+    "nodes": [],
+    "foundation_only": true
+  }
+]

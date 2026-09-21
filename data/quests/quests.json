@@ -1,0 +1,108 @@
+[
+  {
+    "id": "mq_01_bread_and_iron",
+    "name": "Bread and Iron",
+    "prerequisites": [],
+    "objectives": [],
+    "rewards": {},
+    "foundation_only": true
+  },
+  {
+    "id": "mq_02_the_kings_due",
+    "name": "The King\u2019s Due",
+    "prerequisites": [
+      "mq_01_bread_and_iron"
+    ],
+    "objectives": [],
+    "rewards": {},
+    "foundation_only": true
+  },
+  {
+    "id": "mq_03_a_bell_without_rope",
+    "name": "A Bell Without a Rope",
+    "prerequisites": [
+      "mq_02_the_kings_due"
+    ],
+    "objectives": [],
+    "rewards": {},
+    "foundation_only": true
+  },
+  {
+    "id": "mq_04_names_in_the_ledger",
+    "name": "Names in the Ledger",
+    "prerequisites": [
+      "mq_03_a_bell_without_rope"
+    ],
+    "objectives": [],
+    "rewards": {},
+    "foundation_only": true
+  },
+  {
+    "id": "mq_05_a_debt_in_stone",
+    "name": "A Debt in Stone",
+    "prerequisites": [
+      "mq_04_names_in_the_ledger"
+    ],
+    "objectives": [],
+    "rewards": {},
+    "foundation_only": true
+  },
+  {
+    "id": "mq_06_the_last_toll",
+    "name": "The Last Toll",
+    "prerequisites": [
+      "mq_05_a_debt_in_stone"
+    ],
+    "objectives": [],
+    "rewards": {},
+    "foundation_only": true
+  },
+  {
+    "id": "sq_01_a_smiths_hand",
+    "name": "A Smith\u2019s Hand",
+    "prerequisites": [],
+    "objectives": [],
+    "rewards": {},
+    "foundation_only": true
+  },
+  {
+    "id": "sq_02_a_warm_room",
+    "name": "A Warm Room",
+    "prerequisites": [],
+    "objectives": [],
+    "rewards": {},
+    "foundation_only": true
+  },
+  {
+    "id": "sq_03_what_the_reeds_keep",
+    "name": "What the Reeds Keep",
+    "prerequisites": [],
+    "objectives": [],
+    "rewards": {},
+    "foundation_only": true
+  },
+  {
+    "id": "sq_04_three_small_lights",
+    "name": "Three Small Lights",
+    "prerequisites": [],
+    "objectives": [],
+    "rewards": {},
+    "foundation_only": true
+  },
+  {
+    "id": "sq_05_the_broken_badge",
+    "name": "The Broken Badge",
+    "prerequisites": [],
+    "objectives": [],
+    "rewards": {},
+    "foundation_only": true
+  },
+  {
+    "id": "sq_06_no_clean_hands",
+    "name": "No Clean Hands",
+    "prerequisites": [],
+    "objectives": [],
+    "rewards": {},
+    "foundation_only": true
+  }
+]

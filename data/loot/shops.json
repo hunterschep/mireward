@@ -1,0 +1,15 @@
+{
+  "oswin_pike": {
+    "arming_sword": 1,
+    "falchion": 1,
+    "wooden_buckler": 1,
+    "kite_shield": 1,
+    "leather_jack": 1,
+    "mail_coat": 1
+  },
+  "tamsin_reed": {
+    "bandage": -1,
+    "bread": -1,
+    "tonic": -1
+  }
+}

@@ -1,0 +1,41 @@
+; MIREWARD uses the pinned Godot release in .godot-version.
+config_version=5
+
+[application]
+config/name="MIREWARD"
+config/version="1.0.0"
+run/main_scene="res://scenes/main_menu.tscn"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+
+[autoload]
+ContentDB="*res://autoload/content_db.gd"
+EventBus="*res://autoload/event_bus.gd"
+GameSession="*res://autoload/game_session.gd"
+SaveService="*res://autoload/save_service.gd"
+AudioService="*res://autoload/audio_service.gd"
+
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[physics]
+common/physics_ticks_per_second=60
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.141, 0.169, 0.157, 1)
+
+[layer_names]
+3d_physics/layer_1="world"
+3d_physics/layer_2="player"
+3d_physics/layer_3="hostile_bodies"
+3d_physics/layer_4="neutral_bodies"
+3d_physics/layer_5="interactables"
+3d_physics/layer_6="hurtboxes"
+3d_physics/layer_7="triggers"
