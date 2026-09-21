@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Greyfen_reed"
+albedo_color = Color(0.46666667, 0.47058824, 0.26666668, 1)
+roughness = 0.92
+texture_filter = 2

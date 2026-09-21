@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=4]
+
+[ext_resource type="Texture2D" path="res://assets/textures/parchment.png" id="asset_001"]
+
+[sub_resource type="StandardMaterial3D" id="asset_002"]
+resource_name = "Greyfen_iron"
+cull_mode = 2
+albedo_color = Color(0.48235294, 0.53333336, 0.5058824, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_003"]
+_surfaces = [{
+"aabb": AABB(-0.28, -0.62, -0.0375, 0.56, 1.0699999, 0.075),
+"attribute_data": PackedByteArray("AAAAAFK4Hr+4HoW+KVwPvilcj77sUbg+KVyPPuxRuD64HoU+KVwPvgAAAABSuB6/KVyPvuxRuD4AAAAAZmbmPilcjz7sUbg+KVyPPuxRuD4AAAAAUrgevylcj77sUbg+KVyPvuxRuD64HoW+KVwPvgAAAABSuB6/AAAAAFK4Hr+4HoU+KVwPvilcjz7sUbg+KVyPPuxRuD4AAAAAZmbmPilcj77sUbg+KVyPvuxRuD4AAAAAUrgevylcjz7sUbg+KVyPvuxRuD4AAAAAZmbmPgAAAABmZuY+KVyPvuxRuD4pXI++7FG4PgAAAABmZuY+AAAAAGZm5j4pXI8+7FG4Pilcjz7sUbg+AAAAAGZm5j4AAAAAZmbmPilcjz7sUbg+KVyPPuxRuD64HoU+KVwPvrgehT4pXA++KVyPPuxRuD4pXI8+7FG4PrgehT4pXA++uB6FPilcD74AAAAAUrgevwAAAABSuB6/uB6FPilcD764HoU+KVwPvgAAAABSuB6/AAAAAFK4Hr+4HoW+KVwPvrgehb4pXA++AAAAAFK4Hr8AAAAAUrgev7gehb4pXA++uB6FvilcD74pXI++7FG4Pilcj77sUbg+uB6FvilcD764HoW+KVwPvilcj77sUbg+"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 60,
+"vertex_data": PackedByteArray("AAAAAFK4Hr+amRm9uB6FvilcD76amRm9KVyPvuxRuD6amRm9KVyPPuxRuD6amRm9uB6FPilcD76amRm9AAAAAFK4Hr+amRm9KVyPvuxRuD6amRm9AAAAAGZm5j6amRm9KVyPPuxRuD6amRm9KVyPPuxRuD6amRm9AAAAAFK4Hr+amRm9KVyPvuxRuD6amRm9KVyPvuxRuD6amRk9uB6FvilcD76amRk9AAAAAFK4Hr+amRk9AAAAAFK4Hr+amRk9uB6FPilcD76amRk9KVyPPuxRuD6amRk9KVyPPuxRuD6amRk9AAAAAGZm5j6amRk9KVyPvuxRuD6amRk9KVyPvuxRuD6amRk9AAAAAFK4Hr+amRk9KVyPPuxRuD6amRk9KVyPvuxRuD6amRm9AAAAAGZm5j6amRk9AAAAAGZm5j6amRm9KVyPvuxRuD6amRm9KVyPvuxRuD6amRk9AAAAAGZm5j6amRk9AAAAAGZm5j6amRm9KVyPPuxRuD6amRk9KVyPPuxRuD6amRm9AAAAAGZm5j6amRm9AAAAAGZm5j6amRk9KVyPPuxRuD6amRk9KVyPPuxRuD6amRm9uB6FPilcD76amRk9uB6FPilcD76amRm9KVyPPuxRuD6amRm9KVyPPuxRuD6amRk9uB6FPilcD76amRk9uB6FPilcD76amRm9AAAAAFK4Hr+amRk9AAAAAFK4Hr+amRm9uB6FPilcD76amRm9uB6FPilcD76amRk9AAAAAFK4Hr+amRk9AAAAAFK4Hr+amRm9uB6FvilcD76amRk9uB6FvilcD76amRm9AAAAAFK4Hr+amRm9AAAAAFK4Hr+amRk9uB6FvilcD76amRk9uB6FvilcD76amRm9KVyPvuxRuD6amRk9KVyPvuxRuD6amRm9uB6FvilcD76amRm9uB6FvilcD76amRk9KVyPvuxRuD6amRk9//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCAIZ8iHygmj7EhnyIfKCaPsSGfIh8oJo+xIZ8iHygmj7EhnyIfKCaPsSGfIh8oJo+x3WAiHygmb87dYCIfKCZvzt1gIh8oJm/O3WAiHygmb87dYCIfKCZvzt1gIh8oJm/O7ATrhM1/ir3sBOuEzX+KvewE64TNf4q97ATrhM1/ir3sBOuEzX+KvewE64TNf4q9+Cz4rIhrG634LPisiGsbrfgs+KyIaxut+Cz4rIhrG634LPisiGsbrfgs+KyIaxutBtP4rIhr49IG0/isiGvj0gbT+KyIa+PSBtP4rIhr49IG0/isiGvj0gbT+KyIa+PSEvvrhM1/dMIS++uEzX90whL764TNf3TCEvvrhM1/dMIS++uEzX90whL764TNf3TC")
+}]
+
+[sub_resource type="StandardMaterial3D" id="asset_004"]
+resource_name = "Greyfen_rust"
+cull_mode = 2
+albedo_color = Color(0.50980395, 0.3019608, 0.23529412, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_005"]
+_surfaces = [{
+"aabb": AABB(-0.28, -0.62, -0.011, 0.56, 1.0699999, 0.022),
+"attribute_data": PackedByteArray("AAAAAFK4Hr+4HoW+KVwPvilcj77sUbg+KVyPPuxRuD64HoU+KVwPvgAAAABSuB6/KVyPvuxRuD4AAAAAZmbmPilcjz7sUbg+KVyPPuxRuD4AAAAAUrgevylcj77sUbg+KVyPvuxRuD64HoW+KVwPvgAAAABSuB6/AAAAAFK4Hr+4HoU+KVwPvilcjz7sUbg+KVyPPuxRuD4AAAAAZmbmPilcj77sUbg+KVyPvuxRuD4AAAAAUrgevylcjz7sUbg+KVyPvuxRuD4AAAAAZmbmPgAAAABmZuY+KVyPvuxRuD4pXI++7FG4PgAAAABmZuY+AAAAAGZm5j4pXI8+7FG4Pilcjz7sUbg+AAAAAGZm5j4AAAAAZmbmPilcjz7sUbg+KVyPPuxRuD64HoU+KVwPvrgehT4pXA++KVyPPuxRuD4pXI8+7FG4PrgehT4pXA++uB6FPilcD74AAAAAUrgevwAAAABSuB6/uB6FPilcD764HoU+KVwPvgAAAABSuB6/AAAAAFK4Hr+4HoW+KVwPvrgehb4pXA++AAAAAFK4Hr8AAAAAUrgev7gehb4pXA++uB6FvilcD74pXI++7FG4Pilcj77sUbg+uB6FvilcD764HoW+KVwPvilcj77sUbg+"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 60,
+"vertex_data": PackedByteArray("AAAAAFK4Hr9YOTS8uB6FvilcD75YOTS8KVyPvuxRuD5YOTS8KVyPPuxRuD5YOTS8uB6FPilcD75YOTS8AAAAAFK4Hr9YOTS8KVyPvuxRuD5YOTS8AAAAAGZm5j5YOTS8KVyPPuxRuD5YOTS8KVyPPuxRuD5YOTS8AAAAAFK4Hr9YOTS8KVyPvuxRuD5YOTS8KVyPvuxRuD5YOTQ8uB6FvilcD75YOTQ8AAAAAFK4Hr9YOTQ8AAAAAFK4Hr9YOTQ8uB6FPilcD75YOTQ8KVyPPuxRuD5YOTQ8KVyPPuxRuD5YOTQ8AAAAAGZm5j5YOTQ8KVyPvuxRuD5YOTQ8KVyPvuxRuD5YOTQ8AAAAAFK4Hr9YOTQ8KVyPPuxRuD5YOTQ8KVyPvuxRuD5YOTS8AAAAAGZm5j5YOTQ8AAAAAGZm5j5YOTS8KVyPvuxRuD5YOTS8KVyPvuxRuD5YOTQ8AAAAAGZm5j5YOTQ8AAAAAGZm5j5YOTS8KVyPPuxRuD5YOTQ8KVyPPuxRuD5YOTS8AAAAAGZm5j5YOTS8AAAAAGZm5j5YOTQ8KVyPPuxRuD5YOTQ8KVyPPuxRuD5YOTS8uB6FPilcD75YOTQ8uB6FPilcD75YOTS8KVyPPuxRuD5YOTS8KVyPPuxRuD5YOTQ8uB6FPilcD75YOTQ8uB6FPilcD75YOTS8AAAAAFK4Hr9YOTQ8AAAAAFK4Hr9YOTS8uB6FPilcD75YOTS8uB6FPilcD75YOTQ8AAAAAFK4Hr9YOTQ8AAAAAFK4Hr9YOTS8uB6FvilcD75YOTQ8uB6FvilcD75YOTS8AAAAAFK4Hr9YOTS8AAAAAFK4Hr9YOTQ8uB6FvilcD75YOTQ8uB6FvilcD75YOTS8KVyPvuxRuD5YOTQ8KVyPvuxRuD5YOTS8uB6FvilcD75YOTS8uB6FvilcD75YOTQ8KVyPvuxRuD5YOTQ8//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCAIZ8iHygmj7EhnyIfKCaPsSGfIh8oJo+xIZ8iHygmj7EhnyIfKCaPsSGfIh8oJo+x3WAiHygmb87dYCIfKCZvzt1gIh8oJm/O3WAiHygmb87dYCIfKCZvzt1gIh8oJm/O7ATrhM1/ir3sBOuEzX+KvewE64TNf4q97ATrhM1/ir3sBOuEzX+KvewE64TNf4q9+Cz4rIhrG634LPisiGsbrfgs+KyIaxut+Cz4rIhrG634LPisiGsbrfgs+KyIaxutBtP4rIhr49IG0/isiGvj0gbT+KyIa+PSBtP4rIhr49IG0/isiGvj0gbT+KyIa+PSEvvrhM1/dMIS++uEzX90whL764TNf3TCEvvrhM1/dMIS++uEzX90whL764TNf3TC")
+}]
+
+[sub_resource type="StandardMaterial3D" id="asset_006"]
+resource_name = "Greyfen_parchment"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_007"]
+size = Vector3(0.067, 0.64, 0.02)
+
+[sub_resource type="BoxMesh" id="asset_008"]
+size = Vector3(0.39, 0.065, 0.02)
+
+[node name="kite_shield" type="Node3D"]
+metadata/item_id = &"kite_shield"
+
+[node name="IronRim" type="MeshInstance3D" parent="."]
+material_override = SubResource("asset_002")
+mesh = SubResource("asset_003")
+
+[node name="PaintedFace" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 0.92, 0, 0, 0, 1, 0, 0, -0.05)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_005")
+
+[node name="HeraldicPale" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045, -0.068)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_007")
+
+[node name="HeraldicBar" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, -0.07)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_008")

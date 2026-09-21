@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=4]
+
+[ext_resource type="Texture2D" path="res://assets/textures/timber.png" id="asset_001"]
+
+[sub_resource type="StandardMaterial3D" id="asset_002"]
+resource_name = "Greyfen_wood"
+cull_mode = 2
+albedo_color = Color(0.34117648, 0.28627452, 0.22352941, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_003"]
+_surfaces = [{
+"aabb": AABB(-0.24, 0, -0.12, 0.48, 0.59, 0.24),
+"attribute_data": PackedByteArray("j8J1PgAAAACPwnW+AAAAAM3MTL4Urgc/rkfhPT0KFz/NzEw+FK4HP4/CdT4AAAAAzcxMvhSuBz+uR+G9PQoXP65H4T09Chc/rkfhPT0KFz+PwnU+AAAAAM3MTL4Urgc/zcxMvhSuBz+PwnW+AAAAAI/CdT4AAAAAj8J1PgAAAADNzEw+FK4HP65H4T09Chc/rkfhPT0KFz+uR+G9PQoXP83MTL4Urgc/zcxMvhSuBz+PwnU+AAAAAK5H4T09Chc/j8J1vgAAAACPwnU+AAAAAI/CdT4AAAAAj8J1vgAAAACPwnW+AAAAAI/CdT4AAAAAj8J1PgAAAADNzEw+FK4HP83MTD4Urgc/j8J1PgAAAACPwnU+AAAAAM3MTD4Urgc/zcxMPhSuBz+uR+E9PQoXP65H4T09Chc/zcxMPhSuBz/NzEw+FK4HP65H4T09Chc/rkfhPT0KFz+uR+G9PQoXP65H4b09Chc/rkfhPT0KFz+uR+E9PQoXP65H4b09Chc/rkfhvT0KFz/NzEy+FK4HP83MTL4Urgc/rkfhvT0KFz+uR+G9PQoXP83MTL4Urgc/zcxMvhSuBz+PwnW+AAAAAI/Cdb4AAAAAzcxMvhSuBz/NzEy+FK4HP4/Cdb4AAAAA"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 60,
+"vertex_data": PackedByteArray("j8J1PgAAAACPwvW9j8J1vgAAAACPwvW9zcxMvhSuBz+PwvW9rkfhPT0KFz+PwvW9zcxMPhSuBz+PwvW9j8J1PgAAAACPwvW9zcxMvhSuBz+PwvW9rkfhvT0KFz+PwvW9rkfhPT0KFz+PwvW9rkfhPT0KFz+PwvW9j8J1PgAAAACPwvW9zcxMvhSuBz+PwvW9zcxMvhSuBz+PwvU9j8J1vgAAAACPwvU9j8J1PgAAAACPwvU9j8J1PgAAAACPwvU9zcxMPhSuBz+PwvU9rkfhPT0KFz+PwvU9rkfhPT0KFz+PwvU9rkfhvT0KFz+PwvU9zcxMvhSuBz+PwvU9zcxMvhSuBz+PwvU9j8J1PgAAAACPwvU9rkfhPT0KFz+PwvU9j8J1vgAAAACPwvW9j8J1PgAAAACPwvU9j8J1PgAAAACPwvW9j8J1vgAAAACPwvW9j8J1vgAAAACPwvU9j8J1PgAAAACPwvU9j8J1PgAAAACPwvW9zcxMPhSuBz+PwvU9zcxMPhSuBz+PwvW9j8J1PgAAAACPwvW9j8J1PgAAAACPwvU9zcxMPhSuBz+PwvU9zcxMPhSuBz+PwvW9rkfhPT0KFz+PwvU9rkfhPT0KFz+PwvW9zcxMPhSuBz+PwvW9zcxMPhSuBz+PwvU9rkfhPT0KFz+PwvU9rkfhPT0KFz+PwvW9rkfhvT0KFz+PwvU9rkfhvT0KFz+PwvW9rkfhPT0KFz+PwvW9rkfhPT0KFz+PwvU9rkfhvT0KFz+PwvU9rkfhvT0KFz+PwvW9zcxMvhSuBz+PwvU9zcxMvhSuBz+PwvW9rkfhvT0KFz+PwvW9rkfhvT0KFz+PwvU9zcxMvhSuBz+PwvU9zcxMvhSuBz+PwvW9j8J1vgAAAACPwvU9j8J1vgAAAACPwvW9zcxMvhSuBz+PwvW9zcxMvhSuBz+PwvU9j8J1vgAAAACPwvU9//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/A/f6iFJ/dsQD9/qIUn92xAP3+ohSf3bEA/f6iFJ/dsQD9/qIUn92xAP3+ohSf3bEMrPMzF5DNdQys8zMXkM11DKzzMxeQzXUMrPMzF5DNdQys8zMXkM11DKzzMxeQzXU/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/zEzMzF5DyavMTMzMXkPJq8xMzMxeQ8mrzEzMzF5DyavMTMzMXkPJq8xMzMxeQ8mr+wj6iFJ/h7v7CPqIUn+Hu/sI+ohSf4e7+wj6iFJ/h7v7CPqIUn+Hu/sI+ohSf4e7")
+}]
+
+[sub_resource type="StandardMaterial3D" id="asset_004"]
+resource_name = "Greyfen_timber"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_005"]
+size = Vector3(0.47, 0.052, 0.26)
+
+[node name="leather_jack" type="Node3D"]
+metadata/item_id = &"leather_jack"
+
+[node name="Coat" type="MeshInstance3D" parent="."]
+material_override = SubResource("asset_002")
+mesh = SubResource("asset_003")
+
+[node name="Belt" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_005")

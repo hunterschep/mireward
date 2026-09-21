@@ -29,6 +29,8 @@ func run() -> void:
 		suites.append(selected if selected.begins_with("res://") or selected.is_absolute_path() else "res://tests/" + selected)
 	else:
 		for folder: String in ["unit", "integration"]:
+			if not DirAccess.dir_exists_absolute("res://tests/" + folder):
+				continue
 			for file: String in DirAccess.get_files_at("res://tests/" + folder):
 				if file.ends_with(".gd"):
 					suites.append("res://tests/%s/%s" % [folder, file])

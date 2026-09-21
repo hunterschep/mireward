@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Greyfen_warm"
+albedo_color = Color(0.88235295, 0.7254902, 0.47058824, 1)
+roughness = 0.92
+texture_filter = 2

@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/parchment.png" id="asset_001"]
+
+[sub_resource type="StandardMaterial3D" id="asset_002"]
+resource_name = "Greyfen_rust"
+albedo_color = Color(0.50980395, 0.3019608, 0.23529412, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_003"]
+size = Vector3(0.3, 0.4, 0.075)
+
+[sub_resource type="StandardMaterial3D" id="asset_004"]
+resource_name = "Greyfen_parchment"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_005"]
+size = Vector3(0.27, 0.36, 0.064)
+
+[sub_resource type="StandardMaterial3D" id="asset_006"]
+resource_name = "Greyfen_ochre"
+albedo_color = Color(0.6392157, 0.5411765, 0.31764707, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_007"]
+size = Vector3(0.31, 0.035, 0.083)
+
+[node name="grain_ledger" type="Node3D"]
+metadata/item_id = &"grain_ledger"
+
+[node name="Binding" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+material_override = SubResource("asset_002")
+mesh = SubResource("asset_003")
+
+[node name="Pages" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, 0.2, 0)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_005")
+
+[node name="Strap" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_007")

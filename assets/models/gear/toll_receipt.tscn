@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/parchment.png" id="asset_001"]
+
+[sub_resource type="StandardMaterial3D" id="asset_002"]
+resource_name = "Greyfen_parchment"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_003"]
+size = Vector3(0.28, 0.38, 0.016)
+
+[sub_resource type="StandardMaterial3D" id="asset_004"]
+resource_name = "Greyfen_wood"
+albedo_color = Color(0.34117648, 0.28627452, 0.22352941, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_005"]
+size = Vector3(0.16, 0.007, 0.004)
+
+[sub_resource type="BoxMesh" id="asset_006"]
+size = Vector3(0.19, 0.007, 0.004)
+
+[sub_resource type="BoxMesh" id="asset_007"]
+size = Vector3(0.16, 0.007, 0.004)
+
+[sub_resource type="BoxMesh" id="asset_008"]
+size = Vector3(0.19, 0.007, 0.004)
+
+[sub_resource type="BoxMesh" id="asset_009"]
+size = Vector3(0.16, 0.007, 0.004)
+
+[sub_resource type="StandardMaterial3D" id="asset_010"]
+resource_name = "Greyfen_rust"
+albedo_color = Color(0.50980395, 0.3019608, 0.23529412, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_011"]
+top_radius = 0.033
+bottom_radius = 0.033
+height = 0.012
+radial_segments = 8
+rings = 1
+
+[node name="toll_receipt" type="Node3D"]
+metadata/item_id = &"toll_receipt"
+
+[node name="Parchment" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19, 0)
+material_override = SubResource("asset_002")
+mesh = SubResource("asset_003")
+
+[node name="Writing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29, -0.011)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_005")
+
+[node name="Writing2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255, -0.011)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_006")
+
+[node name="Writing3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, -0.011)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_007")
+
+[node name="Writing4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.185, -0.011)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_008")
+
+[node name="Writing5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, -0.011)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_009")
+
+[node name="WaxSeal" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.06, 0.06, -0.02)
+material_override = SubResource("asset_010")
+mesh = SubResource("asset_011")

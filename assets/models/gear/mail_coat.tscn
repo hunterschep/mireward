@@ -1,0 +1,341 @@
+[gd_scene load_steps=43 format=4]
+
+[ext_resource type="Texture2D" path="res://assets/textures/timber.png" id="asset_001"]
+
+[sub_resource type="StandardMaterial3D" id="asset_002"]
+resource_name = "Greyfen_dark_iron"
+cull_mode = 2
+albedo_color = Color(0.26666668, 0.30588236, 0.29803923, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_003"]
+_surfaces = [{
+"aabb": AABB(-0.24, 0, -0.12, 0.48, 0.59, 0.24),
+"attribute_data": PackedByteArray("j8J1PgAAAACPwnW+AAAAAM3MTL4Urgc/rkfhPT0KFz/NzEw+FK4HP4/CdT4AAAAAzcxMvhSuBz+uR+G9PQoXP65H4T09Chc/rkfhPT0KFz+PwnU+AAAAAM3MTL4Urgc/zcxMvhSuBz+PwnW+AAAAAI/CdT4AAAAAj8J1PgAAAADNzEw+FK4HP65H4T09Chc/rkfhPT0KFz+uR+G9PQoXP83MTL4Urgc/zcxMvhSuBz+PwnU+AAAAAK5H4T09Chc/j8J1vgAAAACPwnU+AAAAAI/CdT4AAAAAj8J1vgAAAACPwnW+AAAAAI/CdT4AAAAAj8J1PgAAAADNzEw+FK4HP83MTD4Urgc/j8J1PgAAAACPwnU+AAAAAM3MTD4Urgc/zcxMPhSuBz+uR+E9PQoXP65H4T09Chc/zcxMPhSuBz/NzEw+FK4HP65H4T09Chc/rkfhPT0KFz+uR+G9PQoXP65H4b09Chc/rkfhPT0KFz+uR+E9PQoXP65H4b09Chc/rkfhvT0KFz/NzEy+FK4HP83MTL4Urgc/rkfhvT0KFz+uR+G9PQoXP83MTL4Urgc/zcxMvhSuBz+PwnW+AAAAAI/Cdb4AAAAAzcxMvhSuBz/NzEy+FK4HP4/Cdb4AAAAA"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 60,
+"vertex_data": PackedByteArray("j8J1PgAAAACPwvW9j8J1vgAAAACPwvW9zcxMvhSuBz+PwvW9rkfhPT0KFz+PwvW9zcxMPhSuBz+PwvW9j8J1PgAAAACPwvW9zcxMvhSuBz+PwvW9rkfhvT0KFz+PwvW9rkfhPT0KFz+PwvW9rkfhPT0KFz+PwvW9j8J1PgAAAACPwvW9zcxMvhSuBz+PwvW9zcxMvhSuBz+PwvU9j8J1vgAAAACPwvU9j8J1PgAAAACPwvU9j8J1PgAAAACPwvU9zcxMPhSuBz+PwvU9rkfhPT0KFz+PwvU9rkfhPT0KFz+PwvU9rkfhvT0KFz+PwvU9zcxMvhSuBz+PwvU9zcxMvhSuBz+PwvU9j8J1PgAAAACPwvU9rkfhPT0KFz+PwvU9j8J1vgAAAACPwvW9j8J1PgAAAACPwvU9j8J1PgAAAACPwvW9j8J1vgAAAACPwvW9j8J1vgAAAACPwvU9j8J1PgAAAACPwvU9j8J1PgAAAACPwvW9zcxMPhSuBz+PwvU9zcxMPhSuBz+PwvW9j8J1PgAAAACPwvW9j8J1PgAAAACPwvU9zcxMPhSuBz+PwvU9zcxMPhSuBz+PwvW9rkfhPT0KFz+PwvU9rkfhPT0KFz+PwvW9zcxMPhSuBz+PwvW9zcxMPhSuBz+PwvU9rkfhPT0KFz+PwvU9rkfhPT0KFz+PwvW9rkfhvT0KFz+PwvU9rkfhvT0KFz+PwvW9rkfhPT0KFz+PwvW9rkfhPT0KFz+PwvU9rkfhvT0KFz+PwvU9rkfhvT0KFz+PwvW9zcxMvhSuBz+PwvU9zcxMvhSuBz+PwvW9rkfhvT0KFz+PwvW9rkfhvT0KFz+PwvU9zcxMvhSuBz+PwvU9zcxMvhSuBz+PwvW9j8J1vgAAAACPwvU9j8J1vgAAAACPwvW9zcxMvhSuBz+PwvW9zcxMvhSuBz+PwvU9j8J1vgAAAACPwvU9//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/A/f6iFJ/dsQD9/qIUn92xAP3+ohSf3bEA/f6iFJ/dsQD9/qIUn92xAP3+ohSf3bEMrPMzF5DNdQys8zMXkM11DKzzMxeQzXUMrPMzF5DNdQys8zMXkM11DKzzMxeQzXU/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/zEzMzF5DyavMTMzMXkPJq8xMzMxeQ8mrzEzMzF5DyavMTMzMXkPJq8xMzMxeQ8mr+wj6iFJ/h7v7CPqIUn+Hu/sI+ohSf4e7+wj6iFJ/h7v7CPqIUn+Hu/sI+ohSf4e7")
+}]
+
+[sub_resource type="StandardMaterial3D" id="asset_004"]
+resource_name = "Greyfen_timber"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_005"]
+size = Vector3(0.47, 0.052, 0.26)
+
+[sub_resource type="StandardMaterial3D" id="asset_006"]
+resource_name = "Greyfen_iron"
+albedo_color = Color(0.48235294, 0.53333336, 0.5058824, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_007"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_008"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_009"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_010"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_011"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_012"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_013"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_014"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_015"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_016"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_017"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_018"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_019"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_020"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_021"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_022"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_023"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_024"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_025"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_026"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_027"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_028"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_029"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_030"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_031"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_032"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_033"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_034"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_035"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_036"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_037"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_038"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_039"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_040"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_041"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[sub_resource type="BoxMesh" id="asset_042"]
+size = Vector3(0.045, 0.018, 0.012)
+
+[node name="mail_coat" type="Node3D"]
+metadata/item_id = &"mail_coat"
+
+[node name="Coat" type="MeshInstance3D" parent="."]
+material_override = SubResource("asset_002")
+mesh = SubResource("asset_003")
+
+[node name="Belt" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_005")
+
+[node name="RivetedMail" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0.23, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_007")
+
+[node name="RivetedMail2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.105, 0.23, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_008")
+
+[node name="RivetedMail3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0.23, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_009")
+
+[node name="RivetedMail4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0.23, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_010")
+
+[node name="RivetedMail5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09, 0.23, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_011")
+
+[node name="RivetedMail6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155, 0.23, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_012")
+
+[node name="RivetedMail7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0.275, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_013")
+
+[node name="RivetedMail8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.105, 0.275, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_014")
+
+[node name="RivetedMail9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0.275, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_015")
+
+[node name="RivetedMail10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0.275, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_016")
+
+[node name="RivetedMail11" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09, 0.275, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_017")
+
+[node name="RivetedMail12" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155, 0.275, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_018")
+
+[node name="RivetedMail13" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0.32, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_019")
+
+[node name="RivetedMail14" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.105, 0.32, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_020")
+
+[node name="RivetedMail15" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0.32, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_021")
+
+[node name="RivetedMail16" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0.32, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_022")
+
+[node name="RivetedMail17" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09, 0.32, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_023")
+
+[node name="RivetedMail18" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155, 0.32, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_024")
+
+[node name="RivetedMail19" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0.365, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_025")
+
+[node name="RivetedMail20" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.105, 0.365, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_026")
+
+[node name="RivetedMail21" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0.365, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_027")
+
+[node name="RivetedMail22" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0.365, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_028")
+
+[node name="RivetedMail23" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09, 0.365, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_029")
+
+[node name="RivetedMail24" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155, 0.365, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_030")
+
+[node name="RivetedMail25" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0.41, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_031")
+
+[node name="RivetedMail26" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.105, 0.41, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_032")
+
+[node name="RivetedMail27" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0.41, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_033")
+
+[node name="RivetedMail28" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0.41, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_034")
+
+[node name="RivetedMail29" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09, 0.41, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_035")
+
+[node name="RivetedMail30" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155, 0.41, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_036")
+
+[node name="RivetedMail31" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0.455, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_037")
+
+[node name="RivetedMail32" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.105, 0.455, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_038")
+
+[node name="RivetedMail33" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0.455, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_039")
+
+[node name="RivetedMail34" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0.455, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_040")
+
+[node name="RivetedMail35" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09, 0.455, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_041")
+
+[node name="RivetedMail36" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155, 0.455, -0.126)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_042")

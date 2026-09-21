@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Greyfen_dark_iron"
+albedo_color = Color(0.26666668, 0.30588236, 0.29803923, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Greyfen_ochre"
+albedo_color = Color(0.6392157, 0.5411765, 0.31764707, 1)
+roughness = 0.92
+texture_filter = 2

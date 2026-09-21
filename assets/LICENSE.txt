@@ -1,0 +1,13 @@
+Original MIREWARD visual assets
+SPDX-License-Identifier: CC0-1.0
+
+The original visual models, materials, textures and icons in this directory
+were authored for the MIREWARD project. To the extent possible under law,
+the project contributors waive copyright and related rights in these original
+visual assets under CC0 1.0 Universal. Attribution is not required.
+
+CC0 legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+This dedication covers the original visual assets documented in
+docs/asset_manifest.md. It does not assert rights over third-party files,
+engine code, fonts, or audio that may later be added under separate licenses.

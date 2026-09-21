@@ -1,0 +1,144 @@
+[gd_scene load_steps=16 format=4]
+
+[ext_resource type="Texture2D" path="res://assets/textures/timber.png" id="asset_001"]
+
+[sub_resource type="StandardMaterial3D" id="asset_002"]
+resource_name = "Greyfen_wood"
+albedo_color = Color(0.34117648, 0.28627452, 0.22352941, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_003"]
+top_radius = 0.026
+bottom_radius = 0.026
+height = 0.22
+radial_segments = 8
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="asset_004"]
+resource_name = "Greyfen_iron"
+cull_mode = 2
+albedo_color = Color(0.48235294, 0.53333336, 0.5058824, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_005"]
+_surfaces = [{
+"aabb": AABB(-0.055, 0, -0.011, 0.11, 0.88, 0.022),
+"attribute_data": PackedByteArray("rkdhPQAAAACuR2G9AAAAAC2yHb3pty8/AAAAAK5HYT8tsh096bcvP65HYT0AAAAArkdhPQAAAAAtsh296bcvPwAAAACuR2E/LbIdvem3Lz+uR2G9AAAAAK5HYT0AAAAArkdhPQAAAAAtsh096bcvPwAAAACuR2E/AAAAAK5HYT8tsh296bcvP65HYT0AAAAArkdhvQAAAACuR2E9AAAAAK5HYT0AAAAArkdhvQAAAACuR2G9AAAAAK5HYT0AAAAArkdhPQAAAAAtsh096bcvPy2yHT3pty8/rkdhPQAAAACuR2E9AAAAAC2yHT3pty8/LbIdPem3Lz8AAAAArkdhPwAAAACuR2E/LbIdPem3Lz8tsh096bcvPwAAAACuR2E/AAAAAK5HYT8tsh296bcvPy2yHb3pty8/AAAAAK5HYT8AAAAArkdhPy2yHb3pty8/LbIdvem3Lz+uR2G9AAAAAK5HYb0AAAAALbIdvem3Lz8tsh296bcvP65HYb0AAAAA"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("rkdhPQAAAABYOTS8rkdhvQAAAABYOTS8LbIdvem3Lz9YOTS8AAAAAK5HYT9YOTS8LbIdPem3Lz9YOTS8rkdhPQAAAABYOTS8rkdhPQAAAABYOTS8LbIdvem3Lz9YOTS8AAAAAK5HYT9YOTS8LbIdvem3Lz9YOTQ8rkdhvQAAAABYOTQ8rkdhPQAAAABYOTQ8rkdhPQAAAABYOTQ8LbIdPem3Lz9YOTQ8AAAAAK5HYT9YOTQ8AAAAAK5HYT9YOTQ8LbIdvem3Lz9YOTQ8rkdhPQAAAABYOTQ8rkdhvQAAAABYOTS8rkdhPQAAAABYOTQ8rkdhPQAAAABYOTS8rkdhvQAAAABYOTS8rkdhvQAAAABYOTQ8rkdhPQAAAABYOTQ8rkdhPQAAAABYOTS8LbIdPem3Lz9YOTQ8LbIdPem3Lz9YOTS8rkdhPQAAAABYOTS8rkdhPQAAAABYOTQ8LbIdPem3Lz9YOTQ8LbIdPem3Lz9YOTS8AAAAAK5HYT9YOTQ8AAAAAK5HYT9YOTS8LbIdPem3Lz9YOTS8LbIdPem3Lz9YOTQ8AAAAAK5HYT9YOTQ8AAAAAK5HYT9YOTS8LbIdvem3Lz9YOTQ8LbIdvem3Lz9YOTS8AAAAAK5HYT9YOTS8AAAAAK5HYT9YOTQ8LbIdvem3Lz9YOTQ8LbIdvem3Lz9YOTS8rkdhvQAAAABYOTQ8rkdhvQAAAABYOTS8LbIdvem3Lz9YOTS8LbIdvem3Lz9YOTQ8rkdhvQAAAABYOTQ8//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//fwAg+1/f8H9/ACD7X9/wf38AIPtf3/B/fwAg+1/f8H9/ACD7X9/wf38AIPtf3/Bw+o6lel7RsrD6jqV6XtGysPqOpXpe0bKw+o6lel7RsrD6jqV6XtGysPqOpXpe0bKOxU6lel7uLU7FTqV6Xu4tTsVOpXpe7i1OxU6lel7uLU7FTqV6Xu4tTsVOpXpe7i1AQMAg+1/fr4BAwCD7X9+vgEDAIPtf36+AQMAg+1/fr4BAwCD7X9+vgEDAIPtf36+")
+}]
+
+[sub_resource type="StandardMaterial3D" id="asset_006"]
+resource_name = "Greyfen_rust"
+albedo_color = Color(0.50980395, 0.3019608, 0.23529412, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_007"]
+size = Vector3(0.012, 0.5368, 0.024)
+
+[sub_resource type="StandardMaterial3D" id="asset_008"]
+resource_name = "Greyfen_dark_iron"
+albedo_color = Color(0.26666668, 0.30588236, 0.29803923, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_009"]
+size = Vector3(0.24, 0.045, 0.06)
+
+[sub_resource type="SphereMesh" id="asset_010"]
+radius = 0.05
+height = 0.1
+radial_segments = 6
+rings = 3
+
+[sub_resource type="StandardMaterial3D" id="asset_011"]
+resource_name = "Greyfen_timber"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_012"]
+top_radius = 0.029
+bottom_radius = 0.029
+height = 0.012
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="asset_013"]
+top_radius = 0.029
+bottom_radius = 0.029
+height = 0.012
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="asset_014"]
+top_radius = 0.029
+bottom_radius = 0.029
+height = 0.012
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="asset_015"]
+top_radius = 0.029
+bottom_radius = 0.029
+height = 0.012
+radial_segments = 8
+rings = 1
+
+[node name="rusted_sword" type="Node3D"]
+metadata/item_id = &"rusted_sword"
+
+[node name="Grip" type="MeshInstance3D" parent="."]
+material_override = SubResource("asset_002")
+mesh = SubResource("asset_003")
+
+[node name="Blade" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_005")
+
+[node name="Fuller" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.468, 0)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_007")
+
+[node name="Crossguard" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.135, 0)
+material_override = SubResource("asset_008")
+mesh = SubResource("asset_009")
+
+[node name="Pommel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.145, 0)
+material_override = SubResource("asset_008")
+mesh = SubResource("asset_010")
+
+[node name="GripWrap" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07, 0)
+material_override = SubResource("asset_011")
+mesh = SubResource("asset_012")
+
+[node name="GripWrap2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+material_override = SubResource("asset_011")
+mesh = SubResource("asset_013")
+
+[node name="GripWrap3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+material_override = SubResource("asset_011")
+mesh = SubResource("asset_014")
+
+[node name="GripWrap4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+material_override = SubResource("asset_011")
+mesh = SubResource("asset_015")

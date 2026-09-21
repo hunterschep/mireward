@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3]
+
+[sub_resource type="StandardMaterial3D" id="asset_001"]
+resource_name = "Greyfen_ochre"
+albedo_color = Color(0.6392157, 0.5411765, 0.31764707, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="TorusMesh" id="asset_002"]
+inner_radius = 0.055
+outer_radius = 0.074
+rings = 12
+ring_segments = 6
+
+[node name="hobb_ring" type="Node3D"]
+metadata/item_id = &"hobb_ring"
+
+[node name="ForgedRing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.11, 0)
+material_override = SubResource("asset_001")
+mesh = SubResource("asset_002")

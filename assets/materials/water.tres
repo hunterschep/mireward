@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Greyfen_water"
+albedo_color = Color(0.3254902, 0.43529412, 0.4392157, 1)
+roughness = 0.92
+texture_filter = 2

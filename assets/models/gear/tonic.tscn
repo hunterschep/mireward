@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/parchment.png" id="asset_001"]
+
+[sub_resource type="StandardMaterial3D" id="asset_002"]
+resource_name = "Greyfen_reed"
+albedo_color = Color(0.46666667, 0.47058824, 0.26666668, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_003"]
+top_radius = 0.07
+bottom_radius = 0.085
+height = 0.18
+radial_segments = 8
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="asset_004"]
+resource_name = "Greyfen_wood"
+albedo_color = Color(0.34117648, 0.28627452, 0.22352941, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_005"]
+top_radius = 0.035
+bottom_radius = 0.035
+height = 0.06
+radial_segments = 8
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="asset_006"]
+resource_name = "Greyfen_parchment"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_007"]
+size = Vector3(0.1, 0.09, 0.006)
+
+[sub_resource type="StandardMaterial3D" id="asset_008"]
+resource_name = "Greyfen_rust"
+albedo_color = Color(0.50980395, 0.3019608, 0.23529412, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_009"]
+size = Vector3(0.045, 0.018, 0.008)
+
+[node name="tonic" type="Node3D"]
+metadata/item_id = &"tonic"
+
+[node name="ClayBottle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+material_override = SubResource("asset_002")
+mesh = SubResource("asset_003")
+
+[node name="Neck" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_005")
+
+[node name="Label" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, -0.079)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_007")
+
+[node name="LabelMark" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, -0.084)
+material_override = SubResource("asset_008")
+mesh = SubResource("asset_009")

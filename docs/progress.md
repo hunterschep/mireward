@@ -6,10 +6,10 @@ Complete specification scope is authorized. The user objective overrides sequent
 |---|---|---|---|
 | T01 | VERIFIED | Integration lead + environment | Foundation import and visible shell verified; handoffs/T01.md |
 | T02 | VERIFIED | Integration lead + foundation_audit | 48 foundation and 11 math assertions; handoffs/T02-audit.md |
-| T03 | IN_PROGRESS | visual_toolkit | Art API consumes integrated T02 types; repeatable assets and showcase verification |
+| T03 | VERIFIED | visual_toolkit + integration lead | 748 art assertions, byte-identical regeneration and three inspected 540p views |
 | T04 | IMPLEMENTED | Integration lead | 12 movement assertions pass and real W movement inspected; finishing camera/gear check |
 | T05 | IN_PROGRESS | foundation_audit | Interaction occlusion, modal pause/cursor and input-release tests |
-| T06 | NOT_STARTED | Unassigned | T04/T05 integrated |
+| T06 | IN_PROGRESS | environment | Consumes verified player and import-tested T05 APIs; combat fixtures pending |
 | T07 | NOT_STARTED | Unassigned | T03/T06 integrated |
 | T08 | NOT_STARTED | Unassigned | T02/T05/T06 integrated; parallel with T07 |
 | T09 | NOT_STARTED | Unassigned | T07/T08 integrated |
@@ -24,10 +24,10 @@ Complete specification scope is authorized. The user objective overrides sequent
 
 ## Exclusive ownership
 
-- visual_toolkit: assets except audio; scripts/art; scenes/art; tools/generate_assets.gd; asset_manifest; test_art; T03 handoff.
+- visual_toolkit: T03 finished; art files returned to integration lead.
 - foundation_audit: T05 interaction component/ray, mode controller, modal host, related integration tests and T05 handoff. T02 files returned to lead.
 - Integration lead: T04 player code/scene/movement tests, root configuration, autoloads/core, shared records, integration and checkpoints.
-- environment: finished; T01-environment handoff only.
+- environment: T06 scripts/combat, combat fixtures/arena, T06 handoff.
 
 ## Resume
 

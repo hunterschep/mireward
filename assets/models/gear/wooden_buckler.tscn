@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/timber.png" id="asset_001"]
+
+[sub_resource type="StandardMaterial3D" id="asset_002"]
+resource_name = "Greyfen_dark_iron"
+albedo_color = Color(0.26666668, 0.30588236, 0.29803923, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_003"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.065
+radial_segments = 12
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="asset_004"]
+resource_name = "Greyfen_wood"
+albedo_color = Color(0.34117648, 0.28627452, 0.22352941, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_005"]
+top_radius = 0.273
+bottom_radius = 0.273
+height = 0.075
+radial_segments = 12
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="asset_006"]
+resource_name = "Greyfen_timber"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_007"]
+size = Vector3(0.012, 0.46, 0.01)
+
+[sub_resource type="BoxMesh" id="asset_008"]
+size = Vector3(0.012, 0.46, 0.01)
+
+[sub_resource type="BoxMesh" id="asset_009"]
+size = Vector3(0.012, 0.46, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="asset_010"]
+resource_name = "Greyfen_iron"
+albedo_color = Color(0.48235294, 0.53333336, 0.5058824, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="SphereMesh" id="asset_011"]
+radius = 0.09
+height = 0.18
+radial_segments = 6
+rings = 3
+
+[node name="wooden_buckler" type="Node3D"]
+metadata/item_id = &"wooden_buckler"
+
+[node name="IronRim" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("asset_002")
+mesh = SubResource("asset_003")
+
+[node name="OakFace" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.013)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_005")
+
+[node name="PlankJoin" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14, 0, -0.054)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_007")
+
+[node name="PlankJoin2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.054)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_008")
+
+[node name="PlankJoin3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14, 0, -0.054)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_009")
+
+[node name="ShieldBoss" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.6, 0, 0, -0.07)
+material_override = SubResource("asset_010")
+mesh = SubResource("asset_011")

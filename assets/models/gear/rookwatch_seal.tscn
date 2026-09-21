@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=4]
+
+[sub_resource type="StandardMaterial3D" id="asset_001"]
+resource_name = "Greyfen_ochre"
+albedo_color = Color(0.6392157, 0.5411765, 0.31764707, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="TorusMesh" id="asset_002"]
+inner_radius = 0.075
+outer_radius = 0.11
+rings = 12
+ring_segments = 6
+
+[sub_resource type="StandardMaterial3D" id="asset_003"]
+resource_name = "Greyfen_iron"
+cull_mode = 2
+albedo_color = Color(0.48235294, 0.53333336, 0.5058824, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_004"]
+_surfaces = [{
+"aabb": AABB(-0.055, 0, -0.0125, 0.11, 0.12, 0.025),
+"attribute_data": PackedByteArray("rkdhPQAAAACuR2G9AAAAAOxROL2PwvU9AAAAAArXoz3sUTg9j8L1Pa5HYT0AAAAArkdhPQAAAADsUTi9j8L1PQAAAAAK16M97FE4vY/C9T2uR2G9AAAAAK5HYT0AAAAArkdhPQAAAADsUTg9j8L1PQAAAAAK16M9AAAAAArXoz3sUTi9j8L1Pa5HYT0AAAAArkdhvQAAAACuR2E9AAAAAK5HYT0AAAAArkdhvQAAAACuR2G9AAAAAK5HYT0AAAAArkdhPQAAAADsUTg9j8L1PexROD2PwvU9rkdhPQAAAACuR2E9AAAAAOxROD2PwvU97FE4PY/C9T0AAAAACtejPQAAAAAK16M97FE4PY/C9T3sUTg9j8L1PQAAAAAK16M9AAAAAArXoz3sUTi9j8L1PexROL2PwvU9AAAAAArXoz0AAAAACtejPexROL2PwvU97FE4vY/C9T2uR2G9AAAAAK5HYb0AAAAA7FE4vY/C9T3sUTi9j8L1Pa5HYb0AAAAA"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("rkdhPQAAAADNzEy8rkdhvQAAAADNzEy87FE4vY/C9T3NzEy8AAAAAArXoz3NzEy87FE4PY/C9T3NzEy8rkdhPQAAAADNzEy8rkdhPQAAAADNzEy87FE4vY/C9T3NzEy8AAAAAArXoz3NzEy87FE4vY/C9T3NzEw8rkdhvQAAAADNzEw8rkdhPQAAAADNzEw8rkdhPQAAAADNzEw87FE4PY/C9T3NzEw8AAAAAArXoz3NzEw8AAAAAArXoz3NzEw87FE4vY/C9T3NzEw8rkdhPQAAAADNzEw8rkdhvQAAAADNzEy8rkdhPQAAAADNzEw8rkdhPQAAAADNzEy8rkdhvQAAAADNzEy8rkdhvQAAAADNzEw8rkdhPQAAAADNzEw8rkdhPQAAAADNzEy87FE4PY/C9T3NzEw87FE4PY/C9T3NzEy8rkdhPQAAAADNzEy8rkdhPQAAAADNzEw87FE4PY/C9T3NzEw87FE4PY/C9T3NzEy8AAAAAArXoz3NzEw8AAAAAArXoz3NzEy87FE4PY/C9T3NzEy87FE4PY/C9T3NzEw8AAAAAArXoz3NzEw8AAAAAArXoz3NzEy87FE4vY/C9T3NzEw87FE4vY/C9T3NzEy8AAAAAArXoz3NzEy8AAAAAArXoz3NzEw87FE4vY/C9T3NzEw87FE4vY/C9T3NzEy8rkdhvQAAAADNzEw8rkdhvQAAAADNzEy87FE4vY/C9T3NzEy87FE4vY/C9T3NzEw8rkdhvQAAAADNzEw8//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/JvbYiS5/48Qm9tiJLn/jxCb22Ikuf+PEJvbYiS5/48Qm9tiJLn/jxCb22Ikuf+PEw0PDwzhQw6rDQ8PDOFDDqsNDw8M4UMOqw0PDwzhQw6rDQ8PDOFDDqsNDw8M4UMOqO7zDwzhQO9U7vMPDOFA71Tu8w8M4UDvVO7zDwzhQO9U7vMPDOFA71Tu8w8M4UDvV2AnYiS5/GrvYCdiJLn8au9gJ2Ikufxq72AnYiS5/GrvYCdiJLn8au9gJ2Ikufxq7")
+}]
+
+[node name="rookwatch_seal" type="Node3D"]
+metadata/item_id = &"rookwatch_seal"
+
+[node name="ForgedRing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.11, 0)
+material_override = SubResource("asset_001")
+mesh = SubResource("asset_002")
+
+[node name="RookEmblem" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+material_override = SubResource("asset_003")
+mesh = SubResource("asset_004")

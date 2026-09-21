@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/linen.png" id="asset_001"]
+[ext_resource type="Texture2D" path="res://assets/textures/timber.png" id="asset_002"]
+
+[sub_resource type="StandardMaterial3D" id="asset_003"]
+resource_name = "Greyfen_linen"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_004"]
+size = Vector3(0.4, 0.075, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="asset_005"]
+resource_name = "Greyfen_rust"
+albedo_color = Color(0.50980395, 0.3019608, 0.23529412, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_006"]
+size = Vector3(0.4, 0.075, 0.3)
+
+[sub_resource type="BoxMesh" id="asset_007"]
+size = Vector3(0.4, 0.075, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="asset_008"]
+resource_name = "Greyfen_timber"
+albedo_texture = ExtResource("asset_002")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_009"]
+size = Vector3(0.035, 0.25, 0.31)
+
+[node name="ferry_blankets" type="Node3D"]
+metadata/item_id = &"ferry_blankets"
+
+[node name="FoldedBlanket" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("asset_003")
+mesh = SubResource("asset_004")
+
+[node name="FoldedBlanket2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118, 0)
+material_override = SubResource("asset_005")
+mesh = SubResource("asset_006")
+
+[node name="FoldedBlanket3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.196, 0)
+material_override = SubResource("asset_003")
+mesh = SubResource("asset_007")
+
+[node name="Twine" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
+material_override = SubResource("asset_008")
+mesh = SubResource("asset_009")

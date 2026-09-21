@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/parchment.png" id="asset_001"]
+[ext_resource type="Texture2D" path="res://assets/textures/linen.png" id="asset_002"]
+
+[sub_resource type="StandardMaterial3D" id="asset_003"]
+resource_name = "Greyfen_parchment"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_004"]
+top_radius = 0.09
+bottom_radius = 0.09
+height = 0.16
+radial_segments = 8
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="asset_005"]
+resource_name = "Greyfen_linen"
+albedo_texture = ExtResource("asset_002")
+roughness = 0.92
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_006"]
+top_radius = 0.094
+bottom_radius = 0.094
+height = 0.012
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="asset_007"]
+top_radius = 0.094
+bottom_radius = 0.094
+height = 0.012
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="asset_008"]
+top_radius = 0.094
+bottom_radius = 0.094
+height = 0.012
+radial_segments = 8
+rings = 1
+
+[node name="bandage" type="Node3D"]
+metadata/item_id = &"bandage"
+
+[node name="LinenRoll" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+material_override = SubResource("asset_003")
+mesh = SubResource("asset_004")
+
+[node name="Winding" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+material_override = SubResource("asset_005")
+mesh = SubResource("asset_006")
+
+[node name="Winding2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+material_override = SubResource("asset_005")
+mesh = SubResource("asset_007")
+
+[node name="Winding3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+material_override = SubResource("asset_005")
+mesh = SubResource("asset_008")

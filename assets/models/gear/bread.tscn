@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3]
+
+[sub_resource type="StandardMaterial3D" id="asset_001"]
+resource_name = "Greyfen_ochre"
+albedo_color = Color(0.6392157, 0.5411765, 0.31764707, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="SphereMesh" id="asset_002"]
+radius = 0.15
+height = 0.3
+radial_segments = 6
+rings = 3
+
+[sub_resource type="StandardMaterial3D" id="asset_003"]
+resource_name = "Greyfen_warm"
+albedo_color = Color(0.88235295, 0.7254902, 0.47058824, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_004"]
+size = Vector3(0.13, 0.012, 0.025)
+
+[sub_resource type="BoxMesh" id="asset_005"]
+size = Vector3(0.13, 0.012, 0.025)
+
+[sub_resource type="BoxMesh" id="asset_006"]
+size = Vector3(0.13, 0.012, 0.025)
+
+[node name="bread" type="Node3D"]
+metadata/item_id = &"bread"
+
+[node name="Crust" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.65, 0, 0, 0, 1.6, 0, 0.09, 0)
+material_override = SubResource("asset_001")
+mesh = SubResource("asset_002")
+
+[node name="ScoredCrust" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.183, -0.09)
+material_override = SubResource("asset_003")
+mesh = SubResource("asset_004")
+
+[node name="ScoredCrust2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.183, 0)
+material_override = SubResource("asset_003")
+mesh = SubResource("asset_005")
+
+[node name="ScoredCrust3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.183, 0.09)
+material_override = SubResource("asset_003")
+mesh = SubResource("asset_006")

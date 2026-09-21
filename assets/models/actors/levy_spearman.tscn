@@ -1,0 +1,583 @@
+[gd_scene load_steps=57 format=4]
+
+[ext_resource type="Texture2D" path="res://assets/textures/timber.png" id="asset_001"]
+
+[sub_resource type="StandardMaterial3D" id="asset_002"]
+resource_name = "Greyfen_iron"
+cull_mode = 2
+albedo_color = Color(0.48235294, 0.53333336, 0.5058824, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_003"]
+_surfaces = [{
+"aabb": AABB(-0.25, 0, -0.15, 0.5, 0.5, 0.3),
+"attribute_data": PackedByteArray("7FE4PgAAAADsUTi+AAAAAAAAgL49Ctc+CtcjPgAAAD8AAIA+PQrXPuxROD4AAAAAAACAvj0K1z4K1yO+AAAAPwrXIz4AAAA/CtcjPgAAAD/sUTg+AAAAAAAAgL49Ctc+AACAvj0K1z7sUTi+AAAAAOxROD4AAAAA7FE4PgAAAAAAAIA+PQrXPgrXIz4AAAA/CtcjPgAAAD8K1yO+AAAAPwAAgL49Ctc+AACAvj0K1z7sUTg+AAAAAArXIz4AAAA/7FE4vgAAAADsUTg+AAAAAOxROD4AAAAA7FE4vgAAAADsUTi+AAAAAOxROD4AAAAA7FE4PgAAAAAAAIA+PQrXPgAAgD49Ctc+7FE4PgAAAADsUTg+AAAAAAAAgD49Ctc+AACAPj0K1z4K1yM+AAAAPwrXIz4AAAA/AACAPj0K1z4AAIA+PQrXPgrXIz4AAAA/CtcjPgAAAD8K1yO+AAAAPwrXI74AAAA/CtcjPgAAAD8K1yM+AAAAPwrXI74AAAA/CtcjvgAAAD8AAIC+PQrXPgAAgL49Ctc+CtcjvgAAAD8K1yO+AAAAPwAAgL49Ctc+AACAvj0K1z7sUTi+AAAAAOxROL4AAAAAAACAvj0K1z4AAIC+PQrXPuxROL4AAAAA"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 60,
+"vertex_data": PackedByteArray("7FE4PgAAAACamRm+7FE4vgAAAACamRm+AACAvj0K1z6amRm+CtcjPgAAAD+amRm+AACAPj0K1z6amRm+7FE4PgAAAACamRm+AACAvj0K1z6amRm+CtcjvgAAAD+amRm+CtcjPgAAAD+amRm+CtcjPgAAAD+amRm+7FE4PgAAAACamRm+AACAvj0K1z6amRm+AACAvj0K1z6amRk+7FE4vgAAAACamRk+7FE4PgAAAACamRk+7FE4PgAAAACamRk+AACAPj0K1z6amRk+CtcjPgAAAD+amRk+CtcjPgAAAD+amRk+CtcjvgAAAD+amRk+AACAvj0K1z6amRk+AACAvj0K1z6amRk+7FE4PgAAAACamRk+CtcjPgAAAD+amRk+7FE4vgAAAACamRm+7FE4PgAAAACamRk+7FE4PgAAAACamRm+7FE4vgAAAACamRm+7FE4vgAAAACamRk+7FE4PgAAAACamRk+7FE4PgAAAACamRm+AACAPj0K1z6amRk+AACAPj0K1z6amRm+7FE4PgAAAACamRm+7FE4PgAAAACamRk+AACAPj0K1z6amRk+AACAPj0K1z6amRm+CtcjPgAAAD+amRk+CtcjPgAAAD+amRm+AACAPj0K1z6amRm+AACAPj0K1z6amRk+CtcjPgAAAD+amRk+CtcjPgAAAD+amRm+CtcjvgAAAD+amRk+CtcjvgAAAD+amRm+CtcjPgAAAD+amRm+CtcjPgAAAD+amRk+CtcjvgAAAD+amRk+CtcjvgAAAD+amRm+AACAvj0K1z6amRk+AACAvj0K1z6amRm+CtcjvgAAAD+amRm+CtcjvgAAAD+amRk+AACAvj0K1z6amRk+AACAvj0K1z6amRm+7FE4vgAAAACamRk+7FE4vgAAAACamRm+AACAvj0K1z6amRm+AACAvj0K1z6amRk+7FE4vgAAAACamRk+//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/te22bQV9Ebe17bZtBX0Rt7Xttm0FfRG3te22bQV9Ebe17bZtBX0Rt7Xttm0FfRG3O7zDwzhQO9U7vMPDOFA71Tu8w8M4UDvVO7zDwzhQO9U7vMPDOFA71Tu8w8M4UDvV/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/w0PDwzhQw6rDQ8PDOFDDqsNDw8M4UMOqw0PDwzhQw6rDQ8PDOFDDqsNDw8M4UMOqSRK2bQV97chJErZtBX3tyEkStm0Ffe3ISRK2bQV97chJErZtBX3tyEkStm0Ffe3I")
+}]
+
+[sub_resource type="StandardMaterial3D" id="asset_004"]
+resource_name = "Greyfen_rust"
+cull_mode = 2
+albedo_color = Color(0.50980395, 0.3019608, 0.23529412, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_005"]
+_surfaces = [{
+"aabb": AABB(-0.26, 0, -0.16, 0.52, 0.25, 0.32),
+"attribute_data": PackedByteArray("uB6FPgAAAAC4HoW+AAAAAOxROL4AAIA+7FE4vgAAgD7sUTg+AACAPrgehT4AAAAA7FE4vgAAgD64HoW+AAAAALgehT4AAAAAuB6FPgAAAADsUTg+AACAPuxROL4AAIA+uB6FvgAAAAC4HoU+AAAAALgehT4AAAAAuB6FvgAAAAC4HoW+AAAAALgehT4AAAAAuB6FPgAAAADsUTg+AACAPuxROD4AAIA+uB6FPgAAAAC4HoU+AAAAAOxROD4AAIA+7FE4PgAAgD7sUTi+AACAPuxROL4AAIA+7FE4PgAAgD7sUTg+AACAPuxROL4AAIA+7FE4vgAAgD64HoW+AAAAALgehb4AAAAA7FE4vgAAgD7sUTi+AACAPrgehb4AAAAA"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("uB6FPgAAAAAK1yO+uB6FvgAAAAAK1yO+7FE4vgAAgD4K1yO+7FE4vgAAgD4K1yO+7FE4PgAAgD4K1yO+uB6FPgAAAAAK1yO+7FE4vgAAgD4K1yM+uB6FvgAAAAAK1yM+uB6FPgAAAAAK1yM+uB6FPgAAAAAK1yM+7FE4PgAAgD4K1yM+7FE4vgAAgD4K1yM+uB6FvgAAAAAK1yO+uB6FPgAAAAAK1yM+uB6FPgAAAAAK1yO+uB6FvgAAAAAK1yO+uB6FvgAAAAAK1yM+uB6FPgAAAAAK1yM+uB6FPgAAAAAK1yO+7FE4PgAAgD4K1yM+7FE4PgAAgD4K1yO+uB6FPgAAAAAK1yO+uB6FPgAAAAAK1yM+7FE4PgAAgD4K1yM+7FE4PgAAgD4K1yO+7FE4vgAAgD4K1yM+7FE4vgAAgD4K1yO+7FE4PgAAgD4K1yO+7FE4PgAAgD4K1yM+7FE4vgAAgD4K1yM+7FE4vgAAgD4K1yO+uB6FvgAAAAAK1yM+uB6FvgAAAAAK1yO+7FE4vgAAgD4K1yO+7FE4vgAAgD4K1yM+uB6FvgAAAAAK1yM+//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/9+AHn8h2Zc734AefyHZlzvfgB5/IdmXO9+AHn8h2Zc734AefyHZlzvfgB5/IdmXO/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/Bx8Hn8h2mbEHHwefyHaZsQcfB5/IdpmxBx8Hn8h2mbEHHwefyHaZsQcfB5/Idpmx")
+}]
+
+[sub_resource type="StandardMaterial3D" id="asset_006"]
+resource_name = "Greyfen_timber"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_007"]
+size = Vector3(0.4, 0.063, 0.33)
+
+[sub_resource type="StandardMaterial3D" id="asset_008"]
+resource_name = "Greyfen_ochre"
+albedo_color = Color(0.6392157, 0.5411765, 0.31764707, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_009"]
+size = Vector3(0.065, 0.065, 0.025)
+
+[sub_resource type="StandardMaterial3D" id="asset_010"]
+resource_name = "Greyfen_rust"
+cull_mode = 2
+albedo_color = Color(0.50980395, 0.3019608, 0.23529412, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_011"]
+_surfaces = [{
+"aabb": AABB(-0.14, 0, -0.01, 0.28, 0.51, 0.02),
+"attribute_data": PackedByteArray("zczMPQAAAADNzMy9AAAAAClcD75cjwI/KVwPvlyPAj8pXA8+XI8CP83MzD0AAAAAKVwPvlyPAj/NzMy9AAAAAM3MzD0AAAAAzczMPQAAAAApXA8+XI8CPylcD75cjwI/zczMvQAAAADNzMw9AAAAAM3MzD0AAAAAzczMvQAAAADNzMy9AAAAAM3MzD0AAAAAzczMPQAAAAApXA8+XI8CPylcDz5cjwI/zczMPQAAAADNzMw9AAAAAClcDz5cjwI/KVwPPlyPAj8pXA++XI8CPylcD75cjwI/KVwPPlyPAj8pXA8+XI8CPylcD75cjwI/KVwPvlyPAj/NzMy9AAAAAM3MzL0AAAAAKVwPvlyPAj8pXA++XI8CP83MzL0AAAAA"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("zczMPQAAAAAK1yO8zczMvQAAAAAK1yO8KVwPvlyPAj8K1yO8KVwPvlyPAj8K1yO8KVwPPlyPAj8K1yO8zczMPQAAAAAK1yO8KVwPvlyPAj8K1yM8zczMvQAAAAAK1yM8zczMPQAAAAAK1yM8zczMPQAAAAAK1yM8KVwPPlyPAj8K1yM8KVwPvlyPAj8K1yM8zczMvQAAAAAK1yO8zczMPQAAAAAK1yM8zczMPQAAAAAK1yO8zczMvQAAAAAK1yO8zczMvQAAAAAK1yM8zczMPQAAAAAK1yM8zczMPQAAAAAK1yO8KVwPPlyPAj8K1yM8KVwPPlyPAj8K1yO8zczMPQAAAAAK1yO8zczMPQAAAAAK1yM8KVwPPlyPAj8K1yM8KVwPPlyPAj8K1yO8KVwPvlyPAj8K1yM8KVwPvlyPAj8K1yO8KVwPPlyPAj8K1yO8KVwPPlyPAj8K1yM8KVwPvlyPAj8K1yM8KVwPvlyPAj8K1yO8zczMvQAAAAAK1yM8zczMvQAAAAAK1yO8KVwPvlyPAj8K1yO8KVwPvlyPAj8K1yM8zczMvQAAAAAK1yM8//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/r/awdkV/Xruv9rB2RX9eu6/2sHZFf167r/awdkV/Xruv9rB2RX9eu6/2sHZFf167/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/TwmwdkV/oMRPCbB2RX+gxE8JsHZFf6DETwmwdkV/oMRPCbB2RX+gxE8JsHZFf6DE")
+}]
+
+[sub_resource type="StandardMaterial3D" id="asset_012"]
+resource_name = "Greyfen_dark_iron"
+albedo_color = Color(0.26666668, 0.30588236, 0.29803923, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_013"]
+size = Vector3(0.3, 0.07, 0.34)
+
+[sub_resource type="StandardMaterial3D" id="asset_014"]
+resource_name = "Greyfen_rust"
+albedo_color = Color(0.50980395, 0.3019608, 0.23529412, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_015"]
+top_radius = 0.096
+bottom_radius = 0.084
+height = 0.34
+radial_segments = 6
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="asset_016"]
+resource_name = "Greyfen_iron"
+albedo_color = Color(0.48235294, 0.53333336, 0.5058824, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="SphereMesh" id="asset_017"]
+radius = 0.093
+height = 0.186
+radial_segments = 6
+rings = 3
+
+[sub_resource type="CylinderMesh" id="asset_018"]
+top_radius = 0.09
+bottom_radius = 0.073
+height = 0.31
+radial_segments = 6
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="asset_019"]
+resource_name = "Greyfen_timber"
+cull_mode = 2
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_020"]
+_surfaces = [{
+"aabb": AABB(-0.09, -0.82, -0.16, 0.18, 0.15999997, 0.32),
+"attribute_data": PackedByteArray("7FG4PYXrUb/sUbi9hetRv3sUrr3D9Si/exSuvcP1KL97FK49w/Uov+xRuD2F61G/exSuvcP1KL/sUbi9hetRv+xRuD2F61G/7FG4PYXrUb97FK49w/Uov3sUrr3D9Si/7FG4vYXrUb/sUbg9hetRv+xRuD2F61G/7FG4vYXrUb/sUbi9hetRv+xRuD2F61G/7FG4PYXrUb97FK49w/Uov3sUrj3D9Si/7FG4PYXrUb/sUbg9hetRv3sUrj3D9Si/exSuPcP1KL97FK69w/Uov3sUrr3D9Si/exSuPcP1KL97FK49w/Uov3sUrr3D9Si/exSuvcP1KL/sUbi9hetRv+xRuL2F61G/exSuvcP1KL97FK69w/Uov+xRuL2F61G/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("7FG4PYXrUb8K1yO+7FG4vYXrUb8K1yO+exSuvcP1KL8K1yO+exSuvcP1KL8K1yO+exSuPcP1KL8K1yO+7FG4PYXrUb8K1yO+exSuvcP1KL8K1yM+7FG4vYXrUb8K1yM+7FG4PYXrUb8K1yM+7FG4PYXrUb8K1yM+exSuPcP1KL8K1yM+exSuvcP1KL8K1yM+7FG4vYXrUb8K1yO+7FG4PYXrUb8K1yM+7FG4PYXrUb8K1yO+7FG4vYXrUb8K1yO+7FG4vYXrUb8K1yM+7FG4PYXrUb8K1yM+7FG4PYXrUb8K1yO+exSuPcP1KL8K1yM+exSuPcP1KL8K1yO+7FG4PYXrUb8K1yO+7FG4PYXrUb8K1yM+exSuPcP1KL8K1yM+exSuPcP1KL8K1yO+exSuvcP1KL8K1yM+exSuvcP1KL8K1yO+exSuPcP1KL8K1yO+exSuPcP1KL8K1yM+exSuvcP1KL8K1yM+exSuvcP1KL8K1yO+7FG4vYXrUb8K1yM+7FG4vYXrUb8K1yO+exSuvcP1KL8K1yO+exSuvcP1KL8K1yM+7FG4vYXrUb8K1yM+//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/Hvzgg+B/78Ee/OCD4H/vwR784IPgf+/BHvzgg+B/78Ee/OCD4H/vwR784IPgf+/B/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/4APgg+B/D77gA+CD4H8PvuAD4IPgfw++4APgg+B/D77gA+CD4H8PvuAD4IPgfw++")
+}]
+
+[sub_resource type="StandardMaterial3D" id="asset_021"]
+resource_name = "Greyfen_peat"
+albedo_color = Color(0.14117648, 0.16862746, 0.15686275, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_022"]
+size = Vector3(0.19, 0.032, 0.34)
+
+[sub_resource type="CylinderMesh" id="asset_023"]
+top_radius = 0.086
+bottom_radius = 0.07
+height = 0.27
+radial_segments = 6
+rings = 1
+
+[sub_resource type="SphereMesh" id="asset_024"]
+radius = 0.14
+height = 0.28
+radial_segments = 6
+rings = 3
+
+[sub_resource type="BoxMesh" id="asset_025"]
+size = Vector3(0.24, 0.032, 0.25)
+
+[sub_resource type="SphereMesh" id="asset_026"]
+radius = 0.068
+height = 0.136
+radial_segments = 6
+rings = 3
+
+[sub_resource type="CylinderMesh" id="asset_027"]
+top_radius = 0.076
+bottom_radius = 0.063
+height = 0.24
+radial_segments = 6
+rings = 1
+
+[sub_resource type="BoxMesh" id="asset_028"]
+size = Vector3(0.115, 0.13, 0.12)
+
+[sub_resource type="CylinderMesh" id="asset_029"]
+top_radius = 0.096
+bottom_radius = 0.084
+height = 0.34
+radial_segments = 6
+rings = 1
+
+[sub_resource type="SphereMesh" id="asset_030"]
+radius = 0.093
+height = 0.186
+radial_segments = 6
+rings = 3
+
+[sub_resource type="CylinderMesh" id="asset_031"]
+top_radius = 0.09
+bottom_radius = 0.073
+height = 0.31
+radial_segments = 6
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="asset_032"]
+resource_name = "Greyfen_timber"
+cull_mode = 2
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_033"]
+_surfaces = [{
+"aabb": AABB(-0.09, -0.82, -0.16, 0.18, 0.15999997, 0.32),
+"attribute_data": PackedByteArray("7FG4PYXrUb/sUbi9hetRv3sUrr3D9Si/exSuvcP1KL97FK49w/Uov+xRuD2F61G/exSuvcP1KL/sUbi9hetRv+xRuD2F61G/7FG4PYXrUb97FK49w/Uov3sUrr3D9Si/7FG4vYXrUb/sUbg9hetRv+xRuD2F61G/7FG4vYXrUb/sUbi9hetRv+xRuD2F61G/7FG4PYXrUb97FK49w/Uov3sUrj3D9Si/7FG4PYXrUb/sUbg9hetRv3sUrj3D9Si/exSuPcP1KL97FK69w/Uov3sUrr3D9Si/exSuPcP1KL97FK49w/Uov3sUrr3D9Si/exSuvcP1KL/sUbi9hetRv+xRuL2F61G/exSuvcP1KL97FK69w/Uov+xRuL2F61G/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("7FG4PYXrUb8K1yO+7FG4vYXrUb8K1yO+exSuvcP1KL8K1yO+exSuvcP1KL8K1yO+exSuPcP1KL8K1yO+7FG4PYXrUb8K1yO+exSuvcP1KL8K1yM+7FG4vYXrUb8K1yM+7FG4PYXrUb8K1yM+7FG4PYXrUb8K1yM+exSuPcP1KL8K1yM+exSuvcP1KL8K1yM+7FG4vYXrUb8K1yO+7FG4PYXrUb8K1yM+7FG4PYXrUb8K1yO+7FG4vYXrUb8K1yO+7FG4vYXrUb8K1yM+7FG4PYXrUb8K1yM+7FG4PYXrUb8K1yO+exSuPcP1KL8K1yM+exSuPcP1KL8K1yO+7FG4PYXrUb8K1yO+7FG4PYXrUb8K1yM+exSuPcP1KL8K1yM+exSuPcP1KL8K1yO+exSuvcP1KL8K1yM+exSuvcP1KL8K1yO+exSuPcP1KL8K1yO+exSuPcP1KL8K1yM+exSuvcP1KL8K1yM+exSuvcP1KL8K1yO+7FG4vYXrUb8K1yM+7FG4vYXrUb8K1yO+exSuvcP1KL8K1yO+exSuvcP1KL8K1yM+7FG4vYXrUb8K1yM+//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/Hvzgg+B/78Ee/OCD4H/vwR784IPgf+/BHvzgg+B/78Ee/OCD4H/vwR784IPgf+/B/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/4APgg+B/D77gA+CD4H8PvuAD4IPgfw++4APgg+B/D77gA+CD4H8PvuAD4IPgfw++")
+}]
+
+[sub_resource type="BoxMesh" id="asset_034"]
+size = Vector3(0.19, 0.032, 0.34)
+
+[sub_resource type="CylinderMesh" id="asset_035"]
+top_radius = 0.086
+bottom_radius = 0.07
+height = 0.27
+radial_segments = 6
+rings = 1
+
+[sub_resource type="SphereMesh" id="asset_036"]
+radius = 0.14
+height = 0.28
+radial_segments = 6
+rings = 3
+
+[sub_resource type="BoxMesh" id="asset_037"]
+size = Vector3(0.24, 0.032, 0.25)
+
+[sub_resource type="SphereMesh" id="asset_038"]
+radius = 0.068
+height = 0.136
+radial_segments = 6
+rings = 3
+
+[sub_resource type="CylinderMesh" id="asset_039"]
+top_radius = 0.076
+bottom_radius = 0.063
+height = 0.24
+radial_segments = 6
+rings = 1
+
+[sub_resource type="BoxMesh" id="asset_040"]
+size = Vector3(0.115, 0.13, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="asset_041"]
+resource_name = "Greyfen_wood"
+albedo_color = Color(0.34117648, 0.28627452, 0.22352941, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_042"]
+top_radius = 0.026
+bottom_radius = 0.026
+height = 1.8
+radial_segments = 8
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="asset_043"]
+resource_name = "Greyfen_iron"
+cull_mode = 2
+albedo_color = Color(0.48235294, 0.53333336, 0.5058824, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_044"]
+_surfaces = [{
+"aabb": AABB(-0.07, 0, -0.011, 0.14, 0.42, 0.022),
+"attribute_data": PackedByteArray("KVyPPQAAAAApXI+9AAAAADm0SL0wu6c+AAAAAD0K1z45tEg9MLunPilcjz0AAAAAKVyPPQAAAAA5tEi9MLunPgAAAAA9Ctc+ObRIvTC7pz4pXI+9AAAAAClcjz0AAAAAKVyPPQAAAAA5tEg9MLunPgAAAAA9Ctc+AAAAAD0K1z45tEi9MLunPilcjz0AAAAAKVyPvQAAAAApXI89AAAAAClcjz0AAAAAKVyPvQAAAAApXI+9AAAAAClcjz0AAAAAKVyPPQAAAAA5tEg9MLunPjm0SD0wu6c+KVyPPQAAAAApXI89AAAAADm0SD0wu6c+ObRIPTC7pz4AAAAAPQrXPgAAAAA9Ctc+ObRIPTC7pz45tEg9MLunPgAAAAA9Ctc+AAAAAD0K1z45tEi9MLunPjm0SL0wu6c+AAAAAD0K1z4AAAAAPQrXPjm0SL0wu6c+ObRIvTC7pz4pXI+9AAAAAClcj70AAAAAObRIvTC7pz45tEi9MLunPilcj70AAAAA"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("KVyPPQAAAABYOTS8KVyPvQAAAABYOTS8ObRIvTC7pz5YOTS8AAAAAD0K1z5YOTS8ObRIPTC7pz5YOTS8KVyPPQAAAABYOTS8KVyPPQAAAABYOTS8ObRIvTC7pz5YOTS8AAAAAD0K1z5YOTS8ObRIvTC7pz5YOTQ8KVyPvQAAAABYOTQ8KVyPPQAAAABYOTQ8KVyPPQAAAABYOTQ8ObRIPTC7pz5YOTQ8AAAAAD0K1z5YOTQ8AAAAAD0K1z5YOTQ8ObRIvTC7pz5YOTQ8KVyPPQAAAABYOTQ8KVyPvQAAAABYOTS8KVyPPQAAAABYOTQ8KVyPPQAAAABYOTS8KVyPvQAAAABYOTS8KVyPvQAAAABYOTQ8KVyPPQAAAABYOTQ8KVyPPQAAAABYOTS8ObRIPTC7pz5YOTQ8ObRIPTC7pz5YOTS8KVyPPQAAAABYOTS8KVyPPQAAAABYOTQ8ObRIPTC7pz5YOTQ8ObRIPTC7pz5YOTS8AAAAAD0K1z5YOTQ8AAAAAD0K1z5YOTS8ObRIPTC7pz5YOTS8ObRIPTC7pz5YOTQ8AAAAAD0K1z5YOTQ8AAAAAD0K1z5YOTS8ObRIvTC7pz5YOTQ8ObRIvTC7pz5YOTS8AAAAAD0K1z5YOTS8AAAAAD0K1z5YOTQ8ObRIvTC7pz5YOTQ8ObRIvTC7pz5YOTS8KVyPvQAAAABYOTQ8KVyPvQAAAABYOTS8ObRIvTC7pz5YOTS8ObRIvTC7pz5YOTQ8KVyPvQAAAABYOTQ8//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/Sfi1h4F/1sNJ+LWHgX/Ww0n4tYeBf9bDSfi1h4F/1sNJ+LWHgX/Ww0n4tYeBf9bDo9NarCBsu9Kj01qsIGy70qPTWqwgbLvSo9NarCBsu9Kj01qsIGy70qPTWqwgbLvSWyxarCBsQ61bLFqsIGxDrVssWqwgbEOtWyxarCBsQ61bLFqsIGxDrVssWqwgbEOttQe1h4F/KLy1B7WHgX8ovLUHtYeBfyi8tQe1h4F/KLy1B7WHgX8ovLUHtYeBfyi8")
+}]
+
+[sub_resource type="BoxMesh" id="asset_045"]
+size = Vector3(0.012, 0.2562, 0.024)
+
+[sub_resource type="StandardMaterial3D" id="asset_046"]
+resource_name = "Greyfen_skin"
+albedo_color = Color(0.7058824, 0.5568628, 0.43137255, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_047"]
+top_radius = 0.065
+bottom_radius = 0.065
+height = 0.12
+radial_segments = 8
+rings = 1
+
+[sub_resource type="SphereMesh" id="asset_048"]
+radius = 0.155
+height = 0.31
+radial_segments = 6
+rings = 3
+
+[sub_resource type="BoxMesh" id="asset_049"]
+size = Vector3(0.045, 0.065, 0.06)
+
+[sub_resource type="BoxMesh" id="asset_050"]
+size = Vector3(0.032, 0.021, 0.01)
+
+[sub_resource type="BoxMesh" id="asset_051"]
+size = Vector3(0.032, 0.021, 0.01)
+
+[sub_resource type="CylinderMesh" id="asset_052"]
+top_radius = 0.1
+bottom_radius = 0.18
+height = 0.15
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="asset_053"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.043
+radial_segments = 8
+rings = 1
+
+[sub_resource type="BoxMesh" id="asset_054"]
+size = Vector3(0.05, 0.19, 0.15)
+
+[sub_resource type="BoxMesh" id="asset_055"]
+size = Vector3(0.05, 0.19, 0.15)
+
+[sub_resource type="BoxMesh" id="asset_056"]
+size = Vector3(0.037, 0.2, 0.035)
+
+[node name="levy_spearman" type="Node3D"]
+metadata/archetype = &"levy_spearman"
+
+[node name="Torso" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91, 0)
+material_override = SubResource("asset_002")
+mesh = SubResource("asset_003")
+
+[node name="TunicSkirt" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73, 0)
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_005")
+
+[node name="Belt" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+material_override = SubResource("asset_006")
+mesh = SubResource("asset_007")
+
+[node name="Buckle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.951, -0.18)
+material_override = SubResource("asset_008")
+mesh = SubResource("asset_009")
+
+[node name="Surcoat" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -0.169)
+material_override = SubResource("asset_010")
+mesh = SubResource("asset_011")
+
+[node name="Collar" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41, 0)
+material_override = SubResource("asset_012")
+mesh = SubResource("asset_013")
+
+[node name="LeftLeg" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, 0.83, 0)
+
+[node name="Thigh" type="MeshInstance3D" parent="LeftLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+material_override = SubResource("asset_014")
+mesh = SubResource("asset_015")
+
+[node name="Knee" type="MeshInstance3D" parent="LeftLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36, -0.015)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_017")
+
+[node name="Greave" type="MeshInstance3D" parent="LeftLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_018")
+
+[node name="Boot" type="MeshInstance3D" parent="LeftLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.07)
+material_override = SubResource("asset_019")
+mesh = SubResource("asset_020")
+
+[node name="BootSole" type="MeshInstance3D" parent="LeftLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.805, -0.07)
+material_override = SubResource("asset_021")
+mesh = SubResource("asset_022")
+
+[node name="LeftArm" type="Node3D" parent="."]
+transform = Transform3D(0.997551, 0.06994285, 0, -0.06994285, 0.997551, 0, 0, 0, 1, -0.29, 1.34, 0)
+
+[node name="UpperArm" type="MeshInstance3D" parent="LeftArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12, 0)
+material_override = SubResource("asset_014")
+mesh = SubResource("asset_023")
+
+[node name="Pauldron" type="MeshInstance3D" parent="LeftArm"]
+transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1.16, 0, 0.025, 0)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_024")
+
+[node name="ShoulderTrim" type="MeshInstance3D" parent="LeftArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
+material_override = SubResource("asset_012")
+mesh = SubResource("asset_025")
+
+[node name="Elbow" type="Node3D" parent="LeftArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28, 0)
+
+[node name="ElbowJoint" type="MeshInstance3D" parent="LeftArm/Elbow"]
+material_override = SubResource("asset_014")
+mesh = SubResource("asset_026")
+
+[node name="Vambrace" type="MeshInstance3D" parent="LeftArm/Elbow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12, -0.018)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_027")
+
+[node name="Gauntlet" type="MeshInstance3D" parent="LeftArm/Elbow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28, -0.025)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_028")
+
+[node name="Grip" type="Node3D" parent="LeftArm/Elbow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29, -0.03)
+
+[node name="RightLeg" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 0.83, 0)
+
+[node name="Thigh" type="MeshInstance3D" parent="RightLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+material_override = SubResource("asset_014")
+mesh = SubResource("asset_029")
+
+[node name="Knee" type="MeshInstance3D" parent="RightLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36, -0.015)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_030")
+
+[node name="Greave" type="MeshInstance3D" parent="RightLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_031")
+
+[node name="Boot" type="MeshInstance3D" parent="RightLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.07)
+material_override = SubResource("asset_032")
+mesh = SubResource("asset_033")
+
+[node name="BootSole" type="MeshInstance3D" parent="RightLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.805, -0.07)
+material_override = SubResource("asset_021")
+mesh = SubResource("asset_034")
+
+[node name="RightArm" type="Node3D" parent="."]
+transform = Transform3D(0.997551, -0.06994285, 0, 0.06994285, 0.997551, 0, 0, 0, 1, 0.29, 1.34, 0)
+
+[node name="UpperArm" type="MeshInstance3D" parent="RightArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12, 0)
+material_override = SubResource("asset_014")
+mesh = SubResource("asset_035")
+
+[node name="Pauldron" type="MeshInstance3D" parent="RightArm"]
+transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1.16, 0, 0.025, 0)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_036")
+
+[node name="ShoulderTrim" type="MeshInstance3D" parent="RightArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
+material_override = SubResource("asset_012")
+mesh = SubResource("asset_037")
+
+[node name="Elbow" type="Node3D" parent="RightArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28, 0)
+
+[node name="ElbowJoint" type="MeshInstance3D" parent="RightArm/Elbow"]
+material_override = SubResource("asset_014")
+mesh = SubResource("asset_038")
+
+[node name="Vambrace" type="MeshInstance3D" parent="RightArm/Elbow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12, -0.018)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_039")
+
+[node name="Gauntlet" type="MeshInstance3D" parent="RightArm/Elbow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28, -0.025)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_040")
+
+[node name="Grip" type="Node3D" parent="RightArm/Elbow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29, -0.03)
+
+[node name="spear" type="Node3D" parent="RightArm/Elbow/Grip"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+metadata/item_id = &"spear"
+
+[node name="Grip" type="MeshInstance3D" parent="RightArm/Elbow/Grip/spear"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+material_override = SubResource("asset_041")
+mesh = SubResource("asset_042")
+
+[node name="Blade" type="MeshInstance3D" parent="RightArm/Elbow/Grip/spear"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 0)
+material_override = SubResource("asset_043")
+mesh = SubResource("asset_044")
+
+[node name="Fuller" type="MeshInstance3D" parent="RightArm/Elbow/Grip/spear"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.697, 0)
+material_override = SubResource("asset_012")
+mesh = SubResource("asset_045")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52, 0)
+
+[node name="Neck" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+material_override = SubResource("asset_046")
+mesh = SubResource("asset_047")
+
+[node name="Face" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.87, 0, 0, 0, 1.2, 0, 0, 0, 0.92, 0, 0.115, 0)
+material_override = SubResource("asset_046")
+mesh = SubResource("asset_048")
+
+[node name="Nose" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, -0.139)
+material_override = SubResource("asset_046")
+mesh = SubResource("asset_049")
+
+[node name="Eye" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.055, 0.155, -0.136)
+material_override = SubResource("asset_021")
+mesh = SubResource("asset_050")
+
+[node name="Eye2" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055, 0.155, -0.136)
+material_override = SubResource("asset_021")
+mesh = SubResource("asset_051")
+
+[node name="HelmetDome" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29, 0)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_052")
+
+[node name="HelmetBand" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225, 0)
+material_override = SubResource("asset_012")
+mesh = SubResource("asset_053")
+
+[node name="CheekGuard" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145, 0.105, -0.025)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_054")
+
+[node name="CheekGuard2" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.145, 0.105, -0.025)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_055")
+
+[node name="NasalGuard" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, -0.16)
+material_override = SubResource("asset_016")
+mesh = SubResource("asset_056")

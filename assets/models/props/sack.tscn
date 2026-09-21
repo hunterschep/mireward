@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=4]
+
+[ext_resource type="Texture2D" path="res://assets/textures/linen.png" id="asset_001"]
+[ext_resource type="Texture2D" path="res://assets/textures/timber.png" id="asset_002"]
+
+[sub_resource type="StandardMaterial3D" id="asset_003"]
+resource_name = "Greyfen_linen"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_004"]
+_surfaces = [{
+"aabb": AABB(-0.2217025, -0.017999977, -0.256, 0.443405, 0.73599994, 0.512),
+"attribute_data": PackedByteArray("AAAAAAAAAACrqio+AAAAAKuqqj4AAAAAAAAAPwAAAACrqio/AAAAAFVVVT8AAAAAAACAPwAAAAAAAAAAAACAPquqKj4AAIA+q6qqPgAAgD4AAAA/AACAPquqKj8AAIA+VVVVPwAAgD4AAIA/AACAPgAAAAAAAAA/q6oqPgAAAD+rqqo+AAAAPwAAAD8AAAA/q6oqPwAAAD9VVVU/AAAAPwAAgD8AAAA/AAAAAAAAQD+rqio+AABAP6uqqj4AAEA/AAAAPwAAQD+rqio/AABAP1VVVT8AAEA/AACAPwAAQD8AAAAAAACAP6uqKj4AAIA/q6qqPgAAgD8AAAA/AACAP6uqKj8AAIA/VVVVPwAAgD8AAIA/AACAPw=="),
+"format": 34359742487,
+"index_count": 144,
+"index_data": PackedByteArray("AAABAAcAAQAIAAcAAQACAAgAAgAJAAgAAgADAAkAAwAKAAkAAwAEAAoABAALAAoABAAFAAsABQAMAAsABQAGAAwABgANAAwABwAIAA4ACAAPAA4ACAAJAA8ACQAQAA8ACQAKABAACgARABAACgALABEACwASABEACwAMABIADAATABIADAANABMADQAUABMADgAPABUADwAWABUADwAQABYAEAAXABYAEAARABcAEQAYABcAEQASABgAEgAZABgAEgATABkAEwAaABkAEwAUABoAFAAbABoAFQAWABwAFgAdABwAFgAXAB0AFwAeAB0AFwAYAB4AGAAfAB4AGAAZAB8AGQAgAB8AGQAaACAAGgAhACAAGgAbACEAGwAiACEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 35,
+"vertex_data": PackedByteArray("AAAAANjONz8AAAAAAAAAANjONz8AAAAAAAAAANjONz8AAAAAAAAAANjONz8AAAAAAAAAANjONz8AAAAAAAAAANjONz8AAAAAAAAAANjONz8AAAAAAAAAABI3HD8iXTk+n4cgPhI3HD8hXbk9nocgPhI3HD8jXbm91XfMIxI3HD8iXTm+n4cgvhI3HD8fXbm9n4cgvhI3HD8fXbk9AAAAABI3HD8iXTk+AAAAADMzsz5vEoM++wVjPjMzsz5uEgM++wVjPjMzsz5vEgO+rpQQJDMzsz5vEoO++wVjvjMzsz5sEgO++wVjvjMzsz5sEgM+AAAAADMzsz5vEoM+AAAAAAzhtz0iXTk+n4cgPgzhtz0hXbk9nocgPgzhtz0jXbm91XfMIwzhtz0iXTm+n4cgvgzhtz0fXbm9n4cgvgzhtz0fXbk9AAAAAAzhtz0iXTk+AAAAALB0k7wAAAAAAAAAALB0k7wAAAAAAAAAALB0k7wAAAAAAAAAALB0k7wAAAAAAAAAALB0k7wAAAAAAAAAALB0k7wAAAAAAAAAALB0k7wAAAAA/3///////7//f/////+S6P9///8AAJLo/3///wAA/7//f///JVH+v/9////Yrv6//3///////7//f3vL////v4mnoMH//5LoXL502AAAkuiCtP//AAD/v6FBdNglUf6/dFigwdiu/r//f3vL////v/9//n////+/JNH+f///kuj//9muAACS6P////8AAP+/AADZriVR/r/ZLv5/2K7+v/9//n////+//3+CNP///7+Jp10+//+S6Fy+iScAAJLogrQAAAAA/7+hQYknJVH+v3RYXT7Yrv6//3+CNP///7//fwAA////v/9/AAD//5Lo/38AAAAAkuj/fwAAAAD/v/9/AAAlUf6//38AANiu/r//fwAA////vw==")
+}]
+
+[sub_resource type="StandardMaterial3D" id="asset_005"]
+resource_name = "Greyfen_timber"
+albedo_texture = ExtResource("asset_002")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_006"]
+_surfaces = [{
+"aabb": AABB(-0.10392305, 0.665, -0.12, 0.2078461, 0.14999998, 0.24),
+"attribute_data": PackedByteArray("AAAAAAAAAACrqio+AAAAAKuqqj4AAAAAAAAAPwAAAACrqio/AAAAAFVVVT8AAAAAAACAPwAAAAAAAAAAAACAPquqKj4AAIA+q6qqPgAAgD4AAAA/AACAPquqKj8AAIA+VVVVPwAAgD4AAIA/AACAPgAAAAAAAAA/q6oqPgAAAD+rqqo+AAAAPwAAAD8AAAA/q6oqPwAAAD9VVVU/AAAAPwAAgD8AAAA/AACAPgAAQD8AAIA+AACAP+zZ7j4AAGA/7NnuPgAAID8AAIA+AAAAP6AwCT0AACA/oDAJPQAAYD8AAIA+AACAPwAAQD8AAEA/AABAPwAAAD/2bHc/AAAgP/Zsdz8AAGA/AABAPwAAgD8Kkwg/AABgPwqTCD8AACA/AABAPwAAAD8="),
+"format": 34359742487,
+"index_count": 108,
+"index_data": PackedByteArray("AAABAAcAAQAIAAcAAQACAAgAAgAJAAgAAgADAAkAAwAKAAkAAwAEAAoABAALAAoABAAFAAsABQAMAAsABQAGAAwABgANAAwABwAIAA4ACAAPAA4ACAAJAA8ACQAQAA8ACQAKABAACgARABAACgALABEACwASABEACwAMABIADAATABIADAANABMADQAUABMAFQAXABYAFQAYABcAFQAZABgAFQAaABkAFQAbABoAFQAcABsAHQAeAB8AHQAfACAAHQAgACEAHQAhACIAHQAiACMAHQAjACQA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 37,
+"vertex_data": PackedByteArray("AAAAANejUD8pXI89jE54PdejUD8oXA89ik54PdejUD8qXA+9niIeI9ejUD8pXI+9jE54vdejUD8nXA+9jE54vdejUD8nXA89AAAAANejUD8pXI89AAAAAKRwPT9cj8I9cX6oPaRwPT9bj0I9cH6oPaRwPT9ej0K9spxWI6RwPT9cj8K9cX6ovaRwPT9Zj0K9cX6ovaRwPT9Zj0I9AAAAAKRwPT9cj8I9AAAAAHE9Kj+PwvU9nNXUPXE9Kj+OwnU9m9XUPXE9Kj+RwnW9Y4uHI3E9Kj+PwvW9nNXUvXE9Kj+LwnW9nNXUvXE9Kj+LwnU9AAAAAHE9Kj+PwvU9AAAAANejUD8AAAAAAAAAANejUD8pXI89jE54PdejUD8oXA89ik54PdejUD8qXA+9niIeI9ejUD8pXI+9jE54vdejUD8nXA+9jE54vdejUD8nXA89AAAAANejUD8pXI89AAAAAHE9Kj8AAAAAAAAAAHE9Kj+PwvU9nNXUPXE9Kj+OwnU9m9XUPXE9Kj+RwnW9Y4uHI3E9Kj+PwvW9nNXUvXE9Kj+LwnW9nNXUvXE9Kj+LwnU9AAAAAHE9Kj+PwvU9/3//n////785wRqZ//+S6OPmxL4AAJLo/9///wAA/78aGcS+JVH/v8Q+GpnZrv+//3//n////7//f/+f////vznBGpn//5Lo4+bEvgAAkuj/3///AAD/vxoZxL4lUf+/xD4amdmu/7//f/+f////v/9//5////+/OcEamf//kujj5sS+AACS6P/f//8AAP+/GhnEviVR/7/EPhqZ2a7/v/9//5////+/AID//////78AgP//////vwCA//////+/AID//////78AgP//////vwCA//////+/AID//////78AgP//////vwCAAAD///+/AIAAAP///78AgAAA////vwCAAAD///+/AIAAAP///78AgAAA////vwCAAAD///+/AIAAAP///78=")
+}]
+
+[node name="sack" type="Node3D"]
+metadata/prop_kind = &"sack"
+
+[node name="Surface_Greyfen_linen" type="MeshInstance3D" parent="."]
+material_override = SubResource("asset_003")
+mesh = SubResource("asset_004")
+
+[node name="Surface_Greyfen_timber" type="MeshInstance3D" parent="."]
+material_override = SubResource("asset_005")
+mesh = SubResource("asset_006")

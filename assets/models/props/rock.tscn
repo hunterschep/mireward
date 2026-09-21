@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=4]
+
+[ext_resource type="Texture2D" path="res://assets/textures/stone.png" id="asset_001"]
+
+[sub_resource type="StandardMaterial3D" id="asset_002"]
+resource_name = "Greyfen_stone"
+albedo_texture = ExtResource("asset_001")
+roughness = 0.92
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_003"]
+_surfaces = [{
+"aabb": AABB(-1.2540294, -0.19999999, -0.87436515, 2.5080588, 1.4000001, 1.7487302),
+"attribute_data": PackedByteArray("AAAAAAAAAACrqio+AAAAAKuqqj4AAAAAAAAAPwAAAACrqio/AAAAAFVVVT8AAAAAAACAPwAAAAAAAAAAAACAPquqKj4AAIA+q6qqPgAAgD4AAAA/AACAPquqKj8AAIA+VVVVPwAAgD4AAIA/AACAPgAAAAAAAAA/q6oqPgAAAD+rqqo+AAAAPwAAAD8AAAA/q6oqPwAAAD9VVVU/AAAAPwAAgD8AAAA/AAAAAAAAQD+rqio+AABAP6uqqj4AAEA/AAAAPwAAQD+rqio/AABAP1VVVT8AAEA/AACAPwAAQD8AAAAAAACAP6uqKj4AAIA/q6qqPgAAgD8AAAA/AACAP6uqKj8AAIA/VVVVPwAAgD8AAIA/AACAPw=="),
+"format": 34359742487,
+"index_count": 144,
+"index_data": PackedByteArray("AAABAAcAAQAIAAcAAQACAAgAAgAJAAgAAgADAAkAAwAKAAkAAwAEAAoABAALAAoABAAFAAsABQAMAAsABQAGAAwABgANAAwABwAIAA4ACAAPAA4ACAAJAA8ACQAQAA8ACQAKABAACgARABAACgALABEACwASABEACwAMABIADAATABIADAANABMADQAUABMADgAPABUADwAWABUADwAQABYAEAAXABYAEAARABcAEQAYABcAEQASABgAEgAZABgAEgATABkAEwAaABkAEwAUABoAFAAbABoAFQAWABwAFgAdABwAFgAXAB0AFwAeAB0AFwAYAB4AGAAfAB4AGAAZAB8AGQAgAB8AGQAaACAAGgAhACAAGgAbACEAGwAiACEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 35,
+"vertex_data": PackedByteArray("AAAAAJqZmT8AAAAAAAAAAJqZmT8AAAAAAAAAAJqZmT8AAAAAAAAAAJqZmT8AAAAAAAAAAJqZmT8AAAAAAAAAAJqZmT8AAAAAAAAAAJqZmT8AAAAAv0uAPqq2fj9juRc/6gBjP6q2fj/QsNG8CdsiP6q2fj/pRh6/v0uAvqq2fj9juRe/6QBjv6q2fj/wsNE8C9siv6q2fj/oRh4/v0uAPqq2fj9juRc/E3C1PgAAAD8EklY/CYSgPwAAAD8QRhS9B1BmPwAAAD9l1l+/E3C1vgAAAD8Ekla/CYSgvwAAAD8gRhQ9ClBmvwAAAD9j1l8/E3C1PgAAAD8EklY/v0uAPgCrpDtjuRc/6gBjPwCrpDvQsNG8CdsiPwCrpDvpRh6/v0uAvgCrpDtjuRe/6QBjvwCrpDvwsNE8C9sivwCrpDvoRh4/v0uAPgCrpDtjuRc/AAAAAMzMTL4AAAAAAAAAAMzMTL4AAAAAAAAAAMzMTL4AAAAAAAAAAMzMTL4AAAAAAAAAAMzMTL4AAAAAAAAAAMzMTL4AAAAAAAAAAMzMTL4AAAAA/n/+////A9P+f/7///+J8P5//v8AAErV/n/+/wgm/7/+f/7/FGH/v/5//v9o1f+//n/+////A9P2l1ev//8D0/rSV6///4nwx9ty0QAAStVYLwfoCCb/v1gvBK0UYf+/c1E2pGjV/7/2l1ev//8D0wim/3///wPT/v9nfP//ifD//xW/AABK1QAA9dkIJv+/lwP/fxRh/78VP/9/aNX/vwim/3///wPT9pemUP//A9P50qZQ//+J8Mfbiy4AAErVWC/3Fwgm/79YL/lSFGH/v3JRyFto1f+/9pemUP//A9P+fwAA//8D0/5/AAD//4nw/n8AAAAAStX+fwAACCb/v/5/AAAUYf+//n8AAGjV/7/+fwAA//8D0w==")
+}]
+
+[sub_resource type="StandardMaterial3D" id="asset_004"]
+resource_name = "Greyfen_moss"
+albedo_color = Color(0.27450982, 0.34509805, 0.27450982, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="asset_005"]
+_surfaces = [{
+"aabb": AABB(-0.8243525, 0.803, -0.39000002, 0.84870493, 0.29400003, 0.98),
+"attribute_data": PackedByteArray("AAAAAAAAAACrqio+AAAAAKuqqj4AAAAAAAAAPwAAAACrqio/AAAAAFVVVT8AAAAAAACAPwAAAAAAAAAAAACAPquqKj4AAIA+q6qqPgAAgD4AAAA/AACAPquqKj8AAIA+VVVVPwAAgD4AAIA/AACAPgAAAAAAAAA/q6oqPgAAAD+rqqo+AAAAPwAAAD8AAAA/q6oqPwAAAD9VVVU/AAAAPwAAgD8AAAA/AAAAAAAAQD+rqio+AABAP6uqqj4AAEA/AAAAPwAAQD+rqio/AABAP1VVVT8AAEA/AACAPwAAQD8AAAAAAACAP6uqKj4AAIA/q6qqPgAAgD8AAAA/AACAP6uqKj8AAIA/VVVVPwAAgD8AAIA/AACAPw=="),
+"format": 34359742487,
+"index_count": 144,
+"index_data": PackedByteArray("AAABAAcAAQAIAAcAAQACAAgAAgAJAAgAAgADAAkAAwAKAAkAAwAEAAoABAALAAoABAAFAAsABQAMAAsABQAGAAwABgANAAwABwAIAA4ACAAPAA4ACAAJAA8ACQAQAA8ACQAKABAACgARABAACgALABEACwASABEACwAMABIADAATABIADAANABMADQAUABMADgAPABUADwAWABUADwAQABYAEAAXABYAEAARABcAEQAYABcAEQASABgAEgAZABgAEgATABkAEwAaABkAEwAUABoAFAAbABoAFQAWABwAFgAdABwAFgAXAB0AFwAeAB0AFwAYAB4AGAAfAB4AGAAZAB8AGQAgAB8AGQAaACAAGgAhACAAGgAbACEAGwAiACEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 35,
+"vertex_data": PackedByteArray("zczMvn9qjD/NzMw9zczMvn9qjD/NzMw9zczMvn9qjD/NzMw9zczMvn9qjD/NzMw9zczMvn9qjD/NzMw9zczMvn9qjD/NzMw9zczMvn9qjD/NzMw9zczMvqnnhj9VmeQ+CKzMvannhj9E5os+DKzMvannhj95/5W9zczMvqnnhj/eZXy+TDczv6nnhj9x/5W9TDczv6nnhj9D5os+zczMvqnnhj9VmeQ+zczMvjMzcz8+Chc/0H7HPDMzcz/Xo7A+wH7HPDMzcz/kehS+zczMvjMzcz8Vrse+xAhTvzMzcz/eehS+xAhTvzMzcz/Vo7A+zczMvjMzcz8+Chc/zczMvhSXWD9VmeQ+CKzMvRSXWD9E5os+DKzMvRSXWD95/5W9zczMvhSXWD/eZXy+TDczvxSXWD9x/5W9TDczvxSXWD9D5os+zczMvhSXWD9VmeQ+zczMvmiRTT/NzMw9zczMvmiRTT/NzMw9zczMvmiRTT/NzMw9zczMvmiRTT/NzMw9zczMvmiRTT/NzMw9zczMvmiRTT/NzMw9zczMvmiRTT/NzMw9AYD//////78BgP////+S6AGA//8AAJLoAYD//wAA/78BgP//JFH/vwGA///Zrv+/AYD//////7/+f4md////v4fCC5f//5Lo8uh1vQAAkuh14v//AAD/vwwXdb0kUf+/dT0Ll9mu/7/+f4md////v/9//3////+/JdH/f///kuj//9muAACS6P////8AAP+/AADZriRR/7/YLv9/2a7/v/9//3////+//n91Yv///7+IwvJo//+S6PLoiEIAAJLodeIAAAAA/78MF4dCJFH/v3U98mjZrv+//n91Yv///78BgAAA////vwGAAAD//5LoAYAAAAAAkugBgAAAAAD/vwGAAAAkUf+/AYAAANmu/78BgAAA////vw==")
+}]
+
+[node name="rock" type="Node3D"]
+metadata/prop_kind = &"rock"
+
+[node name="Surface_Greyfen_stone" type="MeshInstance3D" parent="."]
+material_override = SubResource("asset_002")
+mesh = SubResource("asset_003")
+
+[node name="Surface_Greyfen_moss" type="MeshInstance3D" parent="."]
+material_override = SubResource("asset_004")
+mesh = SubResource("asset_005")

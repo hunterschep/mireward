@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3]
+
+[sub_resource type="StandardMaterial3D" id="asset_001"]
+resource_name = "Greyfen_wood"
+albedo_color = Color(0.34117648, 0.28627452, 0.22352941, 1)
+roughness = 0.92
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="asset_002"]
+top_radius = 0.025
+bottom_radius = 0.025
+height = 0.45
+radial_segments = 8
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="asset_003"]
+resource_name = "Greyfen_dark_iron"
+albedo_color = Color(0.26666668, 0.30588236, 0.29803923, 1)
+metallic = 0.42
+roughness = 0.66
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="asset_004"]
+size = Vector3(0.24, 0.12, 0.11)
+
+[node name="smith_hammer" type="Node3D"]
+metadata/item_id = &"smith_hammer"
+
+[node name="Handle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+material_override = SubResource("asset_001")
+mesh = SubResource("asset_002")
+
+[node name="HammerHead" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44, 0)
+material_override = SubResource("asset_003")
+mesh = SubResource("asset_004")
