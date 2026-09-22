@@ -56,6 +56,9 @@ func reset_runtime() -> void:
 	_death_transaction = &""
 	_release_lock()
 
+func has_pending_recovery() -> bool:
+	return not _pending_recovery.is_empty()
+
 func is_consuming() -> bool:
 	return not _consumption.is_empty()
 
@@ -65,7 +68,7 @@ func consumption_view() -> Dictionary:
 func start_consume(stack_id: StringName) -> MireTypes.ActionResult:
 	if not _player_ready() or not session.active or float(session.state.player.health) <= 0:
 		return MireTypes.failure(&"unavailable", &"Enter the world before using an item.")
-	if is_consuming() or session.action_locked or session.travelling or not _pending_recovery.is_empty() or _combat.is_committed():
+	if is_consuming() or session.action_locked or session.travelling or session.transactions.active or not _pending_recovery.is_empty() or _combat.is_committed():
 		return MireTypes.failure(&"action_locked", &"Finish the current action before using an item.")
 	var stack: Dictionary = session.inventory.find_stack(stack_id)
 	if stack.is_empty():

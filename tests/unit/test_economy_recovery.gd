@@ -159,11 +159,21 @@ func run(t: SceneTree) -> void:
 	t.check(recovery.confirm_death().ok and session.state.player.crowns == 90 and fixture.reset_calls == resets_after_failure, "R22 arrival retry neither charges again nor repeats completed encounter reset")
 	recovery.reset_runtime()
 	session.new_game()
+	session.state.player.crowns = 100
+	session.state.player.health = 0.0
+	fixture.fail_reset = true
+	var applies_before_reset_failure: int = fixture.apply_calls
+	var reset_failed := recovery.confirm_death()
+	t.check(not reset_failed.ok and reset_failed.payload.committed and session.state.player.crowns == 90 and fixture.apply_calls == applies_before_reset_failure, "R22 encounter reset failure leaves a committed retry without starting travel")
+	fixture.fail_reset = false
+	t.check(recovery.retry_recovery().ok and session.state.player.crowns == 90, "R22 encounter reset retry cannot charge a second fee")
+	recovery.reset_runtime()
+	session.new_game()
 	session.state.player.health = 0.0
 	fixture.pending = true
 	var saved_count: int = autosaves.size()
 	var queued := recovery.confirm_death()
-	t.check(queued.ok and queued.payload.pending and not queued.payload.complete and session.travelling and autosaves.size() == saved_count, "R22 asynchronous travel acceptance is pending and cannot autosave")
+	t.check(queued.ok and queued.payload.pending and not queued.payload.complete and session.travelling and recovery.has_pending_recovery() and autosaves.size() == saved_count, "R22 asynchronous travel acceptance is pending and cannot autosave")
 	var old_operation: StringName = fixture.operation_id
 	session.travelling = false
 	recovery.advance(2.0)
@@ -177,7 +187,7 @@ func run(t: SceneTree) -> void:
 	t.check(not recovery.finish_pending_travel(old_operation, MireTypes.success()).ok, "R22 late success from failed operation is ignored")
 	fixture.arrive()
 	var arrived := recovery.finish_pending_travel(fixture.operation_id, MireTypes.success())
-	t.check(arrived.ok and arrived.payload.complete and not session.action_locked and autosaves.size() == saved_count + 1, "R22 explicit final arrival unlocks input and requests exactly one save")
+	t.check(arrived.ok and arrived.payload.complete and not session.action_locked and not recovery.has_pending_recovery() and autosaves.size() == saved_count + 1, "R22 explicit final arrival unlocks input and requests exactly one save")
 	recovery.unbind_runtime()
 	var unbound: Dictionary = session.snapshot()
 	t.check(not recovery.rest(&"village_shrine", &"unbound").ok and session.state == unbound, "R22 unbound travel cannot pretend rest succeeded")

@@ -13,6 +13,7 @@ var player: MirePlayer
 var modal_host: Control
 var _configured: bool = false
 var _focus_lost: bool = false
+var _recovery_travel_mode: bool = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -33,12 +34,27 @@ func configure(controlled_player: MirePlayer, host: Control = null) -> void:
 	if is_inside_tree():
 		_apply_mode()
 
+func _process(_delta: float) -> void:
+	if not _configured:
+		return
+	var pending: bool = GameSession.recovery.has_pending_recovery()
+	if pending and mode == &"gameplay":
+		_apply_mode()
+	elif not pending and _recovery_travel_mode:
+		_recovery_travel_mode = false
+		if mode == &"travel":
+			stack = [&"gameplay"]
+			mode = &"gameplay"
+			_apply_mode()
+
 func push_mode(requested: StringName) -> MireTypes.ActionResult:
 	if requested not in MireTypes.MODES:
 		return MireTypes.failure(&"invalid_mode", &"That screen is not available.")
 	if not _configured:
 		return MireTypes.failure(&"unavailable", &"The game is not ready for input.")
 	if requested == mode:
+		if mode == &"gameplay" and GameSession.recovery.has_pending_recovery():
+			_apply_mode()
 		return MireTypes.success({"mode": String(mode)})
 	if requested in [&"gameplay", &"title"]:
 		stack = [requested]
@@ -101,6 +117,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func _apply_mode() -> void:
 	if not is_inside_tree():
 		return
+	if mode == &"gameplay" and GameSession.recovery.has_pending_recovery():
+		_recovery_travel_mode = true
+		stack = [&"gameplay", &"travel"]
+		mode = &"travel"
 	var gameplay: bool = mode == &"gameplay" and not _focus_lost
 	if is_instance_valid(player):
 		player.clear_input_edges()

@@ -12,10 +12,10 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T06 | IMPLEMENTED | Integration lead | 79 unit +26 spatial assertions; full suite958 pass; final combat feel/audio later |
 | T07 | IMPLEMENTED | Integration lead | Root67 enemy assertions pass; native world/loot integration later |
 | T08 | VERIFIED | Integration lead | 130 inventory/equipment/loot assertions; physical UI/world wiring later |
-| T09 | IN_PROGRESS | environment | Shop/recovery105 assertions pass; healing integration under test |
-| T10 | IN_PROGRESS | visual_toolkit + landmark helper | Authored valley, routes and baked navigation; parallel with T09 |
-| T11 | NOT_STARTED | Unassigned | T09/T10 integrated |
-| T12 | NOT_STARTED | Unassigned | T02/T08/T09 integrated; parallel with T11 |
+| T09 | IMPLEMENTED | Integration lead | 107 unit +44 physics assertions; campaign travel/UI/save wiring later |
+| T10 | IMPLEMENTED | Integration lead | Exterior634 assertions, route walks and baseline captures; final dressing later |
+| T11 | IN_PROGRESS | world_travel | Three interiors, routing, hazards and discovery |
+| T12 | IN_PROGRESS | quest_engine | All12 quest definitions, choices and predicate engine |
 | T13 | NOT_STARTED | Unassigned | T05/T12 integrated |
 | T14 | NOT_STARTED | Unassigned | T09/T11/T12/T13 integrated |
 | T15 | NOT_STARTED | Unassigned | T10/T13/T14 integrated |
@@ -24,10 +24,10 @@ Complete specification scope is authorized. The user objective overrides sequent
 
 ## Exclusive ownership
 
-- visual_toolkit: T10 exterior geometry, map manifest, navigation bake and tests.
-- foundation_audit: T10 landmark-placement helper, scripts/world/exterior_landmarks.gd only.
-- Integration lead: T04 player code/scene/movement tests, root configuration, autoloads/core, shared records, integration and checkpoints.
-- environment: T09 economy/recovery services and related tests.
+- world_travel: T11 router/interior/portal scripts, inn/crypt/undercroft scenes and travel tests.
+- quest_engine: T12 quest service/predicates, quest registry and quest tests.
+- world_validation: exterior schema helper and its unit tests.
+- Integration lead: shared configuration/autoload/core wiring, GameRoot/UI integration, returned T09/T10 code, records and all Git operations.
 
 ## Resume
 

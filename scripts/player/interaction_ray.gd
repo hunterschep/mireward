@@ -103,7 +103,7 @@ func _find_target() -> InteractionComponent:
 	return closest
 
 func _can_interact() -> bool:
-	return is_inside_tree() and is_instance_valid(player) and is_instance_valid(mode_controller) and mode_controller.mode == &"gameplay" and player.input_enabled and not get_tree().paused
+	return is_inside_tree() and is_instance_valid(player) and is_instance_valid(mode_controller) and mode_controller.mode == &"gameplay" and player.input_enabled and not get_tree().paused and not GameSession.travelling and not GameSession.recovery.has_pending_recovery()
 
 func _on_mode_changed(_mode: StringName) -> void:
 	clear_focus()

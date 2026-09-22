@@ -56,7 +56,7 @@ func spawn_at(at: Vector3, yaw: float = 0.0) -> void:
 	clear_input_edges()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not input_enabled or get_tree().paused or Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+	if not input_enabled or get_tree().paused or GameSession.recovery.has_pending_recovery() or Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		return
 	if event is InputEventMouseMotion:
 		apply_look(event.relative)
@@ -69,7 +69,7 @@ func apply_look(relative: Vector2) -> void:
 
 func _physics_process(delta: float) -> void:
 	controls.tick()
-	if not input_enabled or not GameSession.active or GameSession.travelling:
+	if not input_enabled or not GameSession.active or GameSession.travelling or GameSession.recovery.has_pending_recovery():
 		return
 	var axis := controls.movement()
 	var direction := global_basis * Vector3(axis.x, 0.0, axis.y)
