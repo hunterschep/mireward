@@ -16,8 +16,8 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T10 | IMPLEMENTED | Integration lead | Exterior634 assertions, route walks and baseline captures; final dressing later |
 | T11 | IN_PROGRESS | world_travel | Three interiors, routing, hazards and discovery |
 | T12 | IMPLEMENTED | Integration lead | Root619 quest assertions; physical campaign/UI wiring later |
-| T13 | IN_PROGRESS | world_validation | Dialogue graph, speaker adapters and branch validation |
-| T14 | NOT_STARTED | Unassigned | T09/T11/T12/T13 integrated |
+| T13 | IMPLEMENTED | Integration lead | Root598 dialogue assertions; native UI and placement later |
+| T14 | IN_PROGRESS | save/lifecycle owner | Durable slots, settings and failure recovery |
 | T15 | NOT_STARTED | Unassigned | T10/T13/T14 integrated |
 | T16 | NOT_STARTED | Integration lead | Playable opening integration, then continue full campaign |
 | T17–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies after opening integration |
@@ -26,7 +26,7 @@ Complete specification scope is authorized. The user objective overrides sequent
 
 - world_travel: T11 router/interior/portal scripts, inn/crypt/undercroft scenes and travel tests.
 - quest_engine: read-only T11 integration review after returning T12.
-- world_validation: T13 dialogue service/rules/data, NPC adapter and dialogue tests.
+- world_validation/npc_adapter: T14 SaveService, codecs, settings and save tests; T13 ownership returned.
 - Integration lead: shared configuration/autoload/core wiring, GameRoot/UI integration, returned T09/T10 code, records and all Git operations.
 
 ## Resume

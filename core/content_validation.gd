@@ -123,6 +123,8 @@ static func validate(db: Node, release: bool = false) -> PackedStringArray:
 		errors.append("Container registry must be an array.")
 	errors.append_array(ExteriorValidation.validate(db.map, db.containers, db.dialogues))
 	errors.append_array(QuestPredicates.validate_definitions(db))
+	if errors.is_empty():
+		errors.append_array(DialogueRules.validate_definitions(db))
 	for shop_id: Variant in db.shops:
 		if not SessionValidation.identifier(shop_id) or not db.shops[shop_id] is Dictionary:
 			errors.append("Invalid shop: " + str(shop_id))

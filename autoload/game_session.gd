@@ -7,6 +7,7 @@ var world_state: WorldStateService
 var economy: EconomyService
 var recovery: RecoveryService
 var quests: QuestService
+var dialogue: DialogueService
 var danger: bool = false
 var action_locked: bool = false
 var travelling: bool = false
@@ -24,6 +25,7 @@ func _ready() -> void:
 	recovery = RecoveryService.new(self)
 	inventory.consume_handler = recovery.start_consume
 	quests = QuestService.new(self)
+	dialogue = DialogueService.new(self)
 	EventBus.inventory_changed.connect(quests.reconcile)
 	EventBus.evidence_acquired.connect(_reconcile_quest_evidence)
 	EventBus.entity_defeated.connect(_reconcile_quest_evidence)
@@ -38,6 +40,8 @@ func _reconcile_quest_evidence(_id: StringName) -> void:
 	quests.reconcile()
 
 func new_game() -> void:
+	if dialogue != null:
+		dialogue.close()
 	if recovery != null:
 		recovery.reset_runtime()
 	state = {
@@ -68,6 +72,8 @@ func restore(candidate: Dictionary) -> MireTypes.ActionResult:
 	var valid := validate_snapshot(candidate)
 	if not valid.ok:
 		return valid
+	if dialogue != null:
+		dialogue.close()
 	if recovery != null:
 		recovery.reset_runtime()
 	state = candidate.duplicate(true)

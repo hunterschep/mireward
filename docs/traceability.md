@@ -35,7 +35,7 @@ PASS requires linked execution evidence for every applicable verification method
 | R29 Six-main-quest sequence | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R30 Six side quests | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R31 Bell puzzle | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R32 Dialogue and cast | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R32 Dialogue and cast | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R33 Evidence and early collection | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R34 Atomic choices and rewards | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R35 Three final resolutions | IN PROGRESS | See tasks.md coverage map; final gate T28 |
