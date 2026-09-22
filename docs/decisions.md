@@ -12,3 +12,5 @@
 - Foundation quest/dialogue registries reserve canonical IDs with `foundation_only=true`; release validation refuses them. T12/T13 replace them with complete data rather than inventing new IDs.
 - User explicitly requests ongoing commits and pushes. Review each staged integration diff, commit a coherent batch, and push fix/mireward-game after the relevant checks. Keep unfinished task state visible; do not wait for the whole game before pushing.
 - Keep text resources LF across Git checkouts. The exterior navigation resource records the map-file SHA256, so platform line-ending conversion must not invalidate an otherwise identical authored map.
+
+- Rendering integration uses a TextureRect displaying the separate 3D SubViewport, with UI outside it. Only unhandled gameplay mouse motion forwards into that viewport. Window stretch aspect is expand so the actual aspect reaches the camera; explicit letterboxing limits it to4:3–21:9. Player look uses Godot screen_relative, per https://docs.godotengine.org/en/4.5/classes/class_inputeventmousemotion.html.

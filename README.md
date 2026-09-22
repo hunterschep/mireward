@@ -15,7 +15,7 @@ godot --headless --path . --script res://tools/validate_content.gd
 godot --headless --path . --script res://tests/run_all.gd
 ```
 
-The current checkpoint is the shared foundation, not a playable campaign or release. See [progress](docs/progress.md) and [verification](docs/verification.md) for the active work queue and actual evidence.
+The current checkpoint includes combat, inventory, quests, dialogue, and connected worlds. The title remains a development shell while saving and the game menus are integrated. It is not yet a playable campaign or release. See [progress](docs/progress.md) and [verification](docs/verification.md) for the active work queue and actual evidence.
 
 ## Default controls
 
@@ -30,6 +30,6 @@ mkdir -p builds
 godot --headless --path . --export-release macOS builds/MIREWARD.app
 ```
 
-The game export is not yet verified. The environment's standalone template probe is recorded separately in [T01 environment](docs/handoffs/T01-environment.md). macOS notarization and distribution signing are outside this local delivery.
+The release export is not yet verified. The environment's standalone template probe is recorded separately in [T01 environment](docs/handoffs/T01-environment.md). macOS notarization and distribution signing are outside this local delivery.
 
 No publishing is planned. Source, original assets, tests, host export, accessibility controls, save locations, credits, and release verification will be documented as their task gates are integrated. Mandatory unfinished features remain open in [traceability](docs/traceability.md).

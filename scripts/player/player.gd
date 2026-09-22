@@ -59,7 +59,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not input_enabled or get_tree().paused or GameSession.recovery.has_pending_recovery() or Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		return
 	if event is InputEventMouseMotion:
-		apply_look(event.relative)
+		apply_look(event.screen_relative)
 
 func apply_look(relative: Vector2) -> void:
 	var sensitivity: float = float(SaveService.settings.mouse_sensitivity)
