@@ -10,6 +10,7 @@ const PLAYER_SCENE := preload("res://scenes/player/player.tscn")
 var player: MirePlayer
 var world_container: Node3D
 var router: WorldRouter
+var campaign: CampaignWorld
 var modes: GameModeController
 var interaction: InteractionRay
 var modal_host: ModalHost
@@ -69,6 +70,8 @@ func _ready() -> void:
 	var configured := router.configure(player, world_container, modes, interface)
 	if not configured.ok:
 		push_error(configured.message_key)
+	campaign = CampaignWorld.new(player)
+	router.world_builder = campaign.build
 	router.world_activated.connect(_world_activated)
 	var bound := bind_session_services()
 	if not bound.ok:
@@ -172,6 +175,9 @@ func _world_activated(world: Node3D) -> void:
 			var activated: MireTypes.ActionResult = node.activate()
 			if not activated.ok:
 				_report_action(activated)
+	var populated := campaign.activate(world)
+	if not populated.ok:
+		_report_action(populated)
 	_apply_shadows()
 	world_ready.emit(world)
 

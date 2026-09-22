@@ -15,7 +15,7 @@ godot --headless --path . --script res://tools/validate_content.gd
 godot --headless --path . --script res://tests/run_all.gd
 ```
 
-The current checkpoint includes combat, inventory, quests, dialogue, connected worlds, durable saves, and functional game menus. Opening-world characters and encounters are being integrated. It is not yet a complete playable campaign or release. See [progress](docs/progress.md) and [verification](docs/verification.md) for the active work queue and actual evidence.
+The current checkpoint includes combat, inventory, quests, dialogue, connected worlds, durable saves, and functional game menus. The opening characters and cart encounter are connected; their native acceptance run is next. It is not yet a complete playable campaign or release. See [progress](docs/progress.md) and [verification](docs/verification.md) for the active work queue and actual evidence.
 
 ## Default controls
 

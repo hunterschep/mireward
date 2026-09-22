@@ -125,7 +125,7 @@ func _update_target() -> void:
 		var actor: Node = game.router.current_world.entities.get(_recent_target)
 		if is_instance_valid(actor) and actor.get("combat") is CombatComponent:
 			victim = actor.combat
-	var shown: bool = is_instance_valid(victim) and not victim.dead and victim.faction == &"hostile"
+	var shown: bool = is_instance_valid(victim) and not victim.dead and victim.faction == &"hostile" and not victim.actor is TrainingDummy
 	if shown and victim.entity_id == &"captain_hall_captain_rusk_01":
 		shown = victim.actor.has_method("is_duel_active") and bool(victim.actor.call("is_duel_active"))
 	target.visible = shown
@@ -139,6 +139,8 @@ func _update_target() -> void:
 		target_health.value = victim.get_health()
 
 func _hit_landed(victim_id: StringName, _result: MireTypes.DamageResult) -> void:
+	if victim_id == TrainingDummy.ENTITY_ID:
+		return
 	_recent_target = victim_id
 	_recent_left = 3.0
 

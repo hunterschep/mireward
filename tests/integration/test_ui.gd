@@ -355,19 +355,12 @@ func _target_bar() -> void:
 	var world: Node3D = game.router.current_world
 	var original_position: Vector3 = game.player.global_position
 	var original_yaw: float = game.player.rotation.y
-	var spawn: Dictionary = {}
-	for row: Dictionary in t.root.get_node("ContentDB").map.spawns:
-		if row.id == "south_cart_cutpurse_01":
-			spawn = row
-	var coordinator := EncounterCoordinator.new()
-	world.add_child(coordinator)
-	coordinator.configure(game.player)
+	var actor: EnemyActor = world.entities[&"south_cart_cutpurse_01"]
+	var coordinator: EncounterCoordinator = actor.coordinator
 	coordinator.set_physics_process(false)
-	var actor := EnemyActor.new()
-	world.add_child(actor)
-	t.check(actor.configure(spawn, game.player, coordinator).ok, "R44 target-bar fixture creates an actual authored cutpurse")
-	actor.set_physics_process(false)
-	world.entities[actor.entity_id] = actor
+	for other: EnemyActor in coordinator.actors():
+		other.set_thinking(false)
+	t.check(actor.player == game.player and not actor.combat.dead, "R44 target-bar test uses the actual registered opening cutpurse")
 	game.player.spawn_at(actor.spawn_position + Vector3(0, 0, 1.7), 0)
 	await _frames(8)
 	t.check(ui.hud.target.visible and ui.hud.target.text == "Cutpurse" and ui.hud.target_health.value == actor.combat.get_health(), "R44 target bar names actual enemy definition and shows real health")
@@ -378,8 +371,23 @@ func _target_bar() -> void:
 	t.check(actor.combat.get_health() < actor.combat.max_health and ui.hud.target.visible and ui.hud.target.text == "Cutpurse", "R44 actual recent hit keeps hostile health visible briefly after looking away")
 	actor.combat.receive_hit(MireTypes.DamageRequest.new(&"player", 100, actor.entity_id, 500, &"light", game.player.global_position, &"player"))
 	await _frames(8)
-	t.check(not ui.hud.target.visible, "R44 dead hostile does not retain a target health bar")
-	world.entities.erase(actor.entity_id)
-	actor.free()
-	coordinator.free()
+	t.check(not ui.hud.target.visible and world.entities[actor.entity_id] == actor and session.state.world[String(actor.entity_id)].defeated, "R44 defeated hostile stays registered and persistent but has no health bar")
+	var dummy: TrainingDummy = world.entities[TrainingDummy.ENTITY_ID]
+	game.player.spawn_at(dummy.global_position + Vector3(0, 0, 1.7), 0)
+	await _frames(8)
+	t.check(not ui.hud.target.visible and not ui.hud.target_health.visible, "R44 aiming at the nonattacking training dummy shows no hostile health bar")
+	var hits: Array[int] = []
+	var received := func(_request: MireTypes.DamageRequest, result: MireTypes.DamageResult) -> void: hits.append(result.health_damage)
+	dummy.combat.hit_received.connect(received)
+	var crowns: int = session.state.player.crowns
+	t.check(game.player.combat.request_attack(&"light").ok, "R47 actual player swing can still target the training dummy")
+	await _frames(53)
+	t.check(hits.size() == 1 and hits[0] > 0 and dummy.combat.health == dummy.combat.max_health, "R47 dummy accepts real melee contact and resets health without changing hit masks")
+	t.check(ui.hud._recent_target != TrainingDummy.ENTITY_ID and not ui.hud.target.visible, "R44 a real dummy hit never enters recent hostile target retention")
+	game.player.rotation.y = PI
+	await _frames(8)
+	t.check(not ui.hud.target.visible and session.state.player.crowns == crowns and not session.state.world.has(String(TrainingDummy.ENTITY_ID)), "R47 looking away from struck dummy shows no hostile bar or persistent reward")
+	dummy.combat.hit_received.disconnect(received)
 	game.player.spawn_at(original_position - Vector3.UP * 0.06, original_yaw)
+	coordinator.set_physics_process(true)
+	coordinator.refresh_budget()
