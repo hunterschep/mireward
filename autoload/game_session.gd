@@ -56,7 +56,7 @@ func new_game() -> void:
 ## Build a detached new game for world preparation without disturbing live play.
 func fresh_snapshot() -> Dictionary:
 	var initial_state: Dictionary = {
-		"player": {"health": 100.0, "stamina": 100.0, "crowns": 12, "scene_id": "exterior", "position": [32.0, 0.0, 252.0], "yaw": 0.0, "rest_anchor": "village_shrine"},
+		"player": {"health": 100.0, "stamina": 100.0, "crowns": 12, "scene_id": "exterior", "position": ContentDB.map.start.duplicate(), "yaw": float(ContentDB.map.exterior.entrance_yaws.start), "rest_anchor": "village_shrine"},
 		"inventory": [{"stack_id": "stack_1", "item_id": "rusted_sword", "quantity": 1}, {"stack_id": "stack_2", "item_id": "wooden_buckler", "quantity": 1}, {"stack_id": "stack_3", "item_id": "patched_coat", "quantity": 1}, {"stack_id": "stack_4", "item_id": "bandage", "quantity": 2}, {"stack_id": "stack_5", "item_id": "bread", "quantity": 1}],
 		"equipment": {"weapon": "stack_1", "shield": "stack_2", "armor": "stack_3"},
 		"key_items": {}, "evidence": {}, "quests": {}, "world": {},

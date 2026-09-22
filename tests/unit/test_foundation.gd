@@ -6,6 +6,7 @@ func run(t: SceneTree) -> void:
 	var bus: Node = t.root.get_node("EventBus")
 	session.new_game()
 	t.check(ContentValidation.validate(db).is_empty(), "R04 canonical content registries")
+	t.check(session.state.player.position == db.map.start and is_equal_approx(session.state.player.yaw, db.map.exterior.entrance_yaws.start), "R05 New Game begins at the authored position facing the village road")
 	var duplicate := [{"id": "same"}, {"id": "same"}]
 	t.check(not ContentValidation.registry(duplicate, "enemy").is_empty(), "R04 rejects duplicate IDs")
 	var initial: Dictionary = session.snapshot()
