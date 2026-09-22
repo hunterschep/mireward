@@ -59,11 +59,38 @@ func run(t: SceneTree) -> void:
 		await t.physics_frame
 	Input.action_release(&"move_forward")
 	t.check(game.player.position == before and t.paused and not game.player.input_enabled, "R45 native modal pauses the 3D player")
+	await _session_cycles(t, game, session, saves, player_id)
+	await t.process_frame
 	game.free()
 	await t.process_frame
 	t.check(not t.paused and t.get_nodes_in_group("player").is_empty() and session.recovery.player == null, "R40 root teardown frees player and recovery bindings and releases pause")
 	saves.settings = original
 	session.new_game()
+
+func _session_cycles(t: SceneTree, game: MireGameRoot, session: Node, saves: Node, player_id: int) -> void:
+	t.check(saves.save_slot(&"manual_1").ok, "R37 the actual composed runtime writes a manual save")
+	var manual_path: String = saves.slot_path(&"manual_1")
+	var manual_hash := FileAccess.get_sha256(manual_path)
+	var recorded: Dictionary = saves.inspect_slot(&"manual_1").payload.snapshot
+	for cycle: int in 3:
+		t.check(game.leave_to_title().ok and not session.active and game.modes.mode == &"title" and game.world_container.get_child_count() == 0, "R40 title teardown clears the real world in cycle " + str(cycle))
+		t.check(session.quests.autosave_requested.get_connections().is_empty() and session.recovery.player == null, "R40 title removes live recovery and autosave listeners")
+		var loaded: MireTypes.ActionResult = await game.load_slot(&"manual_1")
+		t.check(loaded.ok and session.active and game.router.loaded_scene_id == &"interior_inn" and session.state.inventory == recorded.inventory, "R39 title load reconstructs the recorded world and inventory")
+		t.check(game.player.get_instance_id() == player_id and t.get_nodes_in_group("player").size() == 1 and session.quests.autosave_requested.get_connections().size() == 1, "R40 repeated title/load has one player and one autosave subscription")
+	var unchanged: Dictionary = session.snapshot()
+	var absent: MireTypes.ActionResult = await game.load_slot(&"manual_3")
+	t.check(not absent.ok and session.snapshot() == unchanged and game.modes.mode == &"gameplay", "R39 an empty load leaves current gameplay intact")
+	t.check(saves.save_slot(&"autosave").ok, "R40 create the actual autosave before New Game confirmation")
+	var denied: MireTypes.ActionResult = await game.start_new_game(false)
+	t.check(not denied.ok and denied.code == &"confirmation_required" and session.state.inventory == recorded.inventory, "R40 New Game refuses unconfirmed autosave replacement")
+	var selected: Dictionary = saves.settings.duplicate(true)
+	selected.fov = 85.0
+	var settings_result: MireTypes.ActionResult = saves.save_settings(selected)
+	t.check(settings_result.ok and is_equal_approx(game.player.camera.fov, 85.0), "R42 persisted settings update the active camera: " + String(settings_result.message_key))
+	var started: MireTypes.ActionResult = await game.start_new_game(true)
+	t.check(started.ok and game.router.loaded_scene_id == &"exterior" and session.state.player.crowns == 12 and session.state.choices.ending == "none" and saves.settings.fov == 85.0, "R40 confirmed New Game resets progress and retains settings")
+	t.check(FileAccess.get_sha256(manual_path) == manual_hash, "R40 loading and New Game never alter the manual slot")
 
 func _arrive(t: SceneTree, game: MireGameRoot, accepted: MireTypes.ActionResult) -> void:
 	t.check(accepted.ok and accepted.payload.get("pending", false), "R06 composed router accepts travel")

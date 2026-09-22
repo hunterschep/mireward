@@ -17,15 +17,15 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T11 | IMPLEMENTED | Integration lead | Travel612, presentation19 and modes45; campaign UI wiring later |
 | T12 | IMPLEMENTED | Integration lead | Root619 quest assertions; physical campaign/UI wiring later |
 | T13 | IMPLEMENTED | Integration lead | Root598 dialogue assertions; native UI and placement later |
-| T14 | IN_PROGRESS | save/lifecycle owner | Durable slots, settings and failure recovery |
-| T15 | NOT_STARTED | Unassigned | T10/T13/T14 integrated |
+| T14 | IN_PROGRESS | save/lifecycle owner | Codec264 and composed lifecycle46 pass; final failure/queue checks underway |
+| T15 | IN_PROGRESS | quest_engine | Native menus/HUD over verified domain and save interfaces |
 | T16 | NOT_STARTED | Integration lead | Playable opening integration, then continue full campaign |
 | T17–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies after opening integration |
 
 ## Exclusive ownership
 
 - T11 world routing/interiors returned and integrated.
-- quest_engine: T11 review returned; available for a bounded integration review.
+- quest_engine: T15 native UI, HUD, settings, inventory/shop/loot and journal/map panels.
 - world_validation/npc_adapter: T14 SaveService, codecs, settings and save tests; T13 ownership returned.
 - Integration lead: shared configuration/autoload/core wiring, GameRoot/UI integration, returned T09/T10 code, records and all Git operations.
 

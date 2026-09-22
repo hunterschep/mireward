@@ -17,6 +17,7 @@ var game_view: SubViewport
 var view_texture: TextureRect
 var interface: Control
 var display_rect: Rect2
+var _session_bound: bool = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -68,7 +69,9 @@ func _ready() -> void:
 	if not configured.ok:
 		push_error(configured.message_key)
 	router.world_activated.connect(_world_activated)
-	GameSession.recovery.bind_runtime(player, router.is_dangerous, router.reset_living_encounters, router.recovery_travel)
+	var bound := bind_session_services()
+	if not bound.ok:
+		push_error(bound.message_key)
 	interaction = InteractionRay.new()
 	interaction.name = "InteractionRay"
 	player.add_child(interaction)
@@ -76,7 +79,49 @@ func _ready() -> void:
 	interaction.interaction_completed.connect(_report_action)
 	player.combat.died.connect(_player_died)
 	resized.connect(apply_settings)
+	SaveService.settings_changed.connect(_settings_changed)
 	apply_settings()
+	_apply_window_settings()
+
+func bind_session_services() -> MireTypes.ActionResult:
+	if _session_bound:
+		return MireTypes.success()
+	var bound := GameSession.recovery.bind_runtime(player, router.is_dangerous, router.reset_living_encounters, router.recovery_travel)
+	if not bound.ok:
+		return bound
+	bound = SaveService.bind_runtime(player, router)
+	if not bound.ok:
+		GameSession.recovery.unbind_runtime()
+		return bound
+	_session_bound = true
+	return MireTypes.success()
+
+func start_new_game(confirm_replace_autosave: bool = false) -> MireTypes.ActionResult:
+	var bound := bind_session_services()
+	if not bound.ok:
+		return bound
+	return await SaveService.start_new_game(confirm_replace_autosave)
+
+func load_slot(slot_id: StringName, use_backup: bool = false) -> MireTypes.ActionResult:
+	var bound := bind_session_services()
+	if not bound.ok:
+		return bound
+	return await SaveService.load_slot(slot_id, use_backup)
+
+func leave_to_title() -> MireTypes.ActionResult:
+	var left := SaveService.leave_session()
+	if not left.ok:
+		return left
+	_session_bound = false
+	interaction.clear_focus()
+	if is_instance_valid(router.current_world):
+		router.current_world.free()
+	router.current_world = null
+	router.loaded_scene_id = &""
+	router.last_safe.clear()
+	player.set_input_enabled(false)
+	modes.push_mode(&"title")
+	return MireTypes.success()
 
 func apply_settings() -> void:
 	if not is_instance_valid(game_view):
@@ -126,8 +171,23 @@ func _apply_shadows() -> void:
 		sun.directional_shadow_max_distance = 140.0 if SaveService.settings.shadows == "high" else 70.0
 
 func _mode_changed(mode: StringName) -> void:
+	view_texture.visible = GameSession.active and mode != &"title"
 	if mode not in [&"dialogue", &"confirmation", &"readable"] and GameSession.dialogue != null:
 		GameSession.dialogue.close()
+
+func _settings_changed(_settings: Dictionary) -> void:
+	apply_settings()
+	_apply_window_settings()
+
+func _apply_window_settings() -> void:
+	if DisplayServer.get_name() == "headless":
+		return
+	var window := get_window()
+	if SaveService.settings.fullscreen and window.mode not in [Window.MODE_FULLSCREEN, Window.MODE_EXCLUSIVE_FULLSCREEN]:
+		window.mode = Window.MODE_FULLSCREEN
+	elif not SaveService.settings.fullscreen and window.mode in [Window.MODE_FULLSCREEN, Window.MODE_EXCLUSIVE_FULLSCREEN]:
+		window.mode = Window.MODE_WINDOWED
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if SaveService.settings.vsync else DisplayServer.VSYNC_DISABLED)
 
 func _report_action(result: MireTypes.ActionResult) -> void:
 	action_result.emit(result)
@@ -138,5 +198,7 @@ func _player_died(_entity_id: StringName) -> void:
 	modes.push_mode(&"death")
 
 func _exit_tree() -> void:
+	SaveService.unbind_runtime()
 	GameSession.dialogue.close()
 	GameSession.recovery.unbind_runtime()
+	GameSession.active = false

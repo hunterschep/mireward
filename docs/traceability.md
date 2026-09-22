@@ -40,17 +40,17 @@ PASS requires linked execution evidence for every applicable verification method
 | R34 Atomic choices and rewards | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R35 Three final resolutions | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R36 Epilogue and continued play | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R37 Save payload and slots | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R38 Safe writes and corrupt-save recovery | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R39 Safe save timing and load isolation | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R40 Lifecycle and new-game isolation | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R37 Save payload and slots | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R38 Safe writes and corrupt-save recovery | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R39 Safe save timing and load isolation | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R40 Lifecycle and new-game isolation | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R41 Cohesive final visual assets | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R42 Retro/native rendering and settings | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R42 Retro/native rendering and settings | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R43 Soundscape and audio controls | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R44 HUD, inventory, journal, and map | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R44 HUD, inventory, journal, and map | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R45 Menus and modal ownership | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R46 Readability and accessibility options | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R47 Onboarding and feedback | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R46 Readability and accessibility options | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R47 Onboarding and feedback | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R48 Bounded runtime and performance evidence | NOT STARTED | See tasks.md coverage map; final gate T28 |
 | R49 Automated correctness and content checks | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R50 Playable end-to-end release gate | NOT STARTED | See tasks.md coverage map; final gate T28 |
