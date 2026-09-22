@@ -57,3 +57,5 @@ T12 is integrated as GameSession.quests. Inventory/evidence/defeat notifications
 T13 is integrated as GameSession.dialogue. Dialogue view node_id is speaker-qualified; pass it unchanged to choose. Routed shop/rest/challenge results carry command_pending=true for runtime execution. Staged NpcActor.configure(session,id,false) creates geometry without live listeners; activate() runs after world activation and deactivate() runs on tree exit. Activation is idempotent, including a travel rollback. See handoffs/T13.md.
 
 WorldRouter failed-arrival rollback restores GameModeController.snapshot_stack() through restore_stack(saved), then uses the normal world_activated hook to reactivate restored live entities. The hook must be idempotent and must not create duplicate content. Detached construction belongs in world_builder(world,snapshot), before collision/navigation validation.
+
+GameSession.fresh_snapshot() returns the complete detached initial session without touching active state, dialogue, recovery, settings or events. New Game uses this builder, and T14 prepares the destination from it before replacing live state.

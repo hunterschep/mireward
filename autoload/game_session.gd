@@ -44,7 +44,18 @@ func new_game() -> void:
 		dialogue.close()
 	if recovery != null:
 		recovery.reset_runtime()
-	state = {
+	state = fresh_snapshot()
+	danger = false
+	action_locked = false
+	travelling = false
+	active = true
+	if quests != null:
+		quests.reset_runtime()
+		quests.reconcile()
+
+## Build a detached new game for world preparation without disturbing live play.
+func fresh_snapshot() -> Dictionary:
+	var initial_state: Dictionary = {
 		"player": {"health": 100.0, "stamina": 100.0, "crowns": 12, "scene_id": "exterior", "position": [32.0, 0.0, 252.0], "yaw": 0.0, "rest_anchor": "village_shrine"},
 		"inventory": [{"stack_id": "stack_1", "item_id": "rusted_sword", "quantity": 1}, {"stack_id": "stack_2", "item_id": "wooden_buckler", "quantity": 1}, {"stack_id": "stack_3", "item_id": "patched_coat", "quantity": 1}, {"stack_id": "stack_4", "item_id": "bandage", "quantity": 2}, {"stack_id": "stack_5", "item_id": "bread", "quantity": 1}],
 		"equipment": {"weapon": "stack_1", "shield": "stack_2", "armor": "stack_3"},
@@ -56,14 +67,8 @@ func new_game() -> void:
 	}
 	for id: StringName in ContentDB.quests:
 		var initial := "AVAILABLE" if String(id).begins_with("sq_") or String(id).begins_with("mq_01") else "LOCKED"
-		state.quests[String(id)] = {"state": initial, "objectives": {}}
-	danger = false
-	action_locked = false
-	travelling = false
-	active = true
-	if quests != null:
-		quests.reset_runtime()
-		quests.reconcile()
+		initial_state.quests[String(id)] = {"state": initial, "objectives": {}}
+	return initial_state
 
 func snapshot() -> Dictionary:
 	return state.duplicate(true)
