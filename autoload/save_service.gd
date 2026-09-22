@@ -160,6 +160,7 @@ func is_loading() -> bool:
 func request_autosave(reason: StringName) -> void:
 	if is_instance_valid(_router) and not _loading and not reason.is_empty():
 		_autosave_reasons[String(reason)] = true
+		_autosave_failed = false
 
 func pending_autosave() -> Dictionary:
 	return {"pending": not _autosave_reasons.is_empty(), "failed": _autosave_failed, "reasons": _autosave_reasons.keys(), "ending_ready": _ending_released}
@@ -175,8 +176,8 @@ func continue_without_saving() -> MireTypes.ActionResult:
 	_ending_released = true
 	_failed_ending_receipt = ""
 	_autosave_reasons.erase("ending")
-	if _autosave_reasons.is_empty():
-		_autosave_failed = false
+	# Keep unrelated work queued, but this explicit bypass does not retry it.
+	_autosave_failed = not _autosave_reasons.is_empty()
 	return MireTypes.success({"ending_ready": true, "saved": false})
 
 func _physics_process(_delta: float) -> void:

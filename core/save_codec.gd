@@ -21,6 +21,8 @@ static func validate_snapshot(snapshot: Dictionary, db: Node) -> MireTypes.Actio
 	for key: String in STATE_FIELDS:
 		if not snapshot.has(key):
 			return MireTypes.failure(&"invalid_state", &"The save is missing session data.")
+	if snapshot.player.size() != 7 or snapshot.equipment.size() != 3 or not snapshot.equipment.has("shield") or not snapshot.equipment.has("armor"):
+		return MireTypes.failure(&"invalid_state", &"The save has missing or unknown player or equipment fields.")
 	var flags: Array[String] = ["puzzle_solved", "free_inn", "shelter_lights", "restored_badge", "undercroft_open"]
 	if snapshot.flags.size() != flags.size():
 		return MireTypes.failure(&"invalid_state", &"The save has missing or unknown world flags.")

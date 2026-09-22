@@ -17,7 +17,7 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T11 | IMPLEMENTED | Integration lead | Travel612, presentation19 and modes45; campaign UI wiring later |
 | T12 | IMPLEMENTED | Integration lead | Root619 quest assertions; physical campaign/UI wiring later |
 | T13 | IMPLEMENTED | Integration lead | Root598 dialogue assertions; native UI and placement later |
-| T14 | IN_PROGRESS | save/lifecycle owner | Codec264 and composed lifecycle46 pass; final failure/queue checks underway |
+| T14 | IMPLEMENTED | Integration lead | Root374 codec,73 save runtime,46 composed runtime; native UI gates later |
 | T15 | IN_PROGRESS | quest_engine | Native menus/HUD over verified domain and save interfaces |
 | T16 | NOT_STARTED | Integration lead | Playable opening integration, then continue full campaign |
 | T17–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies after opening integration |

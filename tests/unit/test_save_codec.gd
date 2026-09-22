@@ -57,6 +57,10 @@ func _malformed() -> void:
 			bad[field] = value
 			t.check(not _decode(JSON.stringify(bad)).ok, "R38 reject malformed envelope " + field + "/" + str(value))
 	var changed := envelope.duplicate(true)
+	for value: Variant in [null, [], {}, true, 5]:
+		var invalid_slot := envelope.duplicate(true)
+		invalid_slot.slot.id = value
+		t.check(not _decode(JSON.stringify(invalid_slot)).ok, "R38 invalid nested slot identity fails without a script error")
 	changed.payload.player.crowns += 1
 	t.check(_decode(JSON.stringify(changed)).code == &"checksum_mismatch", "R38 checksum detects changed payload bytes")
 	changed = envelope.duplicate(true)
@@ -73,6 +77,10 @@ func _malformed() -> void:
 		var missing := original.duplicate(true)
 		missing.flags.erase(flag)
 		t.check(not SaveCodec.encode(missing, &"manual_1", 100, db).ok, "R38 missing runtime flag is rejected: " + flag)
+	for slot: String in ["shield", "armor"]:
+		var missing := original.duplicate(true)
+		missing.equipment.erase(slot)
+		t.check(not SaveCodec.encode(missing, &"manual_1", 100, db).ok, "R38 optional empty equipment still requires its runtime slot key")
 	for id: String in ["cart_coffer", "south_cart_cutpurse_01"]:
 		for record: Dictionary in [{}, {"defeated": "yes"}, {"kind": "wrong"}]:
 			var invalid := original.duplicate(true)
@@ -137,6 +145,16 @@ func _file_failures() -> void:
 	_write(damaged, "broken")
 	_write(damaged + ".bak", old.payload.text)
 	t.check(SaveCodec.write_file(damaged, newer.payload.text, _decode).ok and FileAccess.get_file_as_string(damaged + ".bak") == old.payload.text, "R38 writing over corrupt primary preserves the existing valid backup")
+	if OS.get_name() in ["macOS", "Linux"]:
+		var unreadable := base.path_join("unreadable_primary.json")
+		_write(unreadable, old.payload.text)
+		var output: Array = []
+		t.check(OS.execute("/bin/chmod", ["000", unreadable], output) == 0, "R38 make only an isolated fixture file unreadable")
+		var inspected := SaveCodec.read_file(unreadable, _decode)
+		t.check(not inspected.ok and inspected.code == &"read_failed", "R38 actual unreadable primary reports read failure")
+		var attempted := SaveCodec.write_file(unreadable, newer.payload.text, _decode)
+		OS.execute("/bin/chmod", ["600", unreadable], output)
+		t.check(not attempted.ok and FileAccess.get_file_as_string(unreadable) == old.payload.text, "R38 an unreadable primary cannot be replaced without preserving it")
 
 func _slot_inspection() -> void:
 	t.check(saves.list_slots().size() == 4 and not saves.continue_slot().ok, "R37 four empty slots do not crash Continue")
@@ -162,6 +180,15 @@ func _slot_inspection() -> void:
 
 func _settings() -> void:
 	var defaults: Dictionary = saves.DEFAULT_SETTINGS.duplicate(true)
+	for field: String in defaults:
+		for value: Variant in [null, true, [], {}, "invalid", -1]:
+			if typeof(value) == typeof(defaults[field]):
+				continue
+			var malformed := defaults.duplicate(true)
+			malformed[field] = value
+			t.check(not SettingsValidation.validate(malformed).ok, "R37 reject malformed settings field: " + field)
+	for value: Variant in [null, true, [], {}, "invalid", -1]:
+		t.check(not saves._decode_settings(JSON.stringify({"schema_version": value, "settings": defaults})).ok, "R38 malformed settings envelope schema fails safely")
 	t.check(SettingsValidation.validate(defaults).ok and saves.save_settings(defaults).ok, "R37 separate default settings persist")
 	var before := FileAccess.get_file_as_string(saves.settings_path())
 	for row: Array in [["fov", 96], ["fov", 59], ["mouse_sensitivity", 0], ["music_volume", 1.1], ["text_scale", 2], ["fullscreen", "yes"], ["bindings", []], ["dismissed_hints", ["same", "same"]]]:
