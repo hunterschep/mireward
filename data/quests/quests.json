@@ -3,19 +3,110 @@
     "id": "mq_01_bread_and_iron",
     "name": "Bread and Iron",
     "prerequisites": [],
-    "objectives": [],
-    "rewards": {},
-    "foundation_only": true
+    "giver_id": "mara_venn",
+    "turn_in_npc_id": "mara_venn",
+    "objectives": [
+      {
+        "id": "mq_01_bread_and_iron/acquire_cart_medicine",
+        "label": "Recover the medicine coffer",
+        "predicate": {
+          "op": "evidence",
+          "id": "cart_medicine"
+        },
+        "count": 1,
+        "target_id": "cart_coffer",
+        "scene_id": "exterior",
+        "location": "Robbed cart on the south road",
+        "turn_in": false,
+        "item_id": "cart_medicine"
+      },
+      {
+        "id": "mq_01_bread_and_iron/return_mara",
+        "label": "Return the medicine to Mara",
+        "predicate": {
+          "op": "conversation",
+          "id": "mq_01_bread_and_iron/return_mara"
+        },
+        "count": 1,
+        "target_id": "mara_venn",
+        "scene_id": "exterior",
+        "location": "Brackenford well",
+        "turn_in": true,
+        "npc_id": "mara_venn"
+      }
+    ],
+    "rewards": {
+      "crowns": 18,
+      "items": {
+        "bandage": 1
+      }
+    },
+    "consume": {
+      "cart_medicine": 1
+    },
+    "completion_effects": [],
+    "giver_location": "Brackenford well",
+    "giver_scene_id": "exterior"
   },
   {
     "id": "mq_02_the_kings_due",
-    "name": "The King\u2019s Due",
+    "name": "The King's Due",
     "prerequisites": [
       "mq_01_bread_and_iron"
     ],
-    "objectives": [],
-    "rewards": {},
-    "foundation_only": true
+    "giver_id": "mara_venn",
+    "turn_in_npc_id": "mara_venn",
+    "objectives": [
+      {
+        "id": "mq_02_the_kings_due/read_toll_notice",
+        "label": "Read the doubled levy notice",
+        "predicate": {
+          "op": "read",
+          "id": "toll_notice"
+        },
+        "count": 1,
+        "target_id": "toll_notice",
+        "scene_id": "exterior",
+        "location": "King's Trace checkpoint",
+        "turn_in": false
+      },
+      {
+        "id": "mq_02_the_kings_due/acquire_toll_receipt",
+        "label": "Collect the toll receipt",
+        "predicate": {
+          "op": "evidence",
+          "id": "toll_receipt"
+        },
+        "count": 1,
+        "target_id": "checkpoint_receipt_box",
+        "scene_id": "exterior",
+        "location": "King's Trace receipt box",
+        "turn_in": false,
+        "item_id": "toll_receipt"
+      },
+      {
+        "id": "mq_02_the_kings_due/return_mara",
+        "label": "Show Mara the notice and receipt",
+        "predicate": {
+          "op": "conversation",
+          "id": "mq_02_the_kings_due/return_mara"
+        },
+        "count": 1,
+        "target_id": "mara_venn",
+        "scene_id": "exterior",
+        "location": "Brackenford well",
+        "turn_in": true,
+        "npc_id": "mara_venn"
+      }
+    ],
+    "rewards": {
+      "crowns": 22,
+      "items": {}
+    },
+    "consume": {},
+    "completion_effects": [],
+    "giver_location": "Brackenford well",
+    "giver_scene_id": "exterior"
   },
   {
     "id": "mq_03_a_bell_without_rope",
@@ -23,9 +114,75 @@
     "prerequisites": [
       "mq_02_the_kings_due"
     ],
-    "objectives": [],
-    "rewards": {},
-    "foundation_only": true
+    "giver_id": "sister_elian",
+    "turn_in_npc_id": "sister_elian",
+    "objectives": [
+      {
+        "id": "mq_03_a_bell_without_rope/request_charter",
+        "label": "Ask Elian about the surviving charter",
+        "predicate": {
+          "op": "conversation",
+          "id": "mq_03_a_bell_without_rope/request_charter"
+        },
+        "count": 1,
+        "target_id": "sister_elian",
+        "scene_id": "exterior",
+        "location": "Saint Orra shelter",
+        "turn_in": false,
+        "npc_id": "sister_elian"
+      },
+      {
+        "id": "mq_03_a_bell_without_rope/solve_bell_puzzle",
+        "label": "Ring reed, stone, then flame",
+        "predicate": {
+          "op": "flag",
+          "id": "puzzle_solved"
+        },
+        "count": 1,
+        "target_id": "crypt_bell_puzzle",
+        "scene_id": "interior_crypt",
+        "location": "Saint Orra crypt chimes",
+        "turn_in": false,
+        "portal_id": "crypt_door"
+      },
+      {
+        "id": "mq_03_a_bell_without_rope/acquire_orra_charter",
+        "label": "Recover the charter from the vault",
+        "predicate": {
+          "op": "evidence",
+          "id": "orra_charter"
+        },
+        "count": 1,
+        "target_id": "charter_vault_coffer",
+        "scene_id": "interior_crypt",
+        "location": "Saint Orra crypt vault",
+        "turn_in": false,
+        "item_id": "orra_charter",
+        "portal_id": "crypt_door"
+      },
+      {
+        "id": "mq_03_a_bell_without_rope/attest_charter",
+        "label": "Show the charter to Elian for attestation",
+        "predicate": {
+          "op": "conversation",
+          "id": "mq_03_a_bell_without_rope/attest_charter"
+        },
+        "count": 1,
+        "target_id": "sister_elian",
+        "scene_id": "exterior",
+        "location": "Saint Orra shelter",
+        "turn_in": true,
+        "npc_id": "sister_elian"
+      }
+    ],
+    "rewards": {
+      "crowns": 28,
+      "items": {}
+    },
+    "consume": {},
+    "completion_effects": [],
+    "giver_location": "Saint Orra shelter",
+    "giver_scene_id": "exterior"
   },
   {
     "id": "mq_04_names_in_the_ledger",
@@ -33,9 +190,74 @@
     "prerequisites": [
       "mq_03_a_bell_without_rope"
     ],
-    "objectives": [],
-    "rewards": {},
-    "foundation_only": true
+    "giver_id": "wren_kest",
+    "turn_in_npc_id": "mara_venn",
+    "objectives": [
+      {
+        "id": "mq_04_names_in_the_ledger/meet_wren",
+        "label": "Ask Wren about the missing grain",
+        "predicate": {
+          "op": "conversation",
+          "id": "mq_04_names_in_the_ledger/meet_wren"
+        },
+        "count": 1,
+        "target_id": "wren_kest",
+        "scene_id": "exterior",
+        "location": "Briar Camp",
+        "turn_in": false,
+        "npc_id": "wren_kest"
+      },
+      {
+        "id": "mq_04_names_in_the_ledger/acquire_grain_ledger",
+        "label": "Recover the grain account",
+        "predicate": {
+          "op": "evidence",
+          "id": "grain_ledger"
+        },
+        "count": 1,
+        "target_id": "watchtower_ledger_chest",
+        "scene_id": "exterior",
+        "location": "Old Watchtower chest",
+        "turn_in": false,
+        "item_id": "grain_ledger"
+      },
+      {
+        "id": "mq_04_names_in_the_ledger/choose_wren_terms",
+        "label": "Return to Wren and choose terms for testimony",
+        "predicate": {
+          "op": "choice",
+          "id": "wren_terms"
+        },
+        "count": 1,
+        "target_id": "wren_kest",
+        "scene_id": "exterior",
+        "location": "Briar Camp",
+        "turn_in": false,
+        "npc_id": "wren_kest"
+      },
+      {
+        "id": "mq_04_names_in_the_ledger/report_mara",
+        "label": "Report Wren's testimony to Mara",
+        "predicate": {
+          "op": "conversation",
+          "id": "mq_04_names_in_the_ledger/report_mara"
+        },
+        "count": 1,
+        "target_id": "mara_venn",
+        "scene_id": "exterior",
+        "location": "Brackenford well",
+        "turn_in": true,
+        "npc_id": "mara_venn"
+      }
+    ],
+    "rewards": {
+      "crowns": 30,
+      "items": {}
+    },
+    "consume": {},
+    "completion_effects": [],
+    "giver_location": "Briar Camp",
+    "giver_scene_id": "exterior"
   },
   {
     "id": "mq_05_a_debt_in_stone",
@@ -43,9 +265,92 @@
     "prerequisites": [
       "mq_04_names_in_the_ledger"
     ],
-    "objectives": [],
-    "rewards": {},
-    "foundation_only": true
+    "giver_id": "ada_vey",
+    "turn_in_npc_id": "ada_vey",
+    "objectives": [
+      {
+        "id": "mq_05_a_debt_in_stone/present_evidence",
+        "label": "Present the charter and grain ledger to Ada",
+        "predicate": {
+          "op": "conversation",
+          "id": "mq_05_a_debt_in_stone/present_evidence"
+        },
+        "count": 1,
+        "target_id": "ada_vey",
+        "scene_id": "exterior",
+        "location": "Rookwatch courtyard gate",
+        "turn_in": false,
+        "npc_id": "ada_vey"
+      },
+      {
+        "id": "mq_05_a_debt_in_stone/challenge_rusk",
+        "label": "Challenge Captain Rusk",
+        "predicate": {
+          "op": "conversation",
+          "id": "mq_05_a_debt_in_stone/challenge_rusk"
+        },
+        "count": 1,
+        "target_id": "captain_rusk",
+        "scene_id": "interior_undercroft",
+        "location": "Rookwatch captain's hall",
+        "turn_in": false,
+        "npc_id": "captain_rusk",
+        "portal_id": "undercroft_door"
+      },
+      {
+        "id": "mq_05_a_debt_in_stone/defeat_rusk",
+        "label": "Defeat Captain Rusk",
+        "predicate": {
+          "op": "defeated",
+          "id": "captain_hall_captain_rusk_01"
+        },
+        "count": 1,
+        "target_id": "captain_hall_captain_rusk_01",
+        "scene_id": "interior_undercroft",
+        "location": "Rookwatch captain's hall",
+        "turn_in": false,
+        "portal_id": "undercroft_door"
+      },
+      {
+        "id": "mq_05_a_debt_in_stone/acquire_rookwatch_seal",
+        "label": "Recover the Rookwatch seal",
+        "predicate": {
+          "op": "evidence",
+          "id": "rookwatch_seal"
+        },
+        "count": 1,
+        "target_id": "captain_seal_chest",
+        "scene_id": "interior_undercroft",
+        "location": "Rookwatch captain's chest",
+        "turn_in": false,
+        "item_id": "rookwatch_seal",
+        "portal_id": "undercroft_door"
+      },
+      {
+        "id": "mq_05_a_debt_in_stone/report_ada",
+        "label": "Report the captain's defeat to Ada",
+        "predicate": {
+          "op": "conversation",
+          "id": "mq_05_a_debt_in_stone/report_ada"
+        },
+        "count": 1,
+        "target_id": "ada_vey",
+        "scene_id": "exterior",
+        "location": "Rookwatch courtyard gate",
+        "turn_in": true,
+        "npc_id": "ada_vey"
+      }
+    ],
+    "rewards": {
+      "crowns": 40,
+      "items": {
+        "watchblade": 1
+      }
+    },
+    "consume": {},
+    "completion_effects": [],
+    "giver_location": "Rookwatch courtyard gate",
+    "giver_scene_id": "exterior"
   },
   {
     "id": "mq_06_the_last_toll",
@@ -53,56 +358,371 @@
     "prerequisites": [
       "mq_05_a_debt_in_stone"
     ],
-    "objectives": [],
-    "rewards": {},
-    "foundation_only": true
+    "giver_id": "mara_venn",
+    "turn_in_npc_id": "",
+    "objectives": [
+      {
+        "id": "mq_06_the_last_toll/discuss_resolution",
+        "label": "Discuss the valley's future with Mara",
+        "predicate": {
+          "op": "conversation",
+          "id": "mq_06_the_last_toll/discuss_resolution"
+        },
+        "count": 1,
+        "target_id": "mara_venn",
+        "scene_id": "exterior",
+        "location": "Brackenford well",
+        "turn_in": false,
+        "npc_id": "mara_venn"
+      },
+      {
+        "id": "mq_06_the_last_toll/review_writ",
+        "label": "Review the three resolutions at the writ table",
+        "predicate": {
+          "op": "read",
+          "id": "village_writ_table"
+        },
+        "count": 1,
+        "target_id": "village_writ_table",
+        "scene_id": "exterior",
+        "location": "Brackenford writ table",
+        "turn_in": false
+      },
+      {
+        "id": "mq_06_the_last_toll/confirm_ending",
+        "label": "Confirm one resolution for the road",
+        "predicate": {
+          "op": "choice",
+          "id": "ending"
+        },
+        "count": 1,
+        "target_id": "village_writ_table",
+        "scene_id": "exterior",
+        "location": "Brackenford writ table",
+        "turn_in": true
+      }
+    ],
+    "rewards": {
+      "crowns": 0,
+      "items": {}
+    },
+    "consume": {},
+    "completion_effects": [],
+    "giver_location": "Brackenford well",
+    "giver_scene_id": "exterior"
   },
   {
     "id": "sq_01_a_smiths_hand",
-    "name": "A Smith\u2019s Hand",
+    "name": "A Smith's Hand",
     "prerequisites": [],
-    "objectives": [],
-    "rewards": {},
-    "foundation_only": true
+    "giver_id": "oswin_pike",
+    "turn_in_npc_id": "oswin_pike",
+    "objectives": [
+      {
+        "id": "sq_01_a_smiths_hand/acquire_smith_hammer",
+        "label": "Recover smith hammer",
+        "predicate": {
+          "op": "evidence",
+          "id": "smith_hammer"
+        },
+        "count": 1,
+        "target_id": "kiln_hammer_crate",
+        "scene_id": "exterior",
+        "location": "Charcoal Kiln tool crate",
+        "turn_in": false,
+        "item_id": "smith_hammer"
+      },
+      {
+        "id": "sq_01_a_smiths_hand/return_oswin_pike",
+        "label": "Return smith hammer to Oswin",
+        "predicate": {
+          "op": "conversation",
+          "id": "sq_01_a_smiths_hand/return_oswin_pike"
+        },
+        "count": 1,
+        "target_id": "oswin_pike",
+        "scene_id": "exterior",
+        "location": "Brackenford forge",
+        "turn_in": true,
+        "npc_id": "oswin_pike"
+      }
+    ],
+    "rewards": {
+      "crowns": 12,
+      "items": {
+        "arming_sword": 1
+      }
+    },
+    "consume": {
+      "smith_hammer": 1
+    },
+    "completion_effects": [],
+    "giver_location": "Brackenford forge",
+    "giver_scene_id": "exterior"
   },
   {
     "id": "sq_02_a_warm_room",
     "name": "A Warm Room",
     "prerequisites": [],
-    "objectives": [],
-    "rewards": {},
-    "foundation_only": true
+    "giver_id": "tamsin_reed",
+    "turn_in_npc_id": "tamsin_reed",
+    "objectives": [
+      {
+        "id": "sq_02_a_warm_room/acquire_ferry_blankets",
+        "label": "Recover ferry blankets",
+        "predicate": {
+          "op": "evidence",
+          "id": "ferry_blankets"
+        },
+        "count": 1,
+        "target_id": "ferry_blanket_barrel",
+        "scene_id": "exterior",
+        "location": "Millpond Ferry barrel",
+        "turn_in": false,
+        "item_id": "ferry_blankets"
+      },
+      {
+        "id": "sq_02_a_warm_room/return_tamsin_reed",
+        "label": "Return ferry blankets to Tamsin",
+        "predicate": {
+          "op": "conversation",
+          "id": "sq_02_a_warm_room/return_tamsin_reed"
+        },
+        "count": 1,
+        "target_id": "tamsin_reed",
+        "scene_id": "interior_inn",
+        "location": "Brackenford inn",
+        "turn_in": true,
+        "npc_id": "tamsin_reed",
+        "portal_id": "inn_door"
+      }
+    ],
+    "rewards": {
+      "crowns": 10,
+      "items": {}
+    },
+    "consume": {
+      "ferry_blankets": 1
+    },
+    "completion_effects": [
+      {
+        "op": "flag",
+        "id": "free_inn",
+        "value": true
+      }
+    ],
+    "giver_location": "Brackenford inn",
+    "giver_scene_id": "interior_inn",
+    "giver_portal_id": "inn_door"
   },
   {
     "id": "sq_03_what_the_reeds_keep",
     "name": "What the Reeds Keep",
     "prerequisites": [],
-    "objectives": [],
-    "rewards": {},
-    "foundation_only": true
+    "giver_id": "hobb_fenwick",
+    "turn_in_npc_id": "hobb_fenwick",
+    "objectives": [
+      {
+        "id": "sq_03_what_the_reeds_keep/acquire_hobb_ring",
+        "label": "Recover hobb ring",
+        "predicate": {
+          "op": "evidence",
+          "id": "hobb_ring"
+        },
+        "count": 1,
+        "target_id": "shrine_ring_bowl",
+        "scene_id": "exterior",
+        "location": "Reed Shrine offering bowl",
+        "turn_in": false,
+        "item_id": "hobb_ring"
+      },
+      {
+        "id": "sq_03_what_the_reeds_keep/return_hobb_fenwick",
+        "label": "Return hobb ring to Hobb",
+        "predicate": {
+          "op": "conversation",
+          "id": "sq_03_what_the_reeds_keep/return_hobb_fenwick"
+        },
+        "count": 1,
+        "target_id": "hobb_fenwick",
+        "scene_id": "exterior",
+        "location": "Millpond Ferry landing",
+        "turn_in": true,
+        "npc_id": "hobb_fenwick"
+      }
+    ],
+    "rewards": {
+      "crowns": 18,
+      "items": {
+        "bandage": 1
+      }
+    },
+    "consume": {
+      "hobb_ring": 1
+    },
+    "completion_effects": [],
+    "giver_location": "Millpond Ferry landing",
+    "giver_scene_id": "exterior"
   },
   {
     "id": "sq_04_three_small_lights",
     "name": "Three Small Lights",
     "prerequisites": [],
-    "objectives": [],
-    "rewards": {},
-    "foundation_only": true
+    "giver_id": "sister_elian",
+    "turn_in_npc_id": "sister_elian",
+    "objectives": [
+      {
+        "id": "sq_04_three_small_lights/acquire_votive_candle",
+        "label": "Collect three distinct votive candles",
+        "predicate": {
+          "op": "sources",
+          "ids": [
+            "pickup/monastery_candle_01",
+            "pickup/monastery_candle_02",
+            "pickup/monastery_candle_03"
+          ]
+        },
+        "count": 3,
+        "target_id": "monastery_candle_01",
+        "scene_id": "exterior",
+        "location": "Saint Orra monastery graves",
+        "turn_in": false,
+        "item_id": "votive_candle"
+      },
+      {
+        "id": "sq_04_three_small_lights/return_sister_elian",
+        "label": "Return votive candle to Elian",
+        "predicate": {
+          "op": "conversation",
+          "id": "sq_04_three_small_lights/return_sister_elian"
+        },
+        "count": 1,
+        "target_id": "sister_elian",
+        "scene_id": "exterior",
+        "location": "Saint Orra shelter",
+        "turn_in": true,
+        "npc_id": "sister_elian"
+      }
+    ],
+    "rewards": {
+      "crowns": 15,
+      "items": {
+        "bandage": 2
+      }
+    },
+    "consume": {
+      "votive_candle": 3
+    },
+    "completion_effects": [
+      {
+        "op": "flag",
+        "id": "shelter_lights",
+        "value": true
+      }
+    ],
+    "giver_location": "Saint Orra shelter",
+    "giver_scene_id": "exterior"
   },
   {
     "id": "sq_05_the_broken_badge",
     "name": "The Broken Badge",
     "prerequisites": [],
-    "objectives": [],
-    "rewards": {},
-    "foundation_only": true
+    "giver_id": "ada_vey",
+    "turn_in_npc_id": "ada_vey",
+    "objectives": [
+      {
+        "id": "sq_05_the_broken_badge/acquire_ada_badge",
+        "label": "Recover ada badge",
+        "predicate": {
+          "op": "evidence",
+          "id": "ada_badge"
+        },
+        "count": 1,
+        "target_id": "watchtower_badge_locker",
+        "scene_id": "exterior",
+        "location": "Old Watchtower locker",
+        "turn_in": false,
+        "item_id": "ada_badge"
+      },
+      {
+        "id": "sq_05_the_broken_badge/return_ada_vey",
+        "label": "Return ada badge to Ada",
+        "predicate": {
+          "op": "conversation",
+          "id": "sq_05_the_broken_badge/return_ada_vey"
+        },
+        "count": 1,
+        "target_id": "ada_vey",
+        "scene_id": "exterior",
+        "location": "Rookwatch courtyard gate",
+        "turn_in": true,
+        "npc_id": "ada_vey"
+      }
+    ],
+    "rewards": {
+      "crowns": 20,
+      "items": {
+        "kite_shield": 1
+      }
+    },
+    "consume": {
+      "ada_badge": 1
+    },
+    "completion_effects": [
+      {
+        "op": "flag",
+        "id": "restored_badge",
+        "value": true
+      }
+    ],
+    "giver_location": "Rookwatch courtyard gate",
+    "giver_scene_id": "exterior"
   },
   {
     "id": "sq_06_no_clean_hands",
     "name": "No Clean Hands",
     "prerequisites": [],
-    "objectives": [],
-    "rewards": {},
-    "foundation_only": true
+    "giver_id": "wren_kest",
+    "turn_in_npc_id": "choice_recipient",
+    "objectives": [
+      {
+        "id": "sq_06_no_clean_hands/acquire_camp_medicine",
+        "label": "Recover the raiders' medicine",
+        "predicate": {
+          "op": "evidence",
+          "id": "camp_medicine"
+        },
+        "count": 1,
+        "target_id": "raider_medicine_cache",
+        "scene_id": "exterior",
+        "location": "Raider cache near Charcoal Kiln",
+        "turn_in": false,
+        "item_id": "camp_medicine"
+      },
+      {
+        "id": "sq_06_no_clean_hands/deliver_medicine",
+        "label": "Choose Wren at Briar Camp or Mara in Brackenford",
+        "predicate": {
+          "op": "choice",
+          "id": "medicine_recipient"
+        },
+        "count": 1,
+        "target_id": "wren_kest",
+        "scene_id": "exterior",
+        "location": "Briar Camp or Brackenford well",
+        "turn_in": true,
+        "alternative_target_id": "mara_venn"
+      }
+    ],
+    "rewards": {
+      "crowns": 10,
+      "items": {}
+    },
+    "consume": {
+      "camp_medicine": 1
+    },
+    "completion_effects": [],
+    "giver_location": "Briar Camp",
+    "giver_scene_id": "exterior"
   }
 ]

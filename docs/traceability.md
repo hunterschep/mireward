@@ -8,38 +8,38 @@ PASS requires linked execution evidence for every applicable verification method
 | R02 Reproducible engine and project | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R03 Offline operation and source availability | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R04 Shared contracts and validated data | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R05 Authored exterior and landmarks | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R06 Interiors and scene travel | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R05 Authored exterior and landmarks | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R06 Interiors and scene travel | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R07 First-person locomotion | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R08 Input, remapping, and focus | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R09 Contextual interaction | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R10 Discovery, map, and objective direction | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R11 Hazards and safe recovery | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R10 Discovery, map, and objective direction | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R11 Hazards and safe recovery | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R12 Attack phases and stamina | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R13 Spatial hit validation | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R14 Shield direction and ordinary block | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R15 Parry and guard break | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R16 Damage, armor, and death signals | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R17 Healing and resource recovery | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R17 Healing and resource recovery | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R18 Four ordinary enemy archetypes | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R19 Perception and navigation | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R20 Encounter fairness and combat feedback | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R21 Captain Rusk encounter | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R22 Player death and rest | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R22 Player death and rest | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R23 Item registry and starting loadout | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R24 Capacity, equipment, and key items | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R25 Persistent loot and pending rewards | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R26 Shop transactions | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R26 Shop transactions | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R27 Viable equipment progression | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R28 Data-driven quest state | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R29 Six-main-quest sequence | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R30 Six side quests | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R31 Bell puzzle | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R28 Data-driven quest state | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R29 Six-main-quest sequence | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R30 Six side quests | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R31 Bell puzzle | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R32 Dialogue and cast | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R33 Evidence and early collection | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R34 Atomic choices and rewards | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R35 Three final resolutions | NOT STARTED | See tasks.md coverage map; final gate T28 |
-| R36 Epilogue and continued play | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R33 Evidence and early collection | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R34 Atomic choices and rewards | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R35 Three final resolutions | IN PROGRESS | See tasks.md coverage map; final gate T28 |
+| R36 Epilogue and continued play | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R37 Save payload and slots | NOT STARTED | See tasks.md coverage map; final gate T28 |
 | R38 Safe writes and corrupt-save recovery | NOT STARTED | See tasks.md coverage map; final gate T28 |
 | R39 Safe save timing and load isolation | NOT STARTED | See tasks.md coverage map; final gate T28 |

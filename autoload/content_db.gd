@@ -49,6 +49,8 @@ func reload_content() -> void:
 			errors.append_array(container_errors)
 	else:
 		errors.append("Container registry must be an array.")
+	errors.append_array(ExteriorValidation.validate(map, containers, dialogues))
+	errors.append_array(QuestPredicates.validate_definitions(self))
 
 func read_json(path: String) -> Variant:
 	if not FileAccess.file_exists(path):
