@@ -177,6 +177,20 @@ func check_modes(t: SceneTree, player: MirePlayer, controller: GameModeControlle
 		controller.push_mode(&"gameplay")
 	t.check(modes_valid, "R45 all frozen mode IDs can be entered through the central API")
 	t.check(not controller.push_mode(&"unknown_mode").ok and controller.mode == &"gameplay", "R45 invalid modes leave the current mode unchanged")
+	var stable_stack := controller.snapshot_stack()
+	var detached_stack := controller.snapshot_stack()
+	detached_stack.append(&"pause")
+	t.check(controller.stack == stable_stack, "R45 menu stack snapshots are detached")
+	for invalid: Array in [[], [null], [{}], [&"unknown"], [&"confirmation"], [&"gameplay", &"gameplay"], [&"gameplay", &"pause", &"inventory"], [&"gameplay", &"pause", &"pause"]]:
+		t.check(not controller.restore_stack(invalid).ok and controller.stack == stable_stack and controller.mode == &"gameplay" and not t.paused, "R45 invalid stack restore has no partial menu or input changes")
+	t.check(controller.restore_stack(["gameplay", "pause", "load", "confirmation"]).ok and controller.stack == [&"gameplay", &"pause", &"load", &"confirmation"], "R45 valid complete menu stack restores through controller policy")
+	controller.push_mode(&"gameplay")
+	var recovery: RecoveryService = t.root.get_node("GameSession").recovery
+	recovery._pending_recovery = {"reason": "fixture"}
+	t.check(controller.restore_stack([&"gameplay"]).ok and controller.mode == &"travel" and t.paused and not player.input_enabled, "R45 restoring gameplay cannot bypass pending recovery ownership")
+	recovery._pending_recovery.clear()
+	await t.process_frame
+	t.check(controller.mode == &"gameplay" and not t.paused and player.input_enabled, "R45 controller releases restored recovery travel only when recovery settles")
 	Input.action_press(&"attack_light")
 	Input.action_press(&"block")
 	controller.push_mode(&"inventory")

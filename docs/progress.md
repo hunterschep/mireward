@@ -14,7 +14,7 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T08 | VERIFIED | Integration lead | 130 inventory/equipment/loot assertions; physical UI/world wiring later |
 | T09 | IMPLEMENTED | Integration lead | 107 unit +44 physics assertions; campaign travel/UI/save wiring later |
 | T10 | IMPLEMENTED | Integration lead | Exterior634 assertions, route walks and baseline captures; final dressing later |
-| T11 | IN_PROGRESS | world_travel | Three interiors, routing, hazards and discovery |
+| T11 | IMPLEMENTED | Integration lead | Travel612, presentation19 and modes45; campaign UI wiring later |
 | T12 | IMPLEMENTED | Integration lead | Root619 quest assertions; physical campaign/UI wiring later |
 | T13 | IMPLEMENTED | Integration lead | Root598 dialogue assertions; native UI and placement later |
 | T14 | IN_PROGRESS | save/lifecycle owner | Durable slots, settings and failure recovery |
@@ -24,8 +24,8 @@ Complete specification scope is authorized. The user objective overrides sequent
 
 ## Exclusive ownership
 
-- world_travel: T11 router/interior/portal scripts, inn/crypt/undercroft scenes and travel tests.
-- quest_engine: read-only T11 integration review after returning T12.
+- T11 world routing/interiors returned and integrated.
+- quest_engine: T11 review returned; available for a bounded integration review.
 - world_validation/npc_adapter: T14 SaveService, codecs, settings and save tests; T13 ownership returned.
 - Integration lead: shared configuration/autoload/core wiring, GameRoot/UI integration, returned T09/T10 code, records and all Git operations.
 

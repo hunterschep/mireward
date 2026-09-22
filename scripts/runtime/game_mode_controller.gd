@@ -66,6 +66,32 @@ func push_mode(requested: StringName) -> MireTypes.ActionResult:
 	_apply_mode()
 	return MireTypes.success({"mode": String(mode)})
 
+## Travel rollback preserves subordinate panels and applies input policy once.
+func snapshot_stack() -> Array[StringName]:
+	return stack.duplicate()
+
+func restore_stack(saved: Array) -> MireTypes.ActionResult:
+	if not _configured:
+		return MireTypes.failure(&"unavailable", &"The game is not ready for input.")
+	var restored: Array[StringName] = []
+	for value: Variant in saved:
+		if (not value is String and not value is StringName) or StringName(value) not in MireTypes.MODES:
+			return MireTypes.failure(&"invalid_mode", &"The saved menu stack contains an unknown screen.")
+		var requested := StringName(value)
+		if restored.is_empty():
+			if requested not in [&"gameplay", &"title"]:
+				return MireTypes.failure(&"invalid_mode", &"The saved menu stack has no valid root.")
+		elif requested in [&"gameplay", &"title"] or requested == restored.back() or (restored.size() > 1 and requested not in SUBORDINATE and not (requested in PARENT_PANELS and restored.back() in [&"pause", &"title"])):
+			return MireTypes.failure(&"invalid_mode", &"The saved menu stack has an invalid parent screen.")
+		restored.append(requested)
+	if restored.is_empty():
+		return MireTypes.failure(&"invalid_mode", &"The saved menu stack is empty.")
+	stack = restored
+	mode = stack.back()
+	_recovery_travel_mode = mode == &"travel" and GameSession.recovery.has_pending_recovery()
+	_apply_mode()
+	return MireTypes.success({"mode": String(mode)})
+
 func pop_mode() -> void:
 	if stack.size() <= 1 or mode in [&"death", &"travel"]:
 		return
