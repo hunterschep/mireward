@@ -159,6 +159,8 @@ func _world_activated(world: Node3D) -> void:
 			var activated: MireTypes.ActionResult = node.activate()
 			if not activated.ok:
 				_report_action(activated)
+		elif node is TrainingDummy:
+			node.activate()
 	_apply_shadows()
 	world_ready.emit(world)
 
