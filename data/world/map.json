@@ -14,16 +14,18 @@
         -110,
         0,
         140
-      ]
+      ],
+      "discovery_radius": 24
     },
     {
       "id": "lm_kings_trace",
-      "name": "King\u2019s Trace",
+      "name": "King’s Trace",
       "position": [
         -30,
         0,
         30
-      ]
+      ],
+      "discovery_radius": 18
     },
     {
       "id": "lm_briar_camp",
@@ -32,16 +34,18 @@
         -230,
         0,
         -70
-      ]
+      ],
+      "discovery_radius": 18
     },
     {
       "id": "lm_orra",
-      "name": "Saint Orra\u2019s Monastery",
+      "name": "Saint Orra’s Monastery",
       "position": [
         180,
         0,
         -95
-      ]
+      ],
+      "discovery_radius": 18
     },
     {
       "id": "lm_rookwatch",
@@ -50,7 +54,8 @@
         40,
         0,
         -240
-      ]
+      ],
+      "discovery_radius": 24
     },
     {
       "id": "lm_reed_shrine",
@@ -59,7 +64,8 @@
         190,
         0,
         140
-      ]
+      ],
+      "discovery_radius": 18
     },
     {
       "id": "lm_charcoal",
@@ -68,7 +74,8 @@
         -180,
         0,
         25
-      ]
+      ],
+      "discovery_radius": 18
     },
     {
       "id": "lm_watchtower",
@@ -77,7 +84,8 @@
         170,
         0,
         -220
-      ]
+      ],
+      "discovery_radius": 18
     },
     {
       "id": "lm_ferry",
@@ -86,7 +94,8 @@
         -190,
         0,
         230
-      ]
+      ],
+      "discovery_radius": 18
     }
   ],
   "spawns": [
@@ -509,5 +518,1028 @@
         -2
       ]
     }
+  },
+  "exterior": {
+    "terrain": {
+      "half_extent": 320,
+      "cell_size": 8,
+      "chunk_size": 80,
+      "rim_start": 275,
+      "rim_height": 54,
+      "navigation_cell_size": 0.5,
+      "navigation_cell_height": 0.2
+    },
+    "routes": [
+      {
+        "id": "central_road",
+        "width": 8,
+        "points": [
+          [
+            32,
+            0,
+            252
+          ],
+          [
+            0,
+            0,
+            224
+          ],
+          [
+            -65,
+            0,
+            196
+          ],
+          [
+            -110,
+            0,
+            155
+          ],
+          [
+            -110,
+            0,
+            140
+          ],
+          [
+            -85,
+            0,
+            115
+          ],
+          [
+            -50,
+            0,
+            80
+          ],
+          [
+            -30,
+            0,
+            30
+          ],
+          [
+            -15,
+            0,
+            -40
+          ],
+          [
+            20,
+            0,
+            -120
+          ],
+          [
+            40,
+            0,
+            -194
+          ],
+          [
+            40,
+            0,
+            -226
+          ],
+          [
+            40,
+            0,
+            -240
+          ]
+        ]
+      },
+      {
+        "id": "western_bypass",
+        "width": 6,
+        "points": [
+          [
+            -110,
+            0,
+            140
+          ],
+          [
+            -150,
+            0,
+            112
+          ],
+          [
+            -172,
+            0,
+            45
+          ],
+          [
+            -180,
+            0,
+            25
+          ],
+          [
+            -205,
+            0,
+            -5
+          ],
+          [
+            -228,
+            0,
+            -40
+          ],
+          [
+            -230,
+            0,
+            -70
+          ],
+          [
+            -160,
+            0,
+            -105
+          ],
+          [
+            -80,
+            0,
+            -100
+          ],
+          [
+            20,
+            0,
+            -120
+          ]
+        ]
+      },
+      {
+        "id": "eastern_bypass",
+        "width": 6,
+        "points": [
+          [
+            0,
+            0,
+            100
+          ],
+          [
+            80,
+            0,
+            112
+          ],
+          [
+            190,
+            0,
+            140
+          ],
+          [
+            140,
+            0,
+            60
+          ],
+          [
+            140,
+            0,
+            -15
+          ],
+          [
+            180,
+            0,
+            -95
+          ],
+          [
+            175,
+            0,
+            -145
+          ],
+          [
+            170,
+            0,
+            -195
+          ],
+          [
+            170,
+            0,
+            -220
+          ],
+          [
+            108,
+            0,
+            -225
+          ],
+          [
+            40,
+            0,
+            -226
+          ]
+        ]
+      },
+      {
+        "id": "cart_track",
+        "width": 6,
+        "points": [
+          [
+            -110,
+            0,
+            140
+          ],
+          [
+            -80,
+            0,
+            130
+          ],
+          [
+            -30,
+            0,
+            110
+          ],
+          [
+            0,
+            0,
+            100
+          ]
+        ]
+      },
+      {
+        "id": "ferry_track",
+        "width": 5,
+        "points": [
+          [
+            -110,
+            0,
+            140
+          ],
+          [
+            -155,
+            0,
+            180
+          ],
+          [
+            -190,
+            0,
+            230
+          ]
+        ]
+      }
+    ],
+    "structures": [
+      {
+        "id": "brackenford_inn",
+        "family": "inn",
+        "category": "building",
+        "position": [
+          -119,
+          0,
+          129
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_brackenford",
+        "collision": "shell"
+      },
+      {
+        "id": "brackenford_forge",
+        "family": "forge",
+        "category": "building",
+        "position": [
+          -99,
+          0,
+          131
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_brackenford",
+        "collision": "shell"
+      },
+      {
+        "id": "brackenford_cottage_west",
+        "family": "cottage",
+        "category": "building",
+        "position": [
+          -130,
+          0,
+          145
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_brackenford",
+        "collision": "shell"
+      },
+      {
+        "id": "brackenford_cottage_east",
+        "family": "cottage",
+        "category": "building",
+        "position": [
+          -96,
+          0,
+          157
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_brackenford",
+        "collision": "shell"
+      },
+      {
+        "id": "brackenford_well",
+        "family": "well",
+        "category": "prop",
+        "position": [
+          -114,
+          0,
+          142
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_brackenford",
+        "collision": "prop"
+      },
+      {
+        "id": "village_oath_shrine",
+        "family": "shrine",
+        "category": "prop",
+        "position": [
+          -110,
+          0,
+          154
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_brackenford",
+        "collision": "prop"
+      },
+      {
+        "id": "kings_trace_gate",
+        "family": "road_gate",
+        "category": "building",
+        "position": [
+          -30,
+          0,
+          24
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_kings_trace",
+        "collision": "gate"
+      },
+      {
+        "id": "briar_tent_west",
+        "family": "tent",
+        "category": "building",
+        "position": [
+          -238,
+          0,
+          -78
+        ],
+        "yaw": 2.7,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_briar_camp",
+        "collision": "shell"
+      },
+      {
+        "id": "briar_tent_east",
+        "family": "tent",
+        "category": "building",
+        "position": [
+          -222,
+          0,
+          -80
+        ],
+        "yaw": 3.5,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_briar_camp",
+        "collision": "shell"
+      },
+      {
+        "id": "briar_tent_north",
+        "family": "tent",
+        "category": "building",
+        "position": [
+          -230,
+          0,
+          -85
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_briar_camp",
+        "collision": "shell"
+      },
+      {
+        "id": "orra_split_tower",
+        "family": "monastery_tower",
+        "category": "building",
+        "position": [
+          187,
+          0,
+          -101
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1.8,
+          1.8,
+          1.8
+        ],
+        "landmark_id": "lm_orra",
+        "collision": "shell"
+      },
+      {
+        "id": "orra_crypt_arch",
+        "family": "monastery_arch",
+        "category": "building",
+        "position": [
+          180,
+          0,
+          -89
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1.5,
+          1,
+          1
+        ],
+        "landmark_id": "lm_orra",
+        "collision": "gate"
+      },
+      {
+        "id": "orra_shelter",
+        "family": "tent",
+        "category": "building",
+        "position": [
+          200,
+          0,
+          -88
+        ],
+        "yaw": 2.8,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_orra",
+        "collision": "shell"
+      },
+      {
+        "id": "rookwatch_keep",
+        "family": "keep",
+        "category": "building",
+        "position": [
+          40,
+          0,
+          -252
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          2,
+          2,
+          2
+        ],
+        "landmark_id": "lm_rookwatch",
+        "collision": "shell"
+      },
+      {
+        "id": "rookwatch_west_wall",
+        "family": "wall",
+        "category": "building",
+        "position": [
+          22,
+          0,
+          -239
+        ],
+        "yaw": 1.570796,
+        "scale": [
+          3,
+          1.8,
+          1
+        ],
+        "landmark_id": "lm_rookwatch",
+        "collision": "wall"
+      },
+      {
+        "id": "rookwatch_east_wall",
+        "family": "wall",
+        "category": "building",
+        "position": [
+          58,
+          0,
+          -239
+        ],
+        "yaw": 1.570796,
+        "scale": [
+          3,
+          1.8,
+          1
+        ],
+        "landmark_id": "lm_rookwatch",
+        "collision": "wall"
+      },
+      {
+        "id": "rookwatch_rear_wall",
+        "family": "wall",
+        "category": "building",
+        "position": [
+          40,
+          0,
+          -264
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          5,
+          1.8,
+          1
+        ],
+        "landmark_id": "lm_rookwatch",
+        "collision": "wall"
+      },
+      {
+        "id": "rookwatch_undercroft_arch",
+        "family": "monastery_arch",
+        "category": "building",
+        "position": [
+          40,
+          0,
+          -230
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_rookwatch",
+        "collision": "gate"
+      },
+      {
+        "id": "reed_oath_shrine",
+        "family": "shrine",
+        "category": "prop",
+        "position": [
+          190,
+          0,
+          136
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_reed_shrine",
+        "collision": "prop"
+      },
+      {
+        "id": "reed_willow",
+        "family": "oak",
+        "category": "prop",
+        "position": [
+          196,
+          0,
+          137
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1.8,
+          1.2,
+          1.8
+        ],
+        "landmark_id": "lm_reed_shrine",
+        "collision": "prop"
+      },
+      {
+        "id": "reed_ribbons",
+        "family": "banner_free",
+        "category": "prop",
+        "position": [
+          193,
+          0,
+          138
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_reed_shrine",
+        "collision": "none"
+      },
+      {
+        "id": "charcoal_black_kiln",
+        "family": "kiln",
+        "category": "building",
+        "position": [
+          -184,
+          0,
+          23
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_charcoal",
+        "collision": "prop"
+      },
+      {
+        "id": "watchtower_broken_crown",
+        "family": "ruined_watchtower",
+        "category": "building",
+        "position": [
+          177,
+          0,
+          -227
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1.4,
+          1.4,
+          1.4
+        ],
+        "landmark_id": "lm_watchtower",
+        "collision": "shell"
+      },
+      {
+        "id": "millpond_stranded_ferry",
+        "family": "ferry",
+        "category": "building",
+        "position": [
+          -197,
+          0,
+          230
+        ],
+        "yaw": 3.141593,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "landmark_id": "lm_ferry",
+        "collision": "shell"
+      }
+    ],
+    "objective_reservations": [
+      {
+        "id": "cart_coffer",
+        "scene_id": "exterior",
+        "position": [
+          0,
+          0,
+          105
+        ],
+        "radius": 3
+      },
+      {
+        "id": "checkpoint_receipt_box",
+        "scene_id": "exterior",
+        "position": [
+          -24,
+          0,
+          35
+        ],
+        "radius": 3
+      },
+      {
+        "id": "watchtower_ledger_chest",
+        "scene_id": "exterior",
+        "position": [
+          177,
+          0,
+          -222
+        ],
+        "radius": 3
+      },
+      {
+        "id": "kiln_hammer_crate",
+        "scene_id": "exterior",
+        "position": [
+          -178,
+          0,
+          25
+        ],
+        "radius": 3
+      },
+      {
+        "id": "ferry_blanket_barrel",
+        "scene_id": "exterior",
+        "position": [
+          -187,
+          0,
+          228
+        ],
+        "radius": 3
+      },
+      {
+        "id": "shrine_ring_bowl",
+        "scene_id": "exterior",
+        "position": [
+          190,
+          0,
+          139
+        ],
+        "radius": 3
+      },
+      {
+        "id": "monastery_candle_01",
+        "scene_id": "exterior",
+        "position": [
+          178,
+          0,
+          -93
+        ],
+        "radius": 3
+      },
+      {
+        "id": "monastery_candle_02",
+        "scene_id": "exterior",
+        "position": [
+          192,
+          0,
+          -93
+        ],
+        "radius": 3
+      },
+      {
+        "id": "monastery_candle_03",
+        "scene_id": "exterior",
+        "position": [
+          193,
+          0,
+          -86
+        ],
+        "radius": 3
+      },
+      {
+        "id": "watchtower_badge_locker",
+        "scene_id": "exterior",
+        "position": [
+          178,
+          0,
+          -227
+        ],
+        "radius": 3
+      },
+      {
+        "id": "raider_medicine_cache",
+        "scene_id": "exterior",
+        "position": [
+          -202,
+          0,
+          -5
+        ],
+        "radius": 3
+      },
+      {
+        "id": "charter_vault_coffer",
+        "scene_id": "interior_crypt",
+        "position": [
+          0,
+          0,
+          -40
+        ],
+        "radius": 3
+      },
+      {
+        "id": "captain_seal_chest",
+        "scene_id": "interior_undercroft",
+        "position": [
+          3,
+          0,
+          -50
+        ],
+        "radius": 3
+      }
+    ],
+    "npc_reservations": [
+      {
+        "id": "mara_venn",
+        "scene_id": "exterior",
+        "position": [
+          -107,
+          0,
+          143
+        ],
+        "radius": 3
+      },
+      {
+        "id": "oswin_pike",
+        "scene_id": "exterior",
+        "position": [
+          -99,
+          0,
+          135
+        ],
+        "radius": 3
+      },
+      {
+        "id": "tamsin_reed",
+        "scene_id": "interior_inn",
+        "position": [
+          -3,
+          0,
+          -2
+        ],
+        "radius": 3
+      },
+      {
+        "id": "sister_elian",
+        "scene_id": "exterior",
+        "position": [
+          195,
+          0,
+          -82
+        ],
+        "radius": 3
+      },
+      {
+        "id": "hobb_fenwick",
+        "scene_id": "exterior",
+        "position": [
+          -189,
+          0,
+          226
+        ],
+        "radius": 3
+      },
+      {
+        "id": "ada_vey",
+        "scene_id": "exterior",
+        "position": [
+          44,
+          0,
+          -227
+        ],
+        "radius": 3
+      },
+      {
+        "id": "wren_kest",
+        "scene_id": "exterior",
+        "position": [
+          -230,
+          0,
+          -73
+        ],
+        "radius": 3
+      },
+      {
+        "id": "captain_rusk",
+        "scene_id": "interior_undercroft",
+        "position": [
+          -2,
+          0,
+          -48
+        ],
+        "radius": 3
+      }
+    ],
+    "portals": [
+      {
+        "id": "inn_door",
+        "position": [
+          -119,
+          0,
+          132.8
+        ],
+        "size": [
+          1.4,
+          2.5,
+          1.0
+        ],
+        "target_scene": "interior_inn",
+        "target_entrance": "entry",
+        "return_entrance": "from_inn"
+      },
+      {
+        "id": "crypt_door",
+        "position": [
+          180,
+          0,
+          -89
+        ],
+        "size": [
+          2.0,
+          2.5,
+          1.0
+        ],
+        "target_scene": "interior_crypt",
+        "target_entrance": "entry",
+        "return_entrance": "from_crypt"
+      },
+      {
+        "id": "undercroft_door",
+        "position": [
+          40,
+          0,
+          -230
+        ],
+        "size": [
+          2.0,
+          2.5,
+          1.0
+        ],
+        "target_scene": "interior_undercroft",
+        "target_entrance": "entry",
+        "return_entrance": "from_undercroft"
+      }
+    ],
+    "hazards": [
+      {
+        "id": "millpond_deep_water",
+        "kind": "deep_water",
+        "shape": "ellipse",
+        "center": [
+          -245,
+          -2,
+          260
+        ],
+        "radii": [
+          44,
+          33
+        ],
+        "min_y": -12,
+        "max_y": 0
+      },
+      {
+        "id": "exterior_bounds",
+        "kind": "bounds",
+        "minimum": [
+          -320,
+          -40,
+          -320
+        ],
+        "maximum": [
+          320,
+          90,
+          320
+        ]
+      }
+    ],
+    "pond": {
+      "center": [
+        -245,
+        -0.15,
+        260
+      ],
+      "radii": [
+        55,
+        42
+      ],
+      "depth": 3.5
+    },
+    "viewpoints": [
+      {
+        "id": "south_road_orientation",
+        "position": [
+          32,
+          1.65,
+          252
+        ],
+        "targets": [
+          "lm_orra",
+          "lm_rookwatch"
+        ]
+      },
+      {
+        "id": "north_trace_orientation",
+        "position": [
+          -10,
+          1.65,
+          -60
+        ],
+        "targets": [
+          "lm_orra",
+          "lm_rookwatch"
+        ]
+      }
+    ],
+    "entrance_yaws": {
+      "start": 0.9,
+      "from_inn": 0,
+      "from_crypt": 0,
+      "from_undercroft": 0
+    },
+    "decor_count": 320
   }
 }
