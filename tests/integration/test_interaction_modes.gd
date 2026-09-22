@@ -184,7 +184,13 @@ func check_modes(t: SceneTree, player: MirePlayer, controller: GameModeControlle
 	for invalid: Array in [[], [null], [{}], [&"unknown"], [&"confirmation"], [&"gameplay", &"gameplay"], [&"gameplay", &"pause", &"inventory"], [&"gameplay", &"pause", &"pause"]]:
 		t.check(not controller.restore_stack(invalid).ok and controller.stack == stable_stack and controller.mode == &"gameplay" and not t.paused, "R45 invalid stack restore has no partial menu or input changes")
 	t.check(controller.restore_stack(["gameplay", "pause", "load", "confirmation"]).ok and controller.stack == [&"gameplay", &"pause", &"load", &"confirmation"], "R45 valid complete menu stack restores through controller policy")
+	controller.set_back_locked(true)
+	controller.pop_mode()
+	t.check(controller.mode == &"confirmation", "R35 committed ending confirmation can require explicit save handling before Back")
 	controller.push_mode(&"gameplay")
+	controller.push_mode(&"inventory")
+	controller.pop_mode()
+	t.check(controller.mode == &"gameplay", "R45 a subsequent ordinary menu keeps normal Back navigation")
 	var recovery: RecoveryService = t.root.get_node("GameSession").recovery
 	recovery._pending_recovery = {"reason": "fixture"}
 	t.check(controller.restore_stack([&"gameplay"]).ok and controller.mode == &"travel" and t.paused and not player.input_enabled, "R45 restoring gameplay cannot bypass pending recovery ownership")

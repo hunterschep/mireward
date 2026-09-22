@@ -14,6 +14,7 @@ var modal_host: Control
 var _configured: bool = false
 var _focus_lost: bool = false
 var _recovery_travel_mode: bool = false
+var _back_locked: bool = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -56,6 +57,7 @@ func push_mode(requested: StringName) -> MireTypes.ActionResult:
 		if mode == &"gameplay" and GameSession.recovery.has_pending_recovery():
 			_apply_mode()
 		return MireTypes.success({"mode": String(mode)})
+	_back_locked = false
 	if requested in [&"gameplay", &"title"]:
 		stack = [requested]
 	elif requested in SUBORDINATE or (requested in PARENT_PANELS and mode in [&"pause", &"title"]):
@@ -88,13 +90,18 @@ func restore_stack(saved: Array) -> MireTypes.ActionResult:
 		return MireTypes.failure(&"invalid_mode", &"The saved menu stack is empty.")
 	stack = restored
 	mode = stack.back()
+	_back_locked = false
 	_recovery_travel_mode = mode == &"travel" and GameSession.recovery.has_pending_recovery()
 	_apply_mode()
 	return MireTypes.success({"mode": String(mode)})
 
+func set_back_locked(locked: bool) -> void:
+	_back_locked = locked and mode == &"confirmation"
+
 func pop_mode() -> void:
-	if stack.size() <= 1 or mode in [&"death", &"travel"]:
+	if _back_locked or stack.size() <= 1 or mode in [&"death", &"travel"]:
 		return
+	_back_locked = false
 	stack.pop_back()
 	mode = stack.back()
 	_apply_mode()

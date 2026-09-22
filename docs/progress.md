@@ -18,15 +18,16 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T12 | IMPLEMENTED | Integration lead | Root619 quest assertions; physical campaign/UI wiring later |
 | T13 | IMPLEMENTED | Integration lead | Root598 dialogue assertions; native UI and placement later |
 | T14 | IMPLEMENTED | Integration lead | Root374 codec,73 save runtime,46 composed runtime; native UI gates later |
-| T15 | IN_PROGRESS | quest_engine | Native menus/HUD over verified domain and save interfaces |
-| T16 | NOT_STARTED | Integration lead | Playable opening integration, then continue full campaign |
+| T15 | IN_PROGRESS | Integration lead | Root108 UI assertions; native capture investigation and opening wiring |
+| T16 | IN_PROGRESS | Integration lead + opening world owner | Populate opening against tested UI; then real controls acceptance |
 | T17–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies after opening integration |
 
 ## Exclusive ownership
 
 - T11 world routing/interiors returned and integrated.
-- quest_engine: T15 native UI, HUD, settings, inventory/shop/loot and journal/map panels.
-- world_validation/npc_adapter: T14 SaveService, codecs, settings and save tests; T13 ownership returned.
+- T15 UI implementation returned; root owns final integration and native verification.
+- world_validation/npc_adapter: T16 opening world factory and its integration tests.
+- world_validation: background native UI capture investigation.
 - Integration lead: shared configuration/autoload/core wiring, GameRoot/UI integration, returned T09/T10 code, records and all Git operations.
 
 ## Resume

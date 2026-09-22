@@ -24,10 +24,10 @@ func _ready() -> void:
 	add_child(backdrop)
 	var panel := PanelContainer.new()
 	panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	panel.anchor_left = 0.17
-	panel.anchor_right = 0.83
-	panel.anchor_top = 0.12
-	panel.anchor_bottom = 0.88
+	panel.anchor_left = 0.06
+	panel.anchor_right = 0.94
+	panel.anchor_top = 0.06
+	panel.anchor_bottom = 0.94
 	add_child(panel)
 	var margin := MarginContainer.new()
 	for side: String in ["left", "right", "top", "bottom"]:
@@ -37,10 +37,10 @@ func _ready() -> void:
 	column.add_theme_constant_override("separation", 18)
 	margin.add_child(column)
 	_heading = Label.new()
-	_heading.add_theme_font_size_override("font_size", 28)
 	column.add_child(_heading)
 	_content = VBoxContainer.new()
 	_content.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	column.add_child(_content)
 	_back = Button.new()
 	_back.text = "Back"
@@ -90,7 +90,7 @@ func show_mode(current_mode: StringName, mode_stack: Array[StringName]) -> void:
 		return
 	var desired: Control = _focus_for(current_mode)
 	if desired != null:
-		desired.grab_focus.call_deferred()
+		UIStyle.focus_visible.call_deferred(desired)
 
 func _focus_for(panel_mode: StringName) -> Control:
 	for remembered: Dictionary in [_remembered_focus, first_focus]:
@@ -99,3 +99,9 @@ func _focus_for(panel_mode: StringName) -> Control:
 			if candidate is Control and candidate.is_visible_in_tree() and candidate.focus_mode != Control.FOCUS_NONE:
 				return candidate
 	return _back if _back.visible else null
+
+func set_heading(text: String) -> void:
+	_heading.text = text
+
+func set_back_visible(shown: bool) -> void:
+	_back.visible = shown

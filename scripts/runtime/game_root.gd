@@ -17,6 +17,7 @@ var game_view: SubViewport
 var view_texture: TextureRect
 var interface: Control
 var display_rect: Rect2
+var ui: GameUI
 var _session_bound: bool = false
 
 func _ready() -> void:
@@ -82,6 +83,12 @@ func _ready() -> void:
 	SaveService.settings_changed.connect(_settings_changed)
 	apply_settings()
 	_apply_window_settings()
+	ui = GameUI.new()
+	ui.name = "GameUI"
+	interface.add_child(ui)
+	var interface_ready := ui.configure(self)
+	if not interface_ready.ok:
+		push_error(interface_ready.message_key)
 
 func bind_session_services() -> MireTypes.ActionResult:
 	if _session_bound:
@@ -161,6 +168,10 @@ func _world_activated(world: Node3D) -> void:
 				_report_action(activated)
 		elif node is TrainingDummy:
 			node.activate()
+		elif node is WorldObject:
+			var activated: MireTypes.ActionResult = node.activate()
+			if not activated.ok:
+				_report_action(activated)
 	_apply_shadows()
 	world_ready.emit(world)
 
