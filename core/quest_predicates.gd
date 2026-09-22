@@ -270,11 +270,25 @@ static func validate_snapshot(state: Dictionary, db: Node) -> MireTypes.ActionRe
 				return _invalid("Story conversation precedes required evidence: " + step)
 	if presented and (int(state.key_items.get("orra_charter", 0)) != 1 or int(state.key_items.get("grain_ledger", 0)) != 1):
 		return _invalid("Ada's handoff must retain charter and ledger.")
+	var captain: Dictionary = state.world.get("captain_hall_captain_rusk_01", {})
+	var captain_defeated: bool = captain.get("defeated") is bool and captain.defeated
+	if captain_defeated and not state.evidence.get("conversation/" + MQ05 + "/challenge_rusk", false):
+		return _invalid("Defeated Rusk lacks his accepted challenge.")
+	if _fixed_source_acquired(state, "orra_charter", "charter_vault_coffer") and not state.flags.get("puzzle_solved", false):
+		return _invalid("The charter was acquired before its vault puzzle was solved.")
+	if _fixed_source_acquired(state, "rookwatch_seal", "captain_seal_chest") and not captain_defeated:
+		return _invalid("The seal was acquired before Rusk was defeated.")
 	if state.evidence.get("read/village_writ_table", false) and not state.evidence.get("conversation/" + MQ06 + "/discuss_resolution", false):
 		return _invalid("Writ review precedes the final discussion.")
 	if state.choices.ending != "none":
 		return _validate_aftermath(state, db)
 	return MireTypes.success()
+
+static func _fixed_source_acquired(state: Dictionary, item_id: String, source_id: String) -> bool:
+	if int(state.key_items.get(item_id, 0)) > 0 or state.evidence.get(item_id, false) or state.evidence.get("pickup/" + source_id, false):
+		return true
+	var source: Dictionary = state.world.get(source_id, {})
+	return source.get("remaining") is Dictionary and not source.remaining.has(item_id)
 
 static func _validate_aftermath(state: Dictionary, db: Node) -> MireTypes.ActionResult:
 	var ending: String = state.choices.ending

@@ -25,6 +25,7 @@ func run(runner: SceneTree) -> void:
 	_chain("amnesty", "free_road")
 	_overflow_and_rollback()
 	_invalid_snapshots()
+	_gated_source_snapshots()
 	for ending: StringName in [&"none", &"charter", &"warden", &"free_road"]:
 		t.check(ending_checkpoint(session, ending).ok and session.state.choices.ending == String(ending), "R35 reusable genuine campaign fixture " + String(ending))
 	_reset()
@@ -169,7 +170,9 @@ func _chain(terms: String, ending: String) -> void:
 	t.check(quests.track(StringName(MAIN[4])).ok and quests.tracked_view().objective.hint_target_id == "undercroft_door", "R28 indoor objective points to entrance from exterior")
 	_talk(MAIN[4], "captain_rusk", "challenge_rusk")
 	t.check(quests.record_conversation(&"captain_rusk", StringName(MAIN[4] + "/challenge_rusk")).payload.replayed, "R29 explicit re-challenge can restart runtime fight after recovery")
+	t.check(QuestPredicates.validate_snapshot(session.snapshot(), db).ok, "R38 accepted challenge with a living captain remains a valid recovery/load state")
 	t.check(session.world_state.mark_defeated(&"captain_hall_captain_rusk_01").ok, "R29 boss defeat uses authored persistent spawn")
+	t.check(QuestPredicates.validate_snapshot(session.snapshot(), db).ok, "R38 defeated captain remains saveable before collecting his fixed seal")
 	t.check(not quests.record_conversation(&"captain_rusk", StringName(MAIN[4] + "/challenge_rusk")).ok, "R29 defeated captain cannot be challenged by stale dialogue")
 	_take("captain_seal_chest", "rookwatch_seal")
 	if ending == "free_road":
@@ -356,6 +359,59 @@ static func ending_checkpoint(owner: Node, ending: StringName = &"none", terms: 
 			return result
 	service.reconcile()
 	return QuestPredicates.validate_snapshot(owner.snapshot(), owner.get_node("/root/ContentDB"))
+
+func _gated_source_snapshots() -> void:
+	_reset()
+	for source: Array in [["charter_vault_coffer", "orra_charter"], ["captain_seal_chest", "rookwatch_seal"]]:
+		for signal_kind: String in ["held", "evidence", "pickup", "depleted"]:
+			var malformed: Dictionary = session.snapshot()
+			match signal_kind:
+				"held": malformed.key_items[source[1]] = 1
+				"evidence": malformed.evidence[source[1]] = true
+				"pickup": malformed.evidence["pickup/" + source[0]] = true
+				"depleted":
+					var record: Dictionary = session.world_state.get_entity_state(StringName(source[0]))
+					record.remaining.clear()
+					malformed.world[source[0]] = record
+			t.check(SessionValidation.validate(malformed, db).ok, "R38 gated-source fixture is structurally valid: " + source[0] + "/" + signal_kind)
+			var checked := QuestPredicates.validate_snapshot(malformed, db)
+			t.check(not checked.ok and String(checked.message_key).contains("acquired before"), "R38 rejects gated source without its prerequisite: " + source[0] + "/" + signal_kind)
+		var untouched: Dictionary = session.snapshot()
+		untouched.world[source[0]] = session.world_state.get_entity_state(StringName(source[0]))
+		t.check(QuestPredicates.validate_snapshot(untouched, db).ok, "R38 an authored but uncollected source is not mistaken for acquisition")
+	# This structurally valid record previously passed the save semantics and made
+	# the later mandatory challenge impossible. Runtime boss gating is owned by T20.
+	t.check(session.world_state.mark_defeated(&"captain_hall_captain_rusk_01").ok, "R38 construct the formerly accepted unchallenged-defeat record")
+	var premature_defeat: Dictionary = session.snapshot()
+	t.check(SessionValidation.validate(premature_defeat, db).ok and not QuestPredicates.validate_snapshot(premature_defeat, db).ok, "R38 save semantics reject Rusk defeated before an accepted challenge")
+	_reset()
+	t.check(session.restore(premature_defeat).ok, "R38 reproduce the pre-gate raw restore of the structurally valid candidate")
+	for symbol: StringName in [&"reed", &"stone", &"flame"]:
+		t.check(quests.ring_chime(symbol).ok, "R38 softlock fixture solves the real puzzle")
+	for source: Array in [["charter_vault_coffer", "orra_charter"], ["watchtower_ledger_chest", "grain_ledger"], ["cart_coffer", "cart_medicine"], ["checkpoint_receipt_box", "toll_receipt"]]:
+		_take(source[0], source[1])
+	t.check(quests.read_document(&"toll_notice").ok, "R38 softlock fixture reads toll evidence")
+	for quest: String in [MAIN[0], MAIN[1]]:
+		_accept(quest)
+		t.check(quests.complete(StringName(quest), _id("softlock")).ok, "R38 otherwise ordinary progress toward the blocked challenge: " + quest)
+	_accept(MAIN[2])
+	_talk(MAIN[2], "sister_elian", "request_charter")
+	t.check(quests.complete(StringName(MAIN[2]), _id("softlock")).ok, "R38 softlock fixture completes Elian's attestation")
+	_accept(MAIN[3])
+	_talk(MAIN[3], "wren_kest", "meet_wren")
+	t.check(quests.choose(&"wren_terms", &"amnesty", _id("softlock")).ok and quests.complete(StringName(MAIN[3]), _id("softlock")).ok, "R38 softlock fixture records legitimate terms and report")
+	_accept(MAIN[4])
+	_talk(MAIN[4], "ada_vey", "present_evidence")
+	var challenged := quests.record_conversation(&"captain_rusk", StringName(MAIN[4] + "/challenge_rusk"))
+	t.check(not challenged.ok and challenged.code == &"not_available" and quests.quest_view(StringName(MAIN[4])).next_objective.id == MAIN[4] + "/challenge_rusk", "R38 premature defeat would leave MQ05 requiring a permanently refused challenge")
+	var blocked := QuestPredicates.validate_snapshot(session.snapshot(), db)
+	t.check(not blocked.ok and String(blocked.message_key).contains("Defeated Rusk"), "R38 later acceptance and Ada's handoff cannot legitimize the unchallenged defeat")
+	_reset()
+	_solve()
+	_take("charter_vault_coffer", "orra_charter")
+	for source: Array in [["watchtower_ledger_chest", "grain_ledger"], ["watchtower_badge_locker", "ada_badge"], ["kiln_hammer_crate", "smith_hammer"], ["monastery_candle_01", "votive_candle"], ["monastery_candle_02", "votive_candle"], ["monastery_candle_03", "votive_candle"]]:
+		_take(source[0], source[1])
+	t.check(session.state.quests[MAIN[2]].state == "LOCKED" and QuestPredicates.validate_snapshot(session.snapshot(), db).ok, "R33 solved-early charter and ordinary early ledger, badge, hammer and candle pickups remain valid")
 
 func _definition_failures() -> void:
 	var definition: Dictionary = db.quests[StringName(SIDES[3])].data
