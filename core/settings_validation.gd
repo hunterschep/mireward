@@ -69,16 +69,22 @@ static func apply_bindings(settings: Dictionary) -> void:
 	for action: String in bindings:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
-		InputMap.action_erase_events(action)
 		var binding: Dictionary = bindings[action]
+		var replacement: InputEvent
 		if binding.type == "key":
 			var key := InputEventKey.new()
 			key.physical_keycode = int(binding.code)
-			InputMap.action_add_event(action, key)
+			replacement = key
 		else:
 			var mouse := InputEventMouseButton.new()
 			mouse.button_index = int(binding.code)
-			InputMap.action_add_event(action, mouse)
+			replacement = mouse
+		var current := InputMap.action_get_events(action)
+		# Replacing an unchanged event drops its held state in Godot's InputMap.
+		if current.size() == 1 and current[0].is_match(replacement, true):
+			continue
+		InputMap.action_erase_events(action)
+		InputMap.action_add_event(action, replacement)
 
 static func _invalid(message: String) -> MireTypes.ActionResult:
 	return MireTypes.failure(&"invalid_settings", StringName(message))

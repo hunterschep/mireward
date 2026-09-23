@@ -19,7 +19,7 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T13 | IMPLEMENTED | Integration lead | Root598 dialogue assertions; native UI and placement later |
 | T14 | IMPLEMENTED | Integration lead | Root374 codec,73 save runtime,46 composed runtime; native UI gates later |
 | T15 | IMPLEMENTED | Integration lead | Root108 UI assertions and corrected GPU layouts; opening controls next |
-| T16 | IN_PROGRESS | Integration lead | Opening factory149 and UI113 pass; native S01/build smoke next |
+| T16 | IMPLEMENTED | Integration lead | Normal-input opening50 and factory149 pass; native hardware acceptance UNVERIFIED |
 | T17 | IN_PROGRESS | world_validation | Complete exterior content over tested opening interfaces; native release gate remains open |
 | T18–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies |
 
@@ -29,7 +29,7 @@ Complete specification scope is authorized. The user objective overrides sequent
 - T15 UI implementation returned; root owns final integration and native verification.
 - T16 opening factory returned and integrated; root owns native opening acceptance.
 - world_validation: T17 exterior population and world-content tests.
-- quest_engine: normal-input opening traversal fixture; native hardware gate remains unverified.
+- Normal-input opening traversal returned; root owns remaining native hardware acceptance.
 - Integration lead: shared configuration/autoload/core wiring, GameRoot/UI integration, returned T09/T10 code, records and all Git operations.
 
 ## Resume

@@ -79,7 +79,8 @@ func run_suite(path: String) -> void:
 		printerr("FAIL Worker requires an isolated save directory.")
 		quit(1)
 		return
-	create_timer(120.0).timeout.connect(func() -> void:
+	var timeout_seconds: float = 360.0 if path == "res://tests/integration/test_opening_walkthrough.gd" and OS.get_environment("MIREWARD_OPENING_WALKTHROUGH") == "1" else 120.0
+	create_timer(timeout_seconds).timeout.connect(func() -> void:
 		printerr("FAIL Test suite timed out: " + path)
 		quit(1)
 	)

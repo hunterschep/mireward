@@ -16,6 +16,7 @@ func run(runner: SceneTree) -> void:
 	_file_failures()
 	_slot_inspection()
 	_settings()
+	await _held_inputs()
 	session.new_game()
 
 func _decode(text: String) -> MireTypes.ActionResult:
@@ -213,3 +214,25 @@ func _settings() -> void:
 	t.check(not saves.load_settings().ok and saves.settings == settings_before, "R38 damaged settings are not silently overwritten or applied")
 	t.check(saves.load_settings(true).ok, "R38 explicit settings backup recovery is available")
 	t.check(saves.save_settings(defaults).ok, "R37 restore default bindings for subsequent isolated tests")
+
+func _held_inputs() -> void:
+	var key := InputEventKey.new()
+	key.physical_keycode = KEY_W
+	key.keycode = KEY_W
+	key.pressed = true
+	Input.parse_input_event(key)
+	Input.flush_buffered_events()
+	await t.physics_frame
+	t.check(Input.is_physical_key_pressed(KEY_W) and Input.is_action_pressed(&"move_forward"), "R08 actual held key activates movement before settings persistence")
+	for change: Dictionary in [{"dismissed_hints": ["movement"]}, {"fov": 85.0}, {"master_volume": 0.5}, {"render_mode": "native"}, {"bindings": {"move_forward": {"type": "key", "code": KEY_W}}}]:
+		var candidate: Dictionary = saves.settings.duplicate(true)
+		candidate.merge(change, true)
+		t.check(saves.save_settings(candidate).ok and Input.is_action_pressed(&"move_forward"), "R08 unrelated settings or equivalent bindings preserve held movement: " + str(change.keys()))
+	t.check(saves.rebind(&"quick_heal", {"type": "key", "code": KEY_H}).ok and Input.is_action_pressed(&"move_forward"), "R08 changing another action preserves the held movement action")
+	var released: InputEventKey = key.duplicate()
+	released.pressed = false
+	Input.parse_input_event(released)
+	Input.flush_buffered_events()
+	await t.physics_frame
+	t.check(not Input.is_action_pressed(&"move_forward") and not Input.is_physical_key_pressed(KEY_W), "R08 the normal release still clears preserved movement")
+	t.check(saves.save_settings(saves.DEFAULT_SETTINGS.duplicate(true)).ok, "R37 held-input fixture restores default settings")

@@ -4,7 +4,7 @@ PASS requires linked execution evidence for every applicable verification method
 
 | Requirement | Status | Implementation and verification |
 |---|---|---|
-| R01 Complete bounded game | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R01 Complete bounded game | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R02 Reproducible engine and project | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R03 Offline operation and source availability | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R04 Shared contracts and validated data | IN PROGRESS | See tasks.md coverage map; final gate T28 |
@@ -53,6 +53,6 @@ PASS requires linked execution evidence for every applicable verification method
 | R47 Onboarding and feedback | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R48 Bounded runtime and performance evidence | NOT STARTED | See tasks.md coverage map; final gate T28 |
 | R49 Automated correctness and content checks | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R50 Playable end-to-end release gate | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R50 Playable end-to-end release gate | UNVERIFIED | Opening normal-input integration is recorded in T16-walkthrough; native control tool rejected subsequent actions. Full campaign and native release gate remain open. |
 | R51 Export and documentation | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R52 Licensing and honest completion | IN PROGRESS | See tasks.md coverage map; final gate T28 |
