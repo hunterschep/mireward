@@ -52,6 +52,7 @@ func run(runner: SceneTree) -> void:
 	await _save_load()
 	await _backup_and_continue()
 	await _binding_and_layout()
+	await _cancelled_confirmation()
 	await _ending_failure()
 	game.free()
 	await _frames()
@@ -225,6 +226,25 @@ func _binding_and_layout() -> void:
 		var panel: Control = ui.panels[mode]
 		t.check(panel.get_global_rect().end.y <= 720 and panel.get_global_rect().position.y >= 0 and panel.size.x <= 1280, "R46 essential modal viewport fits 720p at150%: " + String(mode))
 		t.check(game.modal_host._back.get_global_rect().end.y <= 720 and game.modal_host._back.get_global_rect().end.x <= 1280, "R46 Back stays accessible at150%: " + String(mode))
+	game.modes.push_mode(&"gameplay")
+
+func _cancelled_confirmation() -> void:
+	game.modes.push_mode(&"pause")
+	var calls: Array[String] = []
+	ui.confirm("First choice", "Review this choice.", func() -> void: calls.append("first"))
+	var old_confirm: Callable = _button("confirmation/confirm").pressed.get_connections()[0].callable
+	var old_cancel: Callable = _button("confirmation/cancel").pressed.get_connections()[0].callable
+	_press("confirmation/cancel")
+	await _frames()
+	old_confirm.call()
+	t.check(calls.is_empty(), "R34 a cancelled confirmation cannot later run its retained action")
+	ui.confirm("Second choice", "Review the replacement choice.", func() -> void: calls.append("second"))
+	old_cancel.call()
+	t.check(game.modes.mode == &"confirmation", "R45 an old Cancel cannot close a newer confirmation")
+	var current: Callable = _button("confirmation/confirm").pressed.get_connections()[0].callable
+	current.call()
+	current.call()
+	t.check(calls == ["second"], "R34 each current confirmation action executes at most once")
 	game.modes.push_mode(&"gameplay")
 
 func _ending_failure() -> void:

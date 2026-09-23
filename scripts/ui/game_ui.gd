@@ -21,6 +21,7 @@ var _previous_mode: StringName = &"title"
 var _awaiting_ending: bool = false
 var _epilogue_page: int = 0
 var _epilogue_return: Array[StringName] = []
+var _confirmation_revision: int = 0
 
 func configure(owner_game: MireGameRoot) -> MireTypes.ActionResult:
 	if game != null or not is_node_ready() or not is_instance_valid(owner_game):
@@ -206,15 +207,22 @@ func dismiss_hint() -> void:
 	hint.visible = false
 
 func confirm(title: String, text: String, action: Callable) -> void:
+	_confirmation_revision += 1
+	var revision := _confirmation_revision
 	var panel: VBoxContainer = panels[&"confirmation"]
 	UIStyle.clear(panel)
 	var column := UIStyle.scroll_content(panel)
 	column.add_child(UIStyle.label(text))
 	column.add_child(UIStyle.button("Confirm", func() -> void:
+		if revision != _confirmation_revision or game.modes.mode != &"confirmation": return
+		_confirmation_revision += 1
 		game.modes.pop_mode()
 		action.call()
 	, "confirmation/confirm"))
-	column.add_child(UIStyle.button("Cancel", game.modes.pop_mode, "confirmation/cancel"))
+	column.add_child(UIStyle.button("Cancel", func() -> void:
+		if revision != _confirmation_revision or game.modes.mode != &"confirmation": return
+		game.modes.pop_mode()
+	, "confirmation/cancel"))
 	game.modes.push_mode(&"confirmation")
 	game.modal_host.set_heading(title)
 	_focus_first(panel)
@@ -457,6 +465,8 @@ func _focus_first(panel: Control) -> void:
 			return
 
 func _mode_changed(mode: StringName) -> void:
+	if _previous_mode == &"confirmation" and mode != &"confirmation":
+		_confirmation_revision += 1
 	if _previous_mode == &"inventory" and mode != &"inventory":
 		inventory.clear_context()
 	if _previous_mode == &"shop" and mode != &"shop":
