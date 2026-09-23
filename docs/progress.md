@@ -24,9 +24,11 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T18 | IMPLEMENTED | Integration lead | Root262 assertions on production composition; puzzle GPU views inspected |
 | T19 | IMPLEMENTED | Integration lead | Root374 assertions; both terms, physical watchtower sources and reloads pass |
 | T20 | IN_PROGRESS | quest_engine | Captain duel, undercroft composition and MQ05 integration |
-| T21 | IN_PROGRESS | world_validation | Reactions returned; complete physical side-quest matrix underway |
+| T21 | IN_PROGRESS | Integration lead | Owner663 physical/UI assertions pass; root verification and T20 gate pending |
 | T22 | IN_PROGRESS | npc_adapter | Bounded aftermath adapter preparation; final gate waits for T20/T21 |
-| T23–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies |
+| T23 | NOT_STARTED | Integration lead | Final art gate waits for complete campaign/aftermath |
+| T24 | IN_PROGRESS | world_validation | Original28 audio assets verified; bounded runtime preparation, final gate waits T23 |
+| T25–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies |
 
 ## Exclusive ownership
 

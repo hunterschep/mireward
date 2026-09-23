@@ -15,7 +15,7 @@ The models, materials, textures and icons below were authored locally for MIREWA
 | Review scene | `scenes/art/showcase.tscn` | `scripts/art/showcase.gd` | Late-afternoon exterior and separate furnished crypt review stage |
 | Interaction details | Runtime world assemblies | `scripts/world/world_object.gd`, `scripts/world/world_interactions.gd` | Offering bowl, document stands, crate lid and matching solid rest-lantern supports, using the same original geometry and materials |
 
-Audio is tracked separately by its owning task. No audio provenance or completion is implied by this visual manifest.
+Original audio sources, reproduction and verification limits are recorded in `docs/audio_manifest.md`; runtime mix acceptance is tracked separately from visual art.
 
 ## Embedded runtime font
 

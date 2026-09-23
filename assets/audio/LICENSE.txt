@@ -1,0 +1,13 @@
+Original MIREWARD sound assets
+SPDX-License-Identifier: CC0-1.0
+
+The PCM effects, ambient beds and musical phrase in this directory were
+composed and synthesized for MIREWARD by the project contributors. No source
+recordings, sample packs or third-party melodies were used. The reproducible
+original source is tools/generate_audio.py.
+
+To the extent possible under law, the project contributors waive copyright
+and related rights in these original sound assets under CC0 1.0 Universal.
+Attribution is not required.
+
+CC0 legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode

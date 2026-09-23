@@ -1,0 +1,282 @@
+{
+  "ambience_crypt": {
+    "bus": "Ambience",
+    "loop": true,
+    "path": "res://assets/audio/ambience_crypt.wav",
+    "peak": 0.086975,
+    "rms": 0.016239,
+    "sample_rate": 22050,
+    "seconds": 12.0,
+    "sha256": "d3e88897a09cb2db9024a9f1598eb6eee0fd3cc8c992d33324b953d4be4cd6ed"
+  },
+  "ambience_forest": {
+    "bus": "Ambience",
+    "loop": true,
+    "path": "res://assets/audio/ambience_forest.wav",
+    "peak": 0.091248,
+    "rms": 0.015727,
+    "sample_rate": 22050,
+    "seconds": 12.0,
+    "sha256": "e0325bb427abebd628ec4ae337e76e29bf436d1c348858c7d60ae206329224eb"
+  },
+  "ambience_inn": {
+    "bus": "Ambience",
+    "loop": true,
+    "path": "res://assets/audio/ambience_inn.wav",
+    "peak": 0.093384,
+    "rms": 0.016813,
+    "sample_rate": 22050,
+    "seconds": 12.0,
+    "sha256": "09ca2f6749a13a9dbe3295fd0f4af38f270c96730583ad03a7448cc16bdf5103"
+  },
+  "ambience_monastery": {
+    "bus": "Ambience",
+    "loop": true,
+    "path": "res://assets/audio/ambience_monastery.wav",
+    "peak": 0.108276,
+    "rms": 0.017721,
+    "sample_rate": 22050,
+    "seconds": 12.0,
+    "sha256": "decb682f083785c7299951d0238c7e79007c1b5d011e3857397c93706c1e9fec"
+  },
+  "ambience_undercroft": {
+    "bus": "Ambience",
+    "loop": true,
+    "path": "res://assets/audio/ambience_undercroft.wav",
+    "peak": 0.094025,
+    "rms": 0.016167,
+    "sample_rate": 22050,
+    "seconds": 12.0,
+    "sha256": "5731b8419966c8fdbda3bdec0266fba262833c1c204d0ada0c57f2d4589d3cd3"
+  },
+  "ambience_village": {
+    "bus": "Ambience",
+    "loop": true,
+    "path": "res://assets/audio/ambience_village.wav",
+    "peak": 0.110779,
+    "rms": 0.018442,
+    "sample_rate": 22050,
+    "seconds": 12.0,
+    "sha256": "caaf465479f8d178d23c7e8185d47d3003233602c095819a21df2b0cd8a16a7f"
+  },
+  "bandage": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/bandage.wav",
+    "peak": 0.15332,
+    "rms": 0.022448,
+    "sample_rate": 22050,
+    "seconds": 0.8,
+    "sha256": "9abf1f7f6ab99161b900534706ba88a8efc68a8295166655b262f61e73df1b3f"
+  },
+  "bell_chime": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/bell_chime.wav",
+    "peak": 0.277832,
+    "rms": 0.051133,
+    "sample_rate": 22050,
+    "seconds": 1.6,
+    "sha256": "44a1e0212c9a2ddbdeacadb8a60fda7d71530d15e2501103f070ce56fb0a3522"
+  },
+  "bell_low": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/bell_low.wav",
+    "peak": 0.259094,
+    "rms": 0.0511,
+    "sample_rate": 22050,
+    "seconds": 1.4,
+    "sha256": "8548310d1b771b3c02e1f9ea4b8502dc4c6e6b25c6534f0730e512456aa54275"
+  },
+  "bell_solved": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/bell_solved.wav",
+    "peak": 0.246918,
+    "rms": 0.049719,
+    "sample_rate": 22050,
+    "seconds": 2.5,
+    "sha256": "7dead0e9e4020bf53cd1f6e3862ea9e13b4c739fe95804ff345629ecc215f16d"
+  },
+  "chest": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/chest.wav",
+    "peak": 0.199402,
+    "rms": 0.032625,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "051dc94f5db51b760683cc6e6383bde17cc4366108ff23d63ef5024adbead760"
+  },
+  "death": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/death.wav",
+    "peak": 0.250946,
+    "rms": 0.060841,
+    "sample_rate": 22050,
+    "seconds": 0.8,
+    "sha256": "fb946319a7d40715e035d244fb0f8118bbb425560208d07d65ea67405b61de35"
+  },
+  "distant_bell": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/distant_bell.wav",
+    "peak": 0.278107,
+    "rms": 0.051502,
+    "sample_rate": 22050,
+    "seconds": 3.2,
+    "sha256": "c2284d25b1610a9584f8b1224880a374ff3deb11f23f407f9d91c101d23e62a7"
+  },
+  "door": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/door.wav",
+    "peak": 0.213043,
+    "rms": 0.026768,
+    "sample_rate": 22050,
+    "seconds": 0.6499773242630386,
+    "sha256": "490c756522c5828cc61dfb906d59e927a537072ae6ce3417be17b5b60e23a118"
+  },
+  "footstep_dirt": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/footstep_dirt.wav",
+    "peak": 0.269379,
+    "rms": 0.028796,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "a5ac3179335b40dc0688158eefebc04a87953d5ad83674d28c27be61eb744771"
+  },
+  "footstep_stone": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/footstep_stone.wav",
+    "peak": 0.336792,
+    "rms": 0.03817,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "7410b17b5766d8d3cb123eb0e3b94926ccc5e983c00e8948a377836f180a1ab2"
+  },
+  "footstep_wood": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/footstep_wood.wav",
+    "peak": 0.171783,
+    "rms": 0.021947,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "25188cf591f7c56db831d0e1762568c008796fd9384ca3a7c3a78a16a32f633b"
+  },
+  "guard_break": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/guard_break.wav",
+    "peak": 0.34375,
+    "rms": 0.064303,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "c4613c6d5e3b4c86d8c607c34c1fe22368b872e19c98217c33755a0279c53713"
+  },
+  "hurt": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/hurt.wav",
+    "peak": 0.234711,
+    "rms": 0.059906,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "d7af673315afe9606931de9ea07d54bec78be3441eb5277b15f00ab3b0d6a80c"
+  },
+  "metal_impact": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/metal_impact.wav",
+    "peak": 0.381805,
+    "rms": 0.057025,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "dc0da28b912a096f63d5f04bfbc6a087afc36ea193dde4208e67bc8a46e81bc1"
+  },
+  "music_valley": {
+    "bus": "Music",
+    "loop": true,
+    "path": "res://assets/audio/music_valley.wav",
+    "peak": 0.207153,
+    "rms": 0.044681,
+    "sample_rate": 22050,
+    "seconds": 24.0,
+    "sha256": "8ee4d40375c3ab4d04a9da2f7a4529026fea5b7c1017b24da67df8837f1ed0e5"
+  },
+  "parry": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/parry.wav",
+    "peak": 0.366028,
+    "rms": 0.055528,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "566eb73ff947e2799a86506f6b8bf352f5513ecfdd3a1d2fb0e178d29ef21a09"
+  },
+  "pickup": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/pickup.wav",
+    "peak": 0.123962,
+    "rms": 0.0224,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "f5ad506117bf2a0a167cd6ddeb62bdabc6e25b373b48ce942eedae060fb96a6f"
+  },
+  "quest_complete": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/quest_complete.wav",
+    "peak": 0.246918,
+    "rms": 0.054248,
+    "sample_rate": 22050,
+    "seconds": 2.1,
+    "sha256": "67e2d6170ffb67f75e574586994e90cdbcf9c8fe329da73a484ae39644500d5c"
+  },
+  "shield_block": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/shield_block.wav",
+    "peak": 0.362793,
+    "rms": 0.054885,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "ec55e1a17758c7f9a66aa32756cd305279e1b5fcc64ac87abe0e10c8832df7f0"
+  },
+  "swing": {
+    "bus": "Effects",
+    "loop": false,
+    "path": "res://assets/audio/swing.wav",
+    "peak": 0.155182,
+    "rms": 0.021602,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "ba27d6f325e7b40b6164db896a0b1af49ea2d2782dedbf8629cb44567d4dce94"
+  },
+  "ui_accept": {
+    "bus": "UI",
+    "loop": false,
+    "path": "res://assets/audio/ui_accept.wav",
+    "peak": 0.123779,
+    "rms": 0.022291,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "435fd698577a204676466aca06a9f9c4d9488efda50f4d83b856a719a3c8943d"
+  },
+  "ui_back": {
+    "bus": "UI",
+    "loop": false,
+    "path": "res://assets/audio/ui_back.wav",
+    "peak": 0.122986,
+    "rms": 0.022521,
+    "sample_rate": 22050,
+    "seconds": 0.4,
+    "sha256": "72c94c89fa446a60199987370dd214f4d8c392c327a4400449589eedb3d93ed7"
+  }
+}
