@@ -22,8 +22,11 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T16 | IMPLEMENTED | Integration lead | Normal-input opening50 and factory149 pass; native hardware acceptance UNVERIFIED |
 | T17 | IMPLEMENTED | Integration lead | Root 296 content assertions; five populated routes passed; native gate open |
 | T18 | IMPLEMENTED | Integration lead | Root262 assertions on production composition; puzzle GPU views inspected |
-| T19 | IN_PROGRESS | ledger arc owner | Both Wren branches, physical watchtower sources and reload verification |
-| T20–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies |
+| T19 | IMPLEMENTED | Integration lead | Root374 assertions; both terms, physical watchtower sources and reloads pass |
+| T20 | IN_PROGRESS | quest_engine | Captain duel, undercroft composition and MQ05 integration |
+| T21 | IN_PROGRESS | world_validation | Reactions returned; complete physical side-quest matrix underway |
+| T22 | IN_PROGRESS | npc_adapter | Bounded aftermath adapter preparation; final gate waits for T20/T21 |
+| T23–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies |
 
 ## Exclusive ownership
 
