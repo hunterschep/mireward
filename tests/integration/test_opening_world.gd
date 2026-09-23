@@ -108,9 +108,9 @@ func _detached() -> void:
 	if not prepared.ok: return
 	var token := StringName(prepared.payload.prepared_token)
 	var world: Node3D = router._prepared[token].world
-	var population: CampaignWorld.Population = world.get_node("OpeningPopulation")
+	var population: CampaignWorld.Population = world.get_node("CampaignPopulation")
 	t.check(not factory.build(world, candidate).ok, "T16 duplicate builder invocation cannot create duplicate sources")
-	t.check(world.entities.size() == 7 and population.enemies.size() == 2 and population.purses.size() == 2, "T16 opening contains exactly the bounded canonical entities")
+	t.check(world.entities.size() == 41 and population.enemies.size() == 18 and population.purses.size() == 18, "T16 opening is preserved within the complete exterior population")
 	t.check(population.coordinator.player == null and population.enemies[0].died.get_connections().is_empty(), "T16 prepared enemies have no live player/death bindings")
 	t.check(world.entities[&"south_cart_cutpurse_01"].combat.dead and not population.purses[&"south_cart_cutpurse_01"].model.visible, "T16 detached saved defeat and depleted purse are applied before navigation")
 	for id: StringName in [&"mara_venn", &"oswin_pike", &"cart_coffer", &"southern_sign", TrainingDummy.ENTITY_ID]:
@@ -121,14 +121,14 @@ func _detached() -> void:
 
 func _clearance() -> void:
 	var world: Node3D = router.current_world
-	t.check(world.entities.size() == 13 and t.get_nodes_in_group("player").size() == 1, "T16 live opening adds only six router adapters and never duplicates the player")
+	t.check(world.entities.size() == 47 and t.get_nodes_in_group("player").size() == 1, "T16 live opening adds only six router adapters and never duplicates the player")
 	for id: StringName in world.entrances:
 		t.check(router.validate_anchor(world, world.entrances[id]).ok, "T16 opening preserves entrance clearance: " + String(id))
 	for id: StringName in world.rest_anchors:
 		t.check(router.validate_anchor(world, world.rest_anchors[id]).ok, "T16 opening preserves rest clearance: " + String(id))
 	for at: Vector3 in [Vector3(-107, 0, 144.7), Vector3(-99, 0, 136.7), Vector3(-97, 0, 138.7), Vector3(0, 0, 103.4)]:
 		t.check(router.validate_anchor(world, Transform3D(Basis.IDENTITY, at)).ok, "T16 NPC, training and coffer approach is grounded, clear and navigable")
-	var population: CampaignWorld.Population = world.get_node("OpeningPopulation")
+	var population: CampaignWorld.Population = world.get_node("CampaignPopulation")
 	var connections: int = population.enemies[0].died.get_connections().size()
 	t.check(factory.activate(world).ok and population.enemies[0].died.get_connections().size() == connections and connections == 1, "T16 repeated activation does not duplicate death handlers")
 	var sign: WorldObject = world.entities[&"southern_sign"]
@@ -181,7 +181,7 @@ func _cart_chase_and_loot() -> void:
 	var enemy: EnemyActor = world.entities[&"south_cart_cutpurse_02"]
 	player.spawn_at(Vector3(3.8, 0, 111))
 	player.combat.faction = &"neutral"
-	var population: CampaignWorld.Population = world.get_node("OpeningPopulation")
+	var population: CampaignWorld.Population = world.get_node("CampaignPopulation")
 	population.coordinator.refresh_budget()
 	enemy.alert_to_player()
 	var closest: float = enemy.global_position.distance_to(player.global_position)
@@ -212,7 +212,7 @@ func _reconstruction() -> void:
 	t.check(loaded.ok, "T16 completed opening reconstructs through actual file validation and terminal load")
 	var world: Node3D = router.current_world
 	t.check(world.entities[&"south_cart_cutpurse_01"].combat.dead and world.entities[&"south_cart_cutpurse_02"].combat.health == 45, "T16 reconstruction keeps defeated actor dead and restores living actor fully")
-	t.check(not world.get_node("OpeningPopulation").purses[&"south_cart_cutpurse_01"].model.visible and session.state.player.crowns == before.player.crowns, "T16 reconstructed purse retains depletion without replaying currency")
+	t.check(not world.get_node("CampaignPopulation").purses[&"south_cart_cutpurse_01"].model.visible and session.state.player.crowns == before.player.crowns, "T16 reconstructed purse retains depletion without replaying currency")
 	t.check(world.entities[&"cart_coffer"].model.get_node("Lid").rotation.x > 0 and session.state.quests.mq_01_bread_and_iron.state == "COMPLETED", "T16 completed quest and open coffer survive scene reconstruction")
 	before = session.snapshot()
 	var bus: Node = t.root.get_node("EventBus")
@@ -244,6 +244,6 @@ func _reconstruction() -> void:
 		accepted = router.travel(&"exterior", &"from_inn")
 		t.check(accepted.ok, "T16 return to the persistent opening")
 		arrived = await router.travel_completed
-		t.check(arrived[1].ok and router.current_world.entities.size() == 13, "T16 return never duplicates opening sources")
-		var population: CampaignWorld.Population = router.current_world.get_node("OpeningPopulation")
-		t.check(population.enemies[0].died.get_connections().size() == 1 and population.coordinator.actors().size() == 2, "T16 return binds each canonical actor exactly once")
+		t.check(arrived[1].ok and router.current_world.entities.size() == 47, "T16 return never duplicates opening sources")
+		var population: CampaignWorld.Population = router.current_world.get_node("CampaignPopulation")
+		t.check(population.enemies[0].died.get_connections().size() == 1 and population.coordinator.actors().size() == 18, "T16 return binds each canonical actor exactly once")

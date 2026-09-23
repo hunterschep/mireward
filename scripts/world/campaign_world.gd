@@ -1,6 +1,6 @@
 class_name CampaignWorld
 extends RefCounted
-## Opening content only. WorldRouter owns scene lifetime and detached preparation.
+## Authored exterior population. WorldRouter owns detached preparation and lifetime.
 
 const NPC_SCENE := preload("res://scenes/actors/npc.tscn")
 const ENEMY_SCENE := preload("res://scenes/actors/enemy.tscn")
@@ -11,15 +11,20 @@ var player: MirePlayer
 
 class Population extends Node:
 	var coordinator: EncounterCoordinator
+	var details: ExteriorContent
 	var enemies: Array[EnemyActor] = []
 	var purses: Dictionary = {}
 	var _active: bool = false
 
 	func activate() -> MireTypes.ActionResult:
 		if not is_inside_tree():
-			return MireTypes.failure(&"unavailable", &"The opening world is not attached.")
+			return MireTypes.failure(&"unavailable", &"The campaign world is not attached.")
 		if _active:
 			return MireTypes.success()
+		if is_instance_valid(details):
+			var ready := details.activate()
+			if not ready.ok:
+				return ready
 		_active = true
 		for enemy: EnemyActor in enemies:
 			enemy.died.connect(_enemy_died.bind(enemy))
@@ -34,6 +39,8 @@ class Population extends Node:
 		if not _active:
 			return
 		_active = false
+		if is_instance_valid(details):
+			details.deactivate()
 		for enemy: EnemyActor in enemies:
 			if is_instance_valid(enemy) and enemy.died.is_connected(_enemy_died.bind(enemy)):
 				enemy.died.disconnect(_enemy_died.bind(enemy))
@@ -67,15 +74,15 @@ func _init(controlled_player: MirePlayer) -> void:
 
 func build(world: Node3D, candidate: Dictionary) -> MireTypes.ActionResult:
 	if not is_instance_valid(player) or not is_instance_valid(world) or not world.is_inside_tree() or not world.get("entities") is Dictionary or not ContentDB.map.scenes.has(String(world.get("scene_id"))) or not candidate.get("world") is Dictionary:
-		return MireTypes.failure(&"invalid_runtime", &"Opening construction needs a world, player and detached snapshot.")
-	if world.has_node("OpeningPopulation"):
-		return MireTypes.failure(&"duplicate_population", &"The opening content is already installed in this world.")
+		return MireTypes.failure(&"invalid_runtime", &"Campaign construction needs a world, player and detached snapshot.")
+	if world.has_node("CampaignPopulation"):
+		return MireTypes.failure(&"duplicate_population", &"The campaign content is already installed in this world.")
 	var population := Population.new()
-	population.name = "OpeningPopulation"
+	population.name = "CampaignPopulation"
 	world.add_child(population)
 	var scene_id := String(world.get("scene_id"))
 	for reservation: Dictionary in ContentDB.map.exterior.npc_reservations:
-		if reservation.scene_id != scene_id or reservation.id not in ["mara_venn", "oswin_pike", "tamsin_reed"]:
+		if reservation.scene_id != scene_id or StringName(reservation.id) not in NpcActor.NPC_IDS:
 			continue
 		if world.entities.has(StringName(reservation.id)):
 			return MireTypes.failure(&"duplicate_entity", &"A character already owns this world identity.")
@@ -90,15 +97,12 @@ func build(world: Node3D, candidate: Dictionary) -> MireTypes.ActionResult:
 		world.entities[npc.entity_id] = npc
 	if scene_id != "exterior":
 		return MireTypes.success()
-	var coffer_position := Vector3.INF
 	for reservation: Dictionary in ContentDB.map.exterior.objective_reservations:
-		if reservation.id == "cart_coffer":
-			coffer_position = _vector(reservation.position)
-	if not coffer_position.is_finite():
-		return MireTypes.failure(&"invalid_content", &"The opening medicine coffer has no authored reservation.")
-	var coffer := _object(world, &"cart_coffer", &"loot", coffer_position, candidate)
-	if not coffer.ok:
-		return coffer
+		if reservation.scene_id != scene_id:
+			continue
+		var placed := _object(world, StringName(reservation.id), &"loot", _vector(reservation.position), candidate)
+		if not placed.ok:
+			return placed
 	var sign := _object(world, &"southern_sign", &"readable", SIGN_POSITION, candidate, -2.76)
 	if not sign.ok:
 		return sign
@@ -109,11 +113,30 @@ func build(world: Node3D, candidate: Dictionary) -> MireTypes.ActionResult:
 	dummy.rotation.y = PI
 	world.add_child(dummy)
 	world.entities[TrainingDummy.ENTITY_ID] = dummy
+	var encounters := populate_encounters(world, candidate)
+	if not encounters.ok:
+		return encounters
+	population.details = ExteriorContent.new()
+	population.details.name = "ExteriorContent"
+	world.add_child(population.details)
+	var dressed := population.details.configure(world, candidate)
+	if not dressed.ok:
+		return dressed
+	return MireTypes.success()
+
+## Interior chapter builders reuse the same ordinary-actor and purse lifecycle.
+func populate_encounters(world: Node3D, candidate: Dictionary) -> MireTypes.ActionResult:
+	if not is_instance_valid(player) or not is_instance_valid(world) or not world.is_inside_tree() or not world.get("entities") is Dictionary or not ContentDB.map.scenes.has(String(world.get("scene_id"))) or not candidate.get("world") is Dictionary:
+		return MireTypes.failure(&"invalid_runtime", &"Encounter construction needs a prepared world and snapshot.")
+	var population := world.get_node_or_null("CampaignPopulation") as Population
+	if population == null or is_instance_valid(population.coordinator):
+		return MireTypes.failure(&"duplicate_population", &"Prepare one campaign population before adding its encounters once.")
+	var scene_id := String(world.get("scene_id"))
 	population.coordinator = EncounterCoordinator.new()
-	population.coordinator.name = "SouthCartEncounter"
+	population.coordinator.name = "WorldEncounter"
 	world.add_child(population.coordinator)
 	for spawn: Dictionary in ContentDB.map.spawns:
-		if spawn.group != "south_cart":
+		if spawn.scene_id != scene_id or StringName(spawn.archetype) not in EnemyActor.ARCHETYPES:
 			continue
 		if world.entities.has(StringName(spawn.id)):
 			return MireTypes.failure(&"duplicate_entity", &"An actor already owns this world identity.")
@@ -140,9 +163,9 @@ func build(world: Node3D, candidate: Dictionary) -> MireTypes.ActionResult:
 
 func activate(world: Node3D) -> MireTypes.ActionResult:
 	if not is_instance_valid(world):
-		return MireTypes.failure(&"unavailable", &"The opening world is not available.")
-	var population := world.get_node_or_null("OpeningPopulation") as Population
-	return population.activate() if population != null else MireTypes.failure(&"unavailable", &"The opening world has not been prepared.")
+		return MireTypes.failure(&"unavailable", &"The campaign world is not available.")
+	var population := world.get_node_or_null("CampaignPopulation") as Population
+	return population.activate() if population != null else MireTypes.failure(&"unavailable", &"The campaign world has not been prepared.")
 
 func _object(world: Node3D, id: StringName, kind: StringName, at: Vector3, candidate: Dictionary, yaw: float = 0) -> MireTypes.ActionResult:
 	if world.entities.has(id):

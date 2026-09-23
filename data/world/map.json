@@ -1296,7 +1296,7 @@
         "scene_id": "exterior",
         "position": [
           178,
-          0,
+          0.168,
           -227
         ],
         "radius": 3
@@ -1367,7 +1367,7 @@
         "id": "sister_elian",
         "scene_id": "exterior",
         "position": [
-          195,
+          197,
           0,
           -82
         ],

@@ -20,15 +20,16 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T14 | IMPLEMENTED | Integration lead | Root374 codec,73 save runtime,46 composed runtime; native UI gates later |
 | T15 | IMPLEMENTED | Integration lead | Root108 UI assertions and corrected GPU layouts; opening controls next |
 | T16 | IMPLEMENTED | Integration lead | Normal-input opening50 and factory149 pass; native hardware acceptance UNVERIFIED |
-| T17 | IN_PROGRESS | world_validation | Complete exterior content over tested opening interfaces; native release gate remains open |
-| T18–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies |
+| T17 | IMPLEMENTED | Integration lead | Root 296 content assertions; five populated routes passed; native gate open |
+| T18 | IN_PROGRESS | Integration lead | Crypt module returned with 262 assertions; production composition under review |
+| T19–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies |
 
 ## Exclusive ownership
 
 - T11 world routing/interiors returned and integrated.
 - T15 UI implementation returned; root owns final integration and native verification.
 - T16 opening factory returned and integrated; root owns native opening acceptance.
-- world_validation: T17 exterior population and world-content tests.
+- T17 exterior population returned; root owns integration and records.
 - Normal-input opening traversal returned; root owns remaining native hardware acceptance.
 - Integration lead: shared configuration/autoload/core wiring, GameRoot/UI integration, returned T09/T10 code, records and all Git operations.
 

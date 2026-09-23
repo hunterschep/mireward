@@ -1,8 +1,8 @@
 {
   "decorations": 320,
   "landmarks": 9,
-  "map_sha256": "6e90a90daaddffe9dbc3f2a5fb81595485f95400aec84845ce525a0a74232a10",
-  "navigation_polygons": 6107,
-  "navigation_vertices": 4075,
+  "map_sha256": "cf46abd0a095f27415e30854946cbd4c968c87cd47d6ee5912690a173769574f",
+  "navigation_polygons": 6097,
+  "navigation_vertices": 4070,
   "seed": 42817
 }

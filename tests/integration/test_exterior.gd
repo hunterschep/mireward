@@ -88,7 +88,7 @@ func _walk_gate(t: SceneTree, player: MirePlayer, from: Vector3, to: Vector3) ->
 	t.check(passed and player.global_position.y > -0.1, "R05 actual player walks collision-clear passage at " + str(from))
 
 ## Optional longer physical route proof, called by bake_world.gd --verify-walks.
-func walk_all_routes(t: SceneTree) -> void:
+func walk_all_routes(t: SceneTree, populated: bool = false) -> void:
 	var session: Node = t.root.get_node("GameSession")
 	session.new_game()
 	var valley: MireExterior = load("res://scenes/world/exterior/exterior.tscn").instantiate()
@@ -97,6 +97,11 @@ func walk_all_routes(t: SceneTree) -> void:
 	var player: MirePlayer = load("res://scenes/player/player.tscn").instantiate()
 	t.root.add_child(player)
 	(player.get_node("Combat") as CombatComponent).input_driven = false
+	if populated:
+		var factory := CampaignWorld.new(player)
+		t.check(factory.build(valley, session.snapshot()).ok, "T17 route fixture includes authored campaign collision")
+		# Prepared adapters and AI stay inactive; this proves static route clearance.
+		valley.get_node("CampaignPopulation").coordinator.set_physics_process(false)
 	await t.physics_frame
 	var original_ticks: int = Engine.physics_ticks_per_second
 	var original_scale: float = Engine.time_scale
@@ -104,6 +109,7 @@ func walk_all_routes(t: SceneTree) -> void:
 	Engine.time_scale = 8
 	var report: Array[Dictionary] = []
 	var nav_map: RID = valley.get_world_3d().navigation_map
+	var clearance := WorldRouter.new()
 	for route: Dictionary in valley.manifest.exterior.routes:
 		player.spawn_at(ExteriorTerrain.vector(route.points[0]))
 		var start_ms: int = Time.get_ticks_msec()
@@ -117,14 +123,26 @@ func walk_all_routes(t: SceneTree) -> void:
 				break
 			for waypoint: Vector3 in path:
 				var step_start: int = Time.get_ticks_msec()
+				var detour := Vector3.INF
+				var avoided: Array[int] = []
 				Input.action_press(&"move_forward")
 				while Vector2(player.global_position.x - waypoint.x, player.global_position.z - waypoint.z).length() > 0.7:
 					var previous := player.global_position
-					var delta := waypoint - previous
+					if detour.is_finite() and Vector2(previous.x - detour.x, previous.z - detour.z).length() < 0.4:
+						detour = Vector3.INF
+					if populated and not detour.is_finite():
+						var contact: KinematicCollision3D = player.get_last_slide_collision()
+						if contact != null and contact.get_collider() is EnemyActor and player.global_position.distance_to(contact.get_collider().global_position) < 2.0 and contact.get_collider_id() not in avoided:
+							detour = _actor_detour(valley, player, contact.get_collider(), waypoint, clearance)
+							avoided.append(contact.get_collider_id())
+							print("ROUTE_SIDESTEP ", contact.get_collider().entity_id, " via ", detour)
+					var delta := (detour if detour.is_finite() else waypoint) - previous
 					player.rotation.y = atan2(-delta.x, -delta.z)
 					await t.physics_frame
 					distance += previous.distance_to(player.global_position)
 					if Time.get_ticks_msec() - step_start > 15000 or player.global_position.y < -0.5:
+						var collision: KinematicCollision3D = player.get_last_slide_collision()
+						print("ROUTE_BLOCKED ", JSON.stringify({"route": route.id, "position": str(player.global_position), "waypoint": str(waypoint), "collider": str(collision.get_collider()) if collision != null else "none"}))
 						passed = false
 						break
 				Input.action_release(&"move_forward")
@@ -133,6 +151,8 @@ func walk_all_routes(t: SceneTree) -> void:
 			if not passed:
 				break
 		var row := {"route": String(route.id), "passed": passed, "walked_meters": snappedf(distance, 0.1), "wall_seconds": (Time.get_ticks_msec() - start_ms) / 1000.0, "physics_ticks": 120, "time_scale": 8, "normal_walk_speed": 4}
+		if populated:
+			row["population"] = "complete exterior, static AI; runtime doors/rest checked separately"
 		report.append(row)
 		print(JSON.stringify(row))
 		t.check(passed, "R05 actual player traversal of " + String(route.id))
@@ -140,8 +160,20 @@ func walk_all_routes(t: SceneTree) -> void:
 	Engine.time_scale = original_scale
 	Input.action_release(&"move_forward")
 	DirAccess.make_dir_recursive_absolute("res://tests/output/exterior")
-	var file := FileAccess.open("res://tests/output/exterior/route_walks.json", FileAccess.WRITE)
+	var file := FileAccess.open("res://tests/output/exterior/" + ("populated_route_walks.json" if populated else "route_walks.json"), FileAccess.WRITE)
 	file.store_string(JSON.stringify(report, "  ") + "\n")
 	player.free()
 	valley.free()
+	clearance.free()
 	session.new_game()
+
+func _actor_detour(world: MireExterior, player: MirePlayer, actor: EnemyActor, goal: Vector3, clearance: WorldRouter) -> Vector3:
+	var direction := goal - player.global_position
+	direction.y = 0
+	direction = direction.normalized()
+	var side := Vector3(-direction.z, 0, direction.x)
+	for sign: float in [1, -1]:
+		var at := actor.global_position + side * sign * 1.5 - direction * 0.8
+		if clearance.validate_anchor(world, Transform3D(Basis.IDENTITY, at)).ok:
+			return at
+	return Vector3.INF

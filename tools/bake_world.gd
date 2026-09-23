@@ -12,7 +12,7 @@ func check(condition: bool, description: String) -> void:
 
 func verify_route_walks() -> void:
 	var suite: RefCounted = load("res://tests/integration/test_exterior.gd").new()
-	await suite.walk_all_routes(self)
+	await suite.walk_all_routes(self, "--populated" in OS.get_cmdline_user_args())
 	print("%s full exterior route walking, %d failures." % ["PASS" if failures == 0 else "FAIL", failures])
 	quit(0 if failures == 0 else 1)
 
