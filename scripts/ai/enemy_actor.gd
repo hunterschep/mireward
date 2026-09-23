@@ -96,7 +96,7 @@ func configure(spawn: Dictionary, controlled_player: MirePlayer, encounter: Enco
 	if spawn.has("yaw") and (not SessionValidation.number(spawn.yaw) or not is_finite(float(spawn.yaw))):
 		return MireTypes.failure(&"invalid_spawn", &"The enemy facing direction is invalid.")
 	var archetype := StringName(spawn.archetype)
-	if archetype not in ARCHETYPES:
+	if not supports_archetype(archetype):
 		return MireTypes.failure(&"unsupported", &"This actor supports ordinary hostile archetypes only.")
 	var canonical: bool = false
 	for record: Dictionary in ContentDB.map.spawns:
@@ -134,6 +134,9 @@ func configure(spawn: Dictionary, controlled_player: MirePlayer, encounter: Enco
 	_configured = true
 	_set_state(&"PATROL" if not _patrol.is_empty() else &"IDLE")
 	return MireTypes.success()
+
+func supports_archetype(archetype: StringName) -> bool:
+	return archetype in ARCHETYPES
 
 func apply_persistent_state(record: Dictionary) -> MireTypes.ActionResult:
 	if not _configured or not record.get("defeated", false) is bool or not record.get("disabled", _disabled) is bool or record.get("faction", String(combat.faction)) not in ["hostile", "neutral"]:

@@ -15,7 +15,7 @@ godot --headless --path . --script res://tools/validate_content.gd
 godot --headless --path . --script res://tests/run_all.gd
 ```
 
-The current checkpoint includes combat, inventory, quests, dialogue, connected worlds, durable saves, and functional game menus. The opening characters and cart encounter are connected; their native acceptance run is next. It is not yet a complete playable campaign or release. See [progress](docs/progress.md) and [verification](docs/verification.md) for the active work queue and actual evidence.
+The current checkpoint connects the campaign through Rusk's undercroft duel and all six side quests, with combat, inventory, dialogue, durable saves and functional menus. Ending aftermath, audio integration and final gameplay/release gates are still underway. See [progress](docs/progress.md) and [verification](docs/verification.md) for the active work queue and actual evidence.
 
 ## Default controls
 

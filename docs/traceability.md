@@ -24,7 +24,7 @@ PASS requires linked execution evidence for every applicable verification method
 | R18 Four ordinary enemy archetypes | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R19 Perception and navigation | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R20 Encounter fairness and combat feedback | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R21 Captain Rusk encounter | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R21 Captain Rusk encounter | IN PROGRESS | Production duel/MQ05 and S11 pass108 assertions; T20 records fixture boundaries and remaining visual/timing gates |
 | R22 Player death and rest | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R23 Item registry and starting loadout | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R24 Capacity, equipment, and key items | IN PROGRESS | See tasks.md coverage map; final gate T28 |
@@ -46,7 +46,7 @@ PASS requires linked execution evidence for every applicable verification method
 | R40 Lifecycle and new-game isolation | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R41 Cohesive final visual assets | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R42 Retro/native rendering and settings | IN PROGRESS | See tasks.md coverage map; final gate T28 |
-| R43 Soundscape and audio controls | NOT STARTED | See tasks.md coverage map; final gate T28 |
+| R43 Soundscape and audio controls | IN PROGRESS | Original28 PCM assets/import verified; runtime mixing and listening gate underway in T24 |
 | R44 HUD, inventory, journal, and map | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R45 Menus and modal ownership | IN PROGRESS | See tasks.md coverage map; final gate T28 |
 | R46 Readability and accessibility options | IN PROGRESS | See tasks.md coverage map; final gate T28 |

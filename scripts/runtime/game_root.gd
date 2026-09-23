@@ -12,6 +12,7 @@ var world_container: Node3D
 var router: WorldRouter
 var campaign: CampaignWorld
 var crypt: CryptContent
+var undercroft: UndercroftContent
 var modes: GameModeController
 var interaction: InteractionRay
 var modal_host: ModalHost
@@ -73,6 +74,7 @@ func _ready() -> void:
 		push_error(configured.message_key)
 	campaign = CampaignWorld.new(player)
 	crypt = CryptContent.new()
+	undercroft = UndercroftContent.new(player)
 	router.world_builder = _build_world
 	router.world_activated.connect(_world_activated)
 	var bound := bind_session_services()
@@ -174,11 +176,11 @@ func _build_world(world: Node3D, candidate: Dictionary) -> MireTypes.ActionResul
 		reactions.name = "SideQuestReactions"
 		world.add_child(reactions)
 		return reactions.configure(world, candidate)
-	if StringName(world.get("scene_id")) == &"interior_crypt":
+	if StringName(world.get("scene_id")) in [&"interior_crypt", &"interior_undercroft"]:
 		built = campaign.populate_encounters(world, candidate)
 		if not built.ok:
 			return built
-		return crypt.build(world, candidate)
+		return crypt.build(world, candidate) if world.scene_id == &"interior_crypt" else undercroft.build(world, candidate)
 	return built
 
 func _world_activated(world: Node3D) -> void:
@@ -202,6 +204,10 @@ func _world_activated(world: Node3D) -> void:
 		_report_action(populated)
 	if StringName(world.get("scene_id")) == &"interior_crypt":
 		var activated := crypt.activate(world)
+		if not activated.ok:
+			_report_action(activated)
+	elif StringName(world.get("scene_id")) == &"interior_undercroft":
+		var activated := undercroft.activate(world)
 		if not activated.ok:
 			_report_action(activated)
 	_apply_shadows()
