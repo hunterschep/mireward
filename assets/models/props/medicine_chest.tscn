@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" path="res://assets/textures/parchment.png" id="asset_001"]
 
 [sub_resource type="StandardMaterial3D" id="asset_002"]
-resource_name = "Greyfen_wood"
-albedo_color = Color(0.34117648, 0.28627452, 0.22352941, 1)
+resource_name = "Greyfen_medicine_blue"
+albedo_color = Color(0.28627452, 0.43529412, 0.5803922, 1)
 roughness = 0.92
 texture_filter = 2
 
@@ -102,9 +102,9 @@ _surfaces = [{
 }]
 
 [sub_resource type="StandardMaterial3D" id="asset_012"]
-resource_name = "Greyfen_wood"
+resource_name = "Greyfen_medicine_blue"
 cull_mode = 2
-albedo_color = Color(0.34117648, 0.28627452, 0.22352941, 1)
+albedo_color = Color(0.28627452, 0.43529412, 0.5803922, 1)
 roughness = 0.92
 texture_filter = 2
 
@@ -122,7 +122,7 @@ _surfaces = [{
 [node name="medicine_chest" type="Node3D"]
 metadata/prop_kind = &"medicine_chest"
 
-[node name="Surface_Greyfen_wood" type="MeshInstance3D" parent="."]
+[node name="Surface_Greyfen_medicine_blue" type="MeshInstance3D" parent="."]
 material_override = SubResource("asset_002")
 mesh = SubResource("asset_003")
 
@@ -145,6 +145,6 @@ mesh = SubResource("asset_011")
 [node name="Lid" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, 0.32)
 
-[node name="Surface_Greyfen_wood_two_sided" type="MeshInstance3D" parent="Lid"]
+[node name="Surface_Greyfen_medicine_blue_two_sided" type="MeshInstance3D" parent="Lid"]
 material_override = SubResource("asset_012")
 mesh = SubResource("asset_013")

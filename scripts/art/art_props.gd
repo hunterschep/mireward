@@ -107,11 +107,12 @@ static func _nature(node: Node3D, kind: StringName) -> void:
 static func _chest(node: Node3D, kind: StringName) -> void:
 	var tall: bool = kind == &"badge_locker"
 	var height: float = 1.4 if tall else 0.52
-	ArtMesh.box(node, "OakBox", Vector3(0.95, height, 0.65), Vector3(0, height / 2, 0), "wood")
+	var paint: String = "medicine_blue" if kind == &"medicine_chest" else "wood"
+	ArtMesh.box(node, "OakBox", Vector3(0.95, height, 0.65), Vector3(0, height / 2, 0), paint)
 	for x: float in [-0.37, 0.37]:
 		ArtMesh.box(node, "IronBinding", Vector3(0.055, height + 0.02, 0.68), Vector3(x, height / 2, 0), "dark_iron")
 	var lid := ArtMesh.pivot(node, "Lid", Vector3(0, height, 0.32))
-	ArtMesh.prism(lid, "CurvedLid", PackedVector2Array([Vector2(-0.49, 0), Vector2(0.49, 0), Vector2(0.36, 0.16), Vector2(-0.36, 0.16)]), 0.68, Vector3(0, 0, -0.32), "wood")
+	ArtMesh.prism(lid, "CurvedLid", PackedVector2Array([Vector2(-0.49, 0), Vector2(0.49, 0), Vector2(0.36, 0.16), Vector2(-0.36, 0.16)]), 0.68, Vector3(0, 0, -0.32), paint)
 	ArtMesh.box(node, "Latch", Vector3(0.075, 0.14, 0.04), Vector3(0, height - 0.04, -0.35), "ochre")
 	if kind != &"chest":
 		ArtMesh.box(node, "PaintedPlaque", Vector3(0.32, 0.23, 0.015), Vector3(0, height * 0.5, -0.34), "rust" if kind == &"seal_chest" else "parchment")

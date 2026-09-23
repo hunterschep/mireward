@@ -24,6 +24,21 @@ func configure(owner_router: WorldRouter, active_world: Node3D) -> void:
 	for id: StringName in world.get("rest_anchors"):
 		var at: Transform3D = world.get("rest_anchors")[id]
 		var component := _component(id, &"rest", at.origin + Vector3(0, 0, -0.8), Vector3(0.7, 1.3, 0.7))
+		var support := StaticBody3D.new()
+		support.name = String(id) + "_lantern_support"
+		support.position = at.origin + Vector3(0, 0, -0.8)
+		support.collision_layer = MireTypes.WORLD
+		support.collision_mask = 0
+		var size := Vector3(0.4, 0.5, 0.4)
+		ArtMesh.box(support, "Support", size, Vector3.UP * 0.25, "wood")
+		var collision := CollisionShape3D.new()
+		var shape := BoxShape3D.new()
+		shape.size = size
+		collision.shape = shape
+		collision.position.y = 0.25
+		support.add_child(collision)
+		world.add_child(support)
+		component.physical_body = support
 		var lamp := VisualFactory.prop(&"lantern")
 		lamp.position = at.origin + Vector3(0, 0.5, -0.8)
 		world.add_child(lamp)

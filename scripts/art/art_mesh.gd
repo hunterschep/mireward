@@ -8,6 +8,7 @@ const PALETTE := {
 	"timber": "3b352d", "moss": "465846", "slate": "485850", "iron": "7b8881",
 	"dark_iron": "444e4c", "skin": "b48e6e", "skin_dark": "886a51", "linen": "ada68d",
 	"water": "536f70", "flame": "e5b46e", "ochre": "a38a51", "ink": "292f2c",
+	"medicine_blue": "496f94",
 }
 static var _materials: Dictionary = {}
 

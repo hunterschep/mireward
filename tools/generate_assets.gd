@@ -87,7 +87,8 @@ func _textures() -> void:
 				var color: Color
 				if kind == "palette":
 					var names: Array = ArtMesh.PALETTE.keys()
-					color = Color(ArtMesh.PALETTE[names[mini(names.size() - 1, (y / 32) * 5 + x / 26)]])
+					var rows: int = ceili(names.size() / 5.0)
+					color = Color(ArtMesh.PALETTE[names[mini(names.size() - 1, (y * rows / 128) * 5 + x / 26)]])
 				else:
 					color = Color(ArtMesh.PALETTE[kind])
 					var grain: float = float((x * 73 + y * 19 + (x * y) % 31) % 11 - 5) / 255.0

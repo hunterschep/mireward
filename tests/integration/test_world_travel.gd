@@ -41,6 +41,7 @@ func run(t: SceneTree) -> void:
 	await _arrive(t, router, router.travel(&"exterior", &"start"))
 	t.check(router.loaded_scene_id == &"exterior" and player.global_position.distance_to(Vector3(32, 0.06, 252)) < 0.01, "R06 opening arrival uses stable start transform")
 	t.check(router.current_world.entities.size() == 6, "R06 exterior has three door and three rest adapters")
+	await _rest_lanterns(t, router, player)
 	var inventory: Array = session.state.inventory.duplicate(true)
 	var player_identity: int = player.get_instance_id()
 	session.transactions.run(&"test/open_undercroft", func(candidate: Dictionary) -> MireTypes.ActionResult:
@@ -57,6 +58,8 @@ func run(t: SceneTree) -> void:
 			t.check(router.validate_anchor(router.current_world, router.current_world.entrances[&"entry"]).ok, "R06 interior entry is grounded navigable and clear")
 			if trip == 0:
 				await _check_rooms(t, router)
+				if suffix == "inn":
+					await _rest_lanterns(t, router, player)
 			await _arrive(t, router, router.travel(&"exterior", StringName("from_" + suffix)))
 			t.check(router.current_world.entities.size() == 6, "R06 adapters do not accumulate across round trips")
 			t.check(router.validate_anchor(router.current_world, router.current_world.entrances[StringName("from_" + suffix)]).ok, "R06 exterior return clears doorway and colliders")
@@ -112,6 +115,41 @@ func _arrive(t: SceneTree, router: WorldRouter, accepted: MireTypes.ActionResult
 		t.check(result.ok, "R06 terminal arrival succeeds: " + String(result.message_key))
 		_terminal.erase(id)
 	t.check(not t.root.get_node("GameSession").travelling, "R06 terminal notification follows cleared travelling flag")
+
+func _rest_lanterns(t: SceneTree, router: WorldRouter, player: MirePlayer) -> void:
+	var world: Node3D = router.current_world
+	var prior_transform: Transform3D = player.transform
+	var prior_camera: Transform3D = player.camera.transform
+	var controller := GameModeController.new()
+	t.root.add_child(controller)
+	controller.configure(player)
+	var ray := InteractionRay.new()
+	player.add_child(ray)
+	ray.configure(player, controller)
+	ray.set_physics_process(false)
+	for id: StringName in world.rest_anchors:
+		var anchor: Transform3D = world.rest_anchors[id]
+		var component: InteractionComponent = world.entities[id]
+		var support: CollisionObject3D = component.physical_body
+		t.check(is_instance_valid(support), "R41 rest lantern has a physical support: " + String(id))
+		if not is_instance_valid(support):
+			continue
+		t.check(router.validate_anchor(world, anchor).ok, "R22 lantern support preserves canonical rest capsule clearance: " + String(id))
+		var visual: MeshInstance3D = support.get_node("Support")
+		var visible_top: Vector3 = visual.to_global(visual.mesh.get_aabb().get_center() + Vector3.UP * visual.mesh.get_aabb().size.y / 2)
+		var query := PhysicsRayQueryParameters3D.create(visible_top + Vector3.UP * 0.05, visible_top - Vector3.UP * 0.05, MireTypes.WORLD)
+		var contact: Dictionary = world.get_world_3d().direct_space_state.intersect_ray(query)
+		t.check(not contact.is_empty() and contact.collider == support and contact.position.distance_to(visible_top) < 0.005, "R41 support collision ends at its visible lantern-bearing surface: " + String(id))
+		player.spawn_at(anchor.origin)
+		player.camera.look_at(component.focus_position(), Vector3.UP)
+		await t.physics_frame
+		await t.physics_frame
+		ray.refresh_focus()
+		t.check(ray.focused == component and ray.offer.allowed, "R09 real Rest ray focuses past its own support with an available offer: " + String(id))
+	ray.free()
+	controller.free()
+	player.transform = prior_transform
+	player.camera.transform = prior_camera
 
 func _check_rooms(t: SceneTree, router: WorldRouter) -> void:
 	var interior: MireInterior = router.current_world

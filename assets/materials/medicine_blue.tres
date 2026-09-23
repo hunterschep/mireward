@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Greyfen_medicine_blue"
+albedo_color = Color(0.28627452, 0.43529412, 0.5803922, 1)
+roughness = 0.92
+texture_filter = 2
