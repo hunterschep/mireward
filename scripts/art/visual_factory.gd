@@ -10,7 +10,14 @@ static func gear(item_id: StringName) -> Node3D:
 
 static func building(family: StringName) -> Node3D:
 	var model := ArtBuildings.make(family)
-	ArtMesh.batch(model)
+	# The road's ending changes this banner independently of its stonework.
+	var banner := model.get_node_or_null("LevyBanner")
+	if banner != null:
+		model.remove_child(banner)
+		ArtMesh.batch(model)
+		model.add_child(banner)
+	else:
+		ArtMesh.batch(model)
 	return model
 
 static func prop(kind: StringName) -> Node3D:

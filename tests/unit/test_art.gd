@@ -31,6 +31,8 @@ func run(t: SceneTree) -> void:
 		t.check(_has_no_collision(model), String(family) + " is collision-free architecture")
 		t.check(_all_materials(model), String(family) + " has materials on every surface")
 		_check_saved(t, "buildings", family)
+		if family == &"road_gate":
+			t.check(model.get_node_or_null("LevyBanner") is MeshInstance3D, "road gate preserves its independent aftermath banner")
 		model.free()
 	for kind: StringName in ArtProps.KINDS:
 		var model := VisualFactory.prop(kind)

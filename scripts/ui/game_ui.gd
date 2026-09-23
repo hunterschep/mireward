@@ -151,6 +151,7 @@ func handle_action(result: MireTypes.ActionResult) -> void:
 			game.modes.push_mode(&"inventory")
 			inventory.refresh()
 		"readable": show_document(StringName(result.payload.document_id))
+		"notice": _show_text(String(result.payload.title), String(result.payload.text))
 		"writ": _show_writ()
 		"training": _training()
 		"challenge_rusk":
