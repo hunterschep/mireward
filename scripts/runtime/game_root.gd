@@ -11,6 +11,7 @@ var player: MirePlayer
 var world_container: Node3D
 var router: WorldRouter
 var campaign: CampaignWorld
+var crypt: CryptContent
 var modes: GameModeController
 var interaction: InteractionRay
 var modal_host: ModalHost
@@ -71,7 +72,8 @@ func _ready() -> void:
 	if not configured.ok:
 		push_error(configured.message_key)
 	campaign = CampaignWorld.new(player)
-	router.world_builder = campaign.build
+	crypt = CryptContent.new()
+	router.world_builder = _build_world
 	router.world_activated.connect(_world_activated)
 	var bound := bind_session_services()
 	if not bound.ok:
@@ -163,6 +165,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	if modes.mode == &"gameplay" and event is InputEventMouseMotion:
 		game_view.push_input(event)
 
+func _build_world(world: Node3D, candidate: Dictionary) -> MireTypes.ActionResult:
+	var built := campaign.build(world, candidate)
+	if not built.ok:
+		return built
+	if StringName(world.get("scene_id")) == &"interior_crypt":
+		built = campaign.populate_encounters(world, candidate)
+		if not built.ok:
+			return built
+		return crypt.build(world, candidate)
+	return built
+
 func _world_activated(world: Node3D) -> void:
 	for node: Node in world.find_children("*", "", true, false):
 		if node is NpcActor:
@@ -178,6 +191,10 @@ func _world_activated(world: Node3D) -> void:
 	var populated := campaign.activate(world)
 	if not populated.ok:
 		_report_action(populated)
+	if StringName(world.get("scene_id")) == &"interior_crypt":
+		var activated := crypt.activate(world)
+		if not activated.ok:
+			_report_action(activated)
 	_apply_shadows()
 	world_ready.emit(world)
 

@@ -73,3 +73,5 @@ CampaignWorld(player) supplies router.world_builder through build(world,candidat
 CombatComponent tracks requested guard input separately from forced lowering during attacks, stagger and death. Only a fresh set_guard(true) edge after set_guard(false), with the existing cooldown, can open a player parry. Holding through interruption may resume ordinary block but cannot grant a new parry window.
 
 CampaignWorld now installs the full exterior. Its populate_encounters(world,candidate) method reuses one scene-owned coordinator and ordinary-actor/purse lifecycle for explicitly composed interiors; it rejects duplicate population and excludes Rusk. Base interior builds do not silently add unfinished chapter content.
+
+CryptContent.build(world,candidate) runs after campaign.build and populate_encounters for interior_crypt. Its activate(world) follows generic object/campaign activation. CryptPuzzle owns only presentation and bindings; QuestService owns sequence progress and the saved puzzle_solved flag. The controller and gate use existing state, with no second saved puzzle counter.

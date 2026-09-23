@@ -21,8 +21,9 @@ Complete specification scope is authorized. The user objective overrides sequent
 | T15 | IMPLEMENTED | Integration lead | Root108 UI assertions and corrected GPU layouts; opening controls next |
 | T16 | IMPLEMENTED | Integration lead | Normal-input opening50 and factory149 pass; native hardware acceptance UNVERIFIED |
 | T17 | IMPLEMENTED | Integration lead | Root 296 content assertions; five populated routes passed; native gate open |
-| T18 | IN_PROGRESS | Integration lead | Crypt module returned with 262 assertions; production composition under review |
-| T19–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies |
+| T18 | IMPLEMENTED | Integration lead | Root262 assertions on production composition; puzzle GPU views inspected |
+| T19 | IN_PROGRESS | ledger arc owner | Both Wren branches, physical watchtower sources and reload verification |
+| T20–T28 | NOT_STARTED | Unassigned | Dispatch against tasks.md dependencies |
 
 ## Exclusive ownership
 
