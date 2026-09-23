@@ -39,6 +39,7 @@ var _clock: float = 0.0
 var _guard_started: float = -INF
 var _last_parry_start: float = -INF
 var _parry_eligible: bool = false
+var _guard_requested: bool = false
 var _buffered: bool = false
 var _hit_used: bool = false
 var _received_sequences: Dictionary = {}
@@ -104,7 +105,7 @@ func request_attack(kind: StringName) -> MireTypes.ActionResult:
 	var cost: float = float(profile.stamina)
 	if cost > 0 and not _spend(cost):
 		return _refuse(&"insufficient_stamina", &"Not enough stamina.")
-	set_guard(false)
+	_lower_guard()
 	attack_kind = kind
 	attack_profile = profile
 	next_sequence += 1
@@ -118,21 +119,26 @@ func request_attack(kind: StringName) -> MireTypes.ActionResult:
 	return MireTypes.success({"attack_sequence": attack_sequence})
 
 func set_guard(held: bool) -> void:
+	var fresh_press: bool = held and not _guard_requested
+	_guard_requested = held
 	if not held:
-		guard_held = false
-		_parry_eligible = false
-		if player != null:
-			player.guarding = false
+		_lower_guard()
 		return
 	if guard_held or not _can_act() or is_committed() or (player != null and (GameSession.action_locked or _equipped(&"shield") == null)):
 		return
 	guard_held = true
 	_guard_started = _clock
-	_parry_eligible = player != null and _clock - _last_parry_start >= PARRY_COOLDOWN - EPSILON
+	_parry_eligible = fresh_press and player != null and _clock - _last_parry_start >= PARRY_COOLDOWN - EPSILON
 	if _parry_eligible:
 		_last_parry_start = _clock
 	if player != null:
 		player.guarding = true
+
+func _lower_guard() -> void:
+	guard_held = false
+	_parry_eligible = false
+	if player != null:
+		player.guarding = false
 
 func receive_hit(request: MireTypes.DamageRequest) -> MireTypes.DamageResult:
 	var ignored := MireTypes.DamageResult.new()
@@ -168,7 +174,7 @@ func receive_hit(request: MireTypes.DamageRequest) -> MireTypes.DamageResult:
 			immunity_remaining = IMMUNITY_SECONDS
 	if get_health() <= 0:
 		dead = true
-		set_guard(false)
+		_lower_guard()
 		_buffered = false
 		_set_phase(&"DEAD")
 		_lock_action(false)
@@ -184,7 +190,7 @@ func receive_hit(request: MireTypes.DamageRequest) -> MireTypes.DamageResult:
 func apply_stagger(seconds: float) -> void:
 	if dead or seconds <= 0:
 		return
-	set_guard(false)
+	_lower_guard()
 	_buffered = false
 	stagger_remaining = maxf(stagger_remaining, seconds)
 	_set_phase(&"STAGGER")
@@ -246,9 +252,10 @@ func _physics_process(delta: float) -> void:
 
 func clear_input_edges() -> void:
 	_buffered = false
-	set_guard(false)
+	_lower_guard()
 
 func reset_combat(clear_hit_history: bool = true) -> void:
+	_guard_requested = false
 	clear_input_edges()
 	dead = get_health() <= 0
 	stagger_remaining = 0.0
