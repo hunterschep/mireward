@@ -57,6 +57,7 @@ func configure(owner_game: MireGameRoot) -> MireTypes.ActionResult:
 	feedback.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
 	feedback.offset_left = 24
 	feedback.offset_right = -24
+	feedback.offset_top = 8
 	feedback.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	add_child(feedback)
 	hint = UIStyle.label("")
@@ -465,6 +466,8 @@ func _focus_first(panel: Control) -> void:
 			return
 
 func _mode_changed(mode: StringName) -> void:
+	feedback.offset_top = 202 if mode == &"gameplay" else 8
+	feedback.offset_bottom = feedback.offset_top + 72
 	if _previous_mode == &"confirmation" and mode != &"confirmation":
 		_confirmation_revision += 1
 	if _previous_mode == &"inventory" and mode != &"inventory":
