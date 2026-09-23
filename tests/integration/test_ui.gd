@@ -80,12 +80,20 @@ func _inventory_and_shop() -> void:
 	ui.handle_action(MireTypes.success({"ui_action": "shop", "shop_id": "tamsin_reed"}))
 	await _frames()
 	var before: int = session.state.player.crowns
+	var old_buy: Callable = _button("buy/bread").pressed.get_connections()[0].callable
 	_press("buy/bread")
 	await _frames()
 	t.check(session.state.player.crowns == before - 5 and session.state.inventory[4].quantity == 2, "R26 shop buy button uses real stock price and ownership")
+	var bought: Dictionary = session.snapshot()
+	old_buy.call()
+	t.check(session.snapshot() == bought, "R34 stale buy callback ignores freed quantity controls and cannot spend twice")
+	var old_sell: Callable = _button("sell/stack_5").pressed.get_connections()[0].callable
 	_press("sell/stack_5")
 	await _frames()
 	t.check(session.state.player.crowns == before - 4 and session.state.inventory[4].quantity == 1, "R26 shop sell button uses exact resale price")
+	var sold: Dictionary = session.snapshot()
+	old_sell.call()
+	t.check(session.snapshot() == sold, "R34 stale sell callback ignores freed quantity controls and cannot sell twice")
 	ui.handle_action(MireTypes.success({"ui_action": "shop", "shop_id": "oswin_pike"}))
 	await _frames()
 	var snapshot: Dictionary = session.snapshot()

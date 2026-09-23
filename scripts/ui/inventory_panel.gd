@@ -6,12 +6,14 @@ var content: VBoxContainer
 var shop_id: StringName = &""
 var loot_id: StringName = &""
 var loot_world: WeakRef
+var _revision: int = 0
 
 func configure(owner_ui: Node) -> void:
 	ui = owner_ui
 	content = UIStyle.scroll_content(self)
 
 func clear_context() -> void:
+	_revision += 1
 	shop_id = &""
 	loot_id = &""
 	loot_world = null
@@ -28,6 +30,8 @@ func open_loot(entity_id: StringName) -> MireTypes.ActionResult:
 	return result
 
 func refresh() -> void:
+	_revision += 1
+	var revision := _revision
 	var focused := UIStyle.focus_id(self)
 	UIStyle.clear(content)
 	var view := GameSession.inventory.view()
@@ -46,8 +50,12 @@ func refresh() -> void:
 			var price := GameSession.economy.sell_price(item.id)
 			var sale := GameSession.inventory.sale_check(GameSession.state, stack_id, 1)
 			var quantity := _quantity(actions, int(stack.quantity))
+			var quantity_ref: WeakRef = weakref(quantity)
 			var sell := UIStyle.button("Sell 1 · %d crowns" % int(price.payload.unit_price), func() -> void:
-				ui.report(GameSession.economy.try_sell(shop_id, stack_id, int(quantity.value), UIStyle.action_id("sell")))
+				if not _current(revision): return
+				var amount := quantity_ref.get_ref() as SpinBox
+				if amount == null: return
+				ui.report(GameSession.economy.try_sell(shop_id, stack_id, int(amount.value), UIStyle.action_id("sell")))
 				refresh()
 			, "sell/" + String(stack_id))
 			quantity.value_changed.connect(func(value: float) -> void: sell.text = "Sell %d · %d crowns" % [int(value), int(value) * int(price.payload.unit_price)])
@@ -59,6 +67,7 @@ func refresh() -> void:
 		elif item.category in InventoryService.EQUIPMENT:
 			var equipped: bool = view.equipment.get(String(item.category), "") == String(stack_id)
 			var button := UIStyle.button("Equipped" if equipped else "Equip", func() -> void:
+				if not _current(revision): return
 				ui.report(GameSession.inventory.try_equip(stack_id))
 				refresh()
 			, "equip/" + String(stack_id))
@@ -66,11 +75,13 @@ func refresh() -> void:
 			actions.add_child(button)
 			if equipped and item.category != &"weapon":
 				actions.add_child(UIStyle.button("Unequip", func() -> void:
+					if not _current(revision): return
 					ui.report(GameSession.inventory.try_unequip(item.category))
 					refresh()
 				, "unequip/" + String(item.category)))
 		elif item.category == &"consumable":
 			actions.add_child(UIStyle.button("Use", func() -> void:
+				if not _current(revision): return
 				var result := GameSession.inventory.try_consume(stack_id)
 				ui.report(result)
 				if result.ok:
@@ -91,12 +102,14 @@ func refresh() -> void:
 			var item: MireTypes.ItemDef = ContentDB.items[StringName(delivery.item_id)]
 			var card := _item_row(item, int(delivery.quantity))
 			card.actions.add_child(UIStyle.button("Claim reward", func() -> void:
+				if not _current(revision): return
 				ui.report(GameSession.inventory.claim_pending(StringName(id)))
 				refresh()
 			, "claim/" + id))
 	UIStyle.restore_focus(self, focused)
 
 func _shop() -> void:
+	var revision := _revision
 	var offered := GameSession.economy.view(shop_id)
 	if not offered.ok:
 		content.add_child(UIStyle.label(String(offered.message_key)))
@@ -111,8 +124,12 @@ func _shop() -> void:
 			var equipped: MireTypes.ItemDef = ContentDB.items[StringName(owned.item_id)]
 			card.body.add_child(UIStyle.label("Equipped: " + equipped.name_key + " · " + equipped.description_key, true))
 		var quantity := _quantity(card.actions, 99 if stock.unlimited else maxi(1, int(stock.stock)))
+		var quantity_ref: WeakRef = weakref(quantity)
 		var buy := UIStyle.button("Buy 1 · %d crowns" % int(stock.unit_price), func() -> void:
-			ui.report(GameSession.economy.try_buy(shop_id, item.id, int(quantity.value), UIStyle.action_id("buy")))
+			if not _current(revision): return
+			var amount := quantity_ref.get_ref() as SpinBox
+			if amount == null: return
+			ui.report(GameSession.economy.try_buy(shop_id, item.id, int(amount.value), UIStyle.action_id("buy")))
 			refresh()
 		, "buy/" + String(item.id))
 		quantity.value_changed.connect(func(value: float) -> void: buy.text = "Buy %d · %d crowns" % [int(value), int(value) * int(stock.unit_price)])
@@ -120,6 +137,7 @@ func _shop() -> void:
 		card.actions.add_child(buy)
 
 func _loot() -> void:
+	var revision := _revision
 	if not _source_available():
 		content.add_child(UIStyle.label("That container is no longer nearby. Close the pack and inspect it again."))
 		return
@@ -134,19 +152,27 @@ func _loot() -> void:
 	for id: String in view.items:
 		var card := _item_row(ContentDB.items[StringName(id)], int(view.items[id]))
 		var quantity := _quantity(card.actions, int(view.items[id]))
+		var quantity_ref: WeakRef = weakref(quantity)
 		card.actions.add_child(UIStyle.button("Take selected", func() -> void:
+			if not _current(revision): return
+			var amount := quantity_ref.get_ref() as SpinBox
+			if amount == null: return
 			if _source_available():
-				ui.report(GameSession.world_state.take_loot(loot_id, StringName(id), int(quantity.value), UIStyle.action_id("loot")))
+				ui.report(GameSession.world_state.take_loot(loot_id, StringName(id), int(amount.value), UIStyle.action_id("loot")))
 			else:
 				ui.show_feedback("That container is no longer in this world.")
 			refresh()
 		, "take/" + id))
 	if int(view.crowns) > 0:
 		content.add_child(UIStyle.button("Take %d crowns" % int(view.crowns), func() -> void:
+			if not _current(revision): return
 			if _source_available():
 				ui.report(GameSession.world_state.take_crowns(loot_id, UIStyle.action_id("crowns")))
 			refresh()
 		, "take/crowns"))
+
+func _current(revision: int) -> bool:
+	return revision == _revision and is_visible_in_tree() and ui.game.modes.mode in [&"inventory", &"shop"]
 
 func _source_available() -> bool:
 	var world: Node3D = ui.game.router.current_world
