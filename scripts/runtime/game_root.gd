@@ -169,6 +169,11 @@ func _build_world(world: Node3D, candidate: Dictionary) -> MireTypes.ActionResul
 	var built := campaign.build(world, candidate)
 	if not built.ok:
 		return built
+	if StringName(world.get("scene_id")) == &"exterior":
+		var reactions := SideQuestReactions.new()
+		reactions.name = "SideQuestReactions"
+		world.add_child(reactions)
+		return reactions.configure(world, candidate)
 	if StringName(world.get("scene_id")) == &"interior_crypt":
 		built = campaign.populate_encounters(world, candidate)
 		if not built.ok:
@@ -184,6 +189,10 @@ func _world_activated(world: Node3D) -> void:
 				_report_action(activated)
 		elif node is TrainingDummy:
 			node.activate()
+		elif node is SideQuestReactions:
+			var activated: MireTypes.ActionResult = node.activate()
+			if not activated.ok:
+				_report_action(activated)
 		elif node is WorldObject:
 			var activated: MireTypes.ActionResult = node.activate()
 			if not activated.ok:
