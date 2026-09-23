@@ -83,7 +83,10 @@ func _safety_and_queue() -> void:
 	session.danger = false
 	var reads := router.danger_reads
 	t.check(saves.save_slot(&"manual_1").code == &"danger" and router.danger_reads > reads, "R39 fresh encounter danger overrides stale cached safety")
-	t.check(not (await saves.load_slot(&"manual_1")).ok, "R39 load also refuses active combat danger")
+	modes.push_mode(&"pause")
+	modes.push_mode(&"load")
+	t.check((await saves.load_slot(&"manual_1")).ok and modes.mode == &"gameplay", "R21 paused load can replace a dangerous encounter at a committed state boundary")
+	t.check(router.forced_danger and not saves.save_slot(&"manual_1").ok, "R39 allowing encounter reload does not permit dangerous saves")
 	saves.request_autosave(&"quest_completed")
 	saves.request_autosave(&"quest_completed")
 	saves.request_autosave(&"rest")

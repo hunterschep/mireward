@@ -264,8 +264,8 @@ func _load_availability() -> MireTypes.ActionResult:
 	if GameSession.transactions.active or GameSession.travelling or GameSession.action_locked or GameSession.recovery.is_consuming() or GameSession.recovery.has_pending_recovery():
 		return MireTypes.failure(&"busy", &"Finish the current action or journey before loading.")
 	if GameSession.active and is_instance_valid(_player) and is_instance_valid(_router.current_world):
-		if _player.combat.is_committed() or _player.combat.guard_held or _router.is_dangerous():
-			return MireTypes.failure(&"danger", &"Leave combat and finish the current action before loading.")
+		if _player.combat.is_committed() or _player.combat.guard_held:
+			return MireTypes.failure(&"busy", &"Finish the current action and lower your guard before loading.")
 	return MireTypes.success()
 
 func _clear_pending() -> void:
