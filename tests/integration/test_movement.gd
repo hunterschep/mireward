@@ -97,5 +97,28 @@ func run(t: SceneTree) -> void:
 	player.apply_look(Vector2(0, 100000))
 	t.check(is_equal_approx(player.head.rotation.x, deg_to_rad(85)), "R08 inverted look clamps to plus 85 degrees")
 	settings.settings.invert_y = false
+	player.spawn_at(Vector3.ZERO)
+	await frames(t, 15)
+	settings.settings.camera_shake = true
+	var damage := MireTypes.DamageRequest.new(&"movement_fixture", 1, &"player", 20, &"light", Vector3(0, 0, -2), &"hostile")
+	var result: MireTypes.DamageResult = player.combat.receive_hit(damage)
+	await frames(t, 2)
+	t.check(result.health_damage > 0 and absf(player.camera.rotation.z) > 0 and absf(player.camera.rotation.z) < 0.018, "R42 actual damage produces bounded optional camera feedback")
+	t.check(player.camera.global_basis.z.is_equal_approx(player.head.global_basis.z), "R42 damage roll preserves the center aim direction")
+	settings.settings.camera_shake = false
+	player.apply_settings()
+	t.check(player.camera.rotation.z == 0, "R46 disabling shake clears current feedback immediately")
+	await frames(t, 15)
+	damage.attack_sequence = 2
+	player.combat.receive_hit(damage)
+	await frames(t, 2)
+	t.check(player.camera.rotation.z == 0, "R46 disabled shake remains absent after another actual hit")
+	settings.settings.camera_shake = true
+	await frames(t, 15)
+	damage.attack_sequence = 3
+	player.combat.receive_hit(damage)
+	await frames(t, 2)
+	player.spawn_at(Vector3.ZERO)
+	t.check(player.camera.rotation.z == 0 and player._shake_left == 0, "R40 spawning clears transient damage feedback")
 	arena.queue_free()
 	await t.process_frame

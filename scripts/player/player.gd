@@ -19,11 +19,14 @@ var sprinting: bool = false
 var bob_clock: float = 0.0
 var step_distance: float = 0.0
 var combat: Node
+var _shake_left: float = 0.0
+var _shake_strength: float = 0.0
 
 func _ready() -> void:
 	add_to_group("player")
 	combat = $Combat
 	combat.configure_player(self)
+	combat.hit_received.connect(_hit_received)
 	$Hurtbox.configure(combat)
 	apply_settings()
 
@@ -32,6 +35,8 @@ func apply_settings() -> void:
 		return
 	camera.keep_aspect = Camera3D.KEEP_HEIGHT
 	camera.fov = clampf(float(SaveService.settings.fov), 60.0, 95.0)
+	if not SaveService.settings.camera_shake:
+		_clear_camera_feedback()
 
 func set_input_enabled(enabled: bool) -> void:
 	input_enabled = enabled
@@ -51,6 +56,7 @@ func spawn_at(at: Vector3, yaw: float = 0.0) -> void:
 	guarding = false
 	sprinting = false
 	vitals.reset()
+	_clear_camera_feedback()
 	if is_instance_valid(combat):
 		combat.reset_combat()
 	clear_input_edges()
@@ -101,5 +107,26 @@ func _physics_process(delta: float) -> void:
 			AudioService.play_event(StringName("footstep_" + String(surface)), global_position)
 	var bob: float = float(SaveService.settings.view_bob) * sin(bob_clock) if is_on_floor() and walked > 0.001 else 0.0
 	head.position.y = move_toward(head.position.y, 1.65 + bob, delta * 0.4)
+	_update_camera_feedback(delta)
 	GameSession.state.player.position = [global_position.x, global_position.y, global_position.z]
 	GameSession.state.player.yaw = rotation.y
+
+func _hit_received(_request: MireTypes.DamageRequest, result: MireTypes.DamageResult) -> void:
+	if SaveService.settings.camera_shake and result.health_damage > 0:
+		_shake_left = 0.22
+		_shake_strength = clampf(result.health_damage / 25.0, 0.25, 1.0)
+
+func _update_camera_feedback(delta: float) -> void:
+	_shake_left = maxf(0, _shake_left - delta)
+	if _shake_left <= 0 or not SaveService.settings.camera_shake:
+		_clear_camera_feedback()
+		return
+	var envelope := pow(_shake_left / 0.22, 2) * _shake_strength
+	var oscillation := sin((0.22 - _shake_left) * 42.0)
+	# A brief, sub-degree roll keeps the center aiming direction unchanged.
+	camera.rotation.z = oscillation * envelope * 0.018
+
+func _clear_camera_feedback() -> void:
+	_shake_left = 0
+	_shake_strength = 0
+	camera.rotation.z = 0
